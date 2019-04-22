@@ -1,4 +1,4 @@
-# cst
+# cst miniprogram
 A miniprogram for Purchasing and Maintenance of Cars
 
 ## 项目截图：
