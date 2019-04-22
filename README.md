@@ -3,7 +3,7 @@ miniprogram for Purchasing and Maintenance of Cars
 
 ## 项目截图：
 ### 首页
-![image](https://github.com/mark-tang/cst/blob/master/show/home.png)
+![image](https://github.com/mark-tang/cst/blob/master/show/home.PNG)
 
 ### 养车
 
