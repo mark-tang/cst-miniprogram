@@ -1,0 +1,42 @@
+<view class="container" wx:if="{{showPage}}">
+  <view class="keep-card small-card">
+  <!--<image class="keep-card-bac keep-card-bac-left" src="../../../images/keep-bac-left.png"></image>-->
+    <view class="card-title">
+      <image class="card-titl-image" src="../../../images/card-title-left.png"></image>
+      我的年检信息
+      <image class="card-titl-image" src="../../../images/card-title-right.png"></image>
+    </view>
+    <view class="keep-list">
+      <view class="keep-list-item">
+        <view class="keep-list-cell">
+          <text class="keep-list-title">车辆上牌时间</text>
+          <text class="keep-list-con">{{itemData.shangPaiTime}}</text>
+        </view>
+        <view class="keep-list-cell">
+          <text class="keep-list-title">年检到期时间</text>
+          <text class="keep-list-con">{{itemData.nianjianTime}}</text>
+        </view>
+      </view>
+      <view class="keep-list-item">
+        <view class="keep-list-cell keep-list-cell-full">
+          <text class="keep-list-title">距离下次年检</text>
+          <text class="keep-list-con keep-list-con-red">{{itemData.days}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="keep-tool keep-normal">
+      <button type="primary" disabled='{{!isSetting}}' bindtap="addRecord">我已年检</button> 
+    </view>
+  </view>
+
+  <view class="tips">
+    <text>温馨提示：</text>您可根据实际情况，为爱车添加年检记录，我们会根据您的年检时间，及时提醒您下次年检。
+    <view>1、非营运轿车(除面包车和7座及7座以上的车辆)，享受新车6年内“免上线检测年检”政策，仍需每两年申请检验标志；6至15年的每年上线检验1次，15年以上的每半年上线检验1次；</view>
+    <view>2、营运载客汽车5年以内每年检验1次;超过5年的，每6个月检验1次</view>
+    <view>3、此年检提醒时间仅供参考，更多年检政策，可咨询联系我店工作人员或车检所工作人员；</view>
+  </view>
+
+  <!--<view class="fixed-btn">
+    <button class="" type="white">电话预约年检</button>
+  </view>-->
+</view>

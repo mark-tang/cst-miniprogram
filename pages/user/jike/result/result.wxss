@@ -1,0 +1,32 @@
+.qrcode-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .4);
+  z-index: 1000;
+}
+.qrcode {
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFF;
+  border-radius: 10rpx;
+  padding: 0 10rpx;
+}
+.qrcode text {
+  font-size: 28rpx;
+  padding: 15rpx 10rpx;
+  color: #999;
+  display: block;
+}
+.qrcode > canvas {
+    width: 420rpx;
+    height: 420rpx;
+    margin-top: -40rpx;
+}

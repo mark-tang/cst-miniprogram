@@ -1,0 +1,7 @@
+<!--pages/jurisdiction/jurisdiction.wxml-->
+<!-- <button  open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo' class='user-status' wx:if="{{!userStatus}}" type="primary">获取我的个人信息</button> -->
+<view class='wrap-window'>
+ <image src="../../images/home.png"></image>
+ <button  open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo' class='btn-primary user-status' wx:if="{{!userStatus}}" type="primary">进入4S店</button>
+</view>
+

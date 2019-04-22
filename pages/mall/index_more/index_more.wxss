@@ -1,0 +1,66 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 0;
+}
+swiper{
+  height: 340rpx;
+}
+.slide-image{
+  width: 100%;
+  height: 340rpx;
+}
+
+
+.mall-title{
+  height: 90rpx;
+  text-align: center;
+  position: relative;
+}
+.mall-title image{
+  height: 31rpx;
+  width: 347rpx;
+  margin-top: 30rpx;
+}
+
+.mall-extend-title{
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.mall-extend-title-img{
+  height: 35rpx;
+  width: 79rpx;
+  margin: 28rpx 0;
+}
+.mall-extend-text{
+  font-size: 34rpx;
+  padding: 0 20rpx;
+  color: #e96329;
+  
+}
+.mall-title__more{
+  position: absolute;
+  right: 20rpx;
+  color: #999;
+  font-size: 26rpx;
+}
+/*float icon*/
+.float-view{
+  position: fixed;
+  z-index: 100;
+  bottom: 50rpx;
+  right: 50rpx;
+  display: flex;
+  flex-direction: column;
+}
+.float-view__left{
+  left: 50rpx;
+}
+.float-icon{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 5rpx 0;
+}

@@ -1,0 +1,52 @@
+<!--index.wxml-->
+
+<view class="container">
+  <view class="com-top">
+    <view class="com-top__status">
+      <icon type="success" size="40" color="#e54b44"/>
+      <text>付款成功</text>
+    </view>
+    <button class="com-top__btn" bindtap="complete">完成</button>
+    <text class="com-top__tips">消费券可在“个人中心-我的商城订单-待消费”中查看</text>
+  </view>
+  <!-- <view class="com-title">
+    订单：10151515000
+  </view>
+  <view class="com-bom">
+    <view class="com-bom__title">
+      新款四季通用新款真皮汽车座椅垫
+    </view>
+    <view class="com-list">
+      <view class="com-list__lt">
+        <view class="com-list__lt-text">消费码：1346464584151</view>
+        <view class="com-list__lt-code" bindtap="showCode">
+          <image src="/images/order-code-icon.png"></image>
+          查看二维码
+        </view>
+      </view>
+      <view class="com-list__rt">
+        <text>待消费</text>
+      </view>
+    </view>
+    <view class="com-list">
+      <view class="com-list__lt">
+        <view class="com-list__lt-text">消费码：1346464584151</view>
+        <view class="com-list__lt-code" bindtap="showCode">
+          <image src="/images/order-code-icon.png"></image>
+          查看二维码
+        </view>
+      </view>
+      <view class="com-list__rt">
+        <text>待消费</text>
+      </view>
+    </view>
+  </view> -->
+</view>
+<view class="code-panel-wrap" wx:if="{{showCode}}">
+  <view class="code-panel">
+    <view class="code-panel_close"  bindtap="showCode"></view>
+    <image class="code-img" mode="widthFix" src="http://img2.imgtn.bdimg.com/it/u=881533654,979110412&fm=26&gp=0.jpg"></image>
+    <text>— 商家扫消费码即可消费 —</text> 
+  </view>
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

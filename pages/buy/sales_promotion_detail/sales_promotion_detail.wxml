@@ -1,0 +1,26 @@
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<view class="container">
+  <view class="article-title">
+    {{title}}
+  </view>
+  <view class="article-time">
+    {{formatTime}}
+  </view>
+  <view class="normal-btn" wx:if="{{isShowAppoint}}">
+    <button type="primary" form-type="submit" disabled="{{btnDisabled}}">立即预约</button>
+  </view>  
+  <view class="article-detail">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  <view class="normal-btn" wx:if="{{showPhone}}">
+    <button type="primary" data-phone="{{phone}}" bindtap="contact">联系我们：{{phone}}</button>
+  </view>
+  
+  <view class="more-article" wx:if="{{showArticle}}">
+   <text>相关资讯</text>
+   <view class="more-article-list" wx:for="{{moreArticleList}}" data-id="{{item.id}}" bindtap="refreshArt">
+    {{item.title}}
+   </view>
+  </view>
+</view> 
+

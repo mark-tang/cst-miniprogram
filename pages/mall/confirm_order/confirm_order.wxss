@@ -1,0 +1,57 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 20rpx 0;
+  padding-bottom: 120rpx;
+  width: 100%;
+  overflow: hidden;
+}
+.since_adress{
+  margin-top: 20rpx;
+}
+.mall-media_wrap{
+  margin-top: 20rpx;
+}
+.mall-media::after{
+  border: none;
+}
+.mall-media__footer{
+  background: #FFF;
+  border-top: 1rpx solid #ededed;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.express-way{
+  color: #999
+}
+.mall-media__lt{
+  height: 160rpx;
+}
+.mall-media__lt image{
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.pay-method{
+  margin-top: 20rpx;
+  background: #FFF;
+
+}
+.radio{
+  width: 100%;
+  display: block;
+  padding: 24rpx 20rpx;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+.radio:active{
+  background: #f8f8f8;
+  
+}
+.radio radio{
+  padding-right: 30rpx;
+  position: absolute;
+  right:0rpx;
+}

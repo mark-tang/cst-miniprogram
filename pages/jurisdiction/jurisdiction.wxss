@@ -1,0 +1,8 @@
+/* pages/jurisdiction/jurisdiction.wxss */
+
+/* .user-status{margin: 60rpx 20rpx;} */
+.wrap-window{width:750rpx;height:100vh;display: flex;justify-content: center;align-items: center;overflow: hidden}
+.wrap-window image{width:750rpx;height: 1206rpx}
+.user-status{position: fixed;left:60rpx;bottom:150rpx;width:630rpx;height:96rpx;border-radius: 96rpx;background: #1494eb!important;line-height: 96rpx;
+ box-shadow: 0px 18rpx 20rpx 0px rgba(20, 148, 235, 0.3)!important; 
+}

@@ -1,0 +1,23 @@
+<view class="container">
+  <form class="form-body" bindsubmit="submitForm">
+    <view class="form-section">
+      <view class="form-label">车辆上牌日期</view>
+      <picker class="select-date" mode="date" value="{{date}}" start="2000-01-01" end="{{nowDate}}" bindchange="bindDateChange">
+        <view class="input-select-view">
+          {{dateTips}}{{keepDate}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+
+    <view class="normal-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '提交'}}
+      </button>
+    </view>
+    <view class="tips">
+      <text>温馨提示：</text>行驶证上有上牌时间哦～
+    </view>
+  </form>
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

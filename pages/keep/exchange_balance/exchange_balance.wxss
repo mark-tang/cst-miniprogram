@@ -1,0 +1,8 @@
+.exchange-value{
+  color: rgb(255,90,22);
+  background: #FFF;
+  padding: 24rpx;
+  font-size: 38rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.02);
+  text-align: center;
+}

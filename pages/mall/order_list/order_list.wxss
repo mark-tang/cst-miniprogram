@@ -1,0 +1,180 @@
+
+.container{
+  padding: 0;
+}
+.order__hd{
+  display: flex;
+  width: 100%;
+  background: #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  z-index: 999;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+.order__hd_title{
+  width: 20%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+}
+.order__hd_title.active{
+  color: #e54b44;
+}
+.order__hd_dot{
+  width: 10%;
+  height: 4rpx;
+  background: #e54b44;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 5%;
+  transition:all .2s ease-in-out;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+.order__bd{
+  margin-top: 80rpx;
+  padding-top: 20rpx;
+}
+
+/*list*/
+
+.order-list{
+  background: #FFF;
+  margin-bottom: 20rpx;
+}
+.order-list__hd{
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+.order-list__hd__type{
+  color: #e54b44;
+}
+.order-list__bd{
+
+}
+.order-list__ft{
+  text-align: right;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ededed;
+  
+}
+.order-list__ft:last-child{
+  border-bottom: 0rpx solid #FFF;
+}
+
+.order-list__ft picker{
+  display: inline-block;
+  padding: 0 15rpx;
+  width: 200rpx;
+}
+.order-list__ft picker button{
+  margin: 0;
+}
+.order-list-media{
+  padding:0 20rpx;
+  display: flex;
+  border-bottom: 1rpx solid #ededed;
+  box-sizing: border-box;
+}
+.order-list-media__lt{
+  width: 160rpx;
+  height: 160rpx;
+  padding: 20rpx 0;
+  flex-shrink: 0;
+}
+.order-list-media__rt{
+  width: 100%;
+  padding: 20rpx 0 20rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.order-list-media__lt image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.order-list-media__rt__hd{
+  font-size: 28rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden; 
+  height:80rpx;
+}
+.order-list-media__rt__bd{
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.order-list-price{
+  
+}
+.order-list-price__now{
+  font-size: 26rpx;
+}
+.order-list-price__now text{
+  font-size: 38rpx;
+}
+.order-list-price__orgin{
+  font-size: 22rpx;
+  color: #999;
+  text-decoration: line-through;
+}
+.order-list-count{
+  color: #999;
+  font-size: 26rpx;
+}
+.order-list__ft_price{
+  font-size: 26rpx;
+}
+.order-list__ft_price-main{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.order-list__btn{
+  padding: 14rpx 30rpx;
+  display: inline;
+  color: #e54b44;
+  background: #FFF;
+  font-size: 28rpx;
+  border: 1rpx solid #e54b44;
+  margin: 0 10rpx;
+}
+.order-list__btn-cancel{
+  color: #666;
+  border: 1rpx solid #c7c7c7;
+}
+.order-list__btn::after{
+  width: 0;
+  height: 0;
+}
+
+.order-empty{
+  text-align: center;
+  font-size: 30rpx;
+  padding: 80rpx 0;
+}
+.order-empty image{
+  width: 166rpx;
+  height: 166rpx;
+}
+.order-empty view{
+  color: #999;
+  margin-top: 20rpx;
+}
+
+.order-list-tuan{
+  background: red;
+  color: #FFF;
+  padding: 0 10rpx;
+  margin: 0 10rpx;
+}

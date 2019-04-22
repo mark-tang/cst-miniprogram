@@ -1,0 +1,31 @@
+<view class="container">
+    <view class="keep-record">
+      <view class="keep-record-title"  wx:if="{{!showEmpty}}">
+        共<text class="text-blue"> {{listLength}} </text>条维修记录，总支出：<text class="text-red">{{totalMoney}} </text>元
+      </view>
+      <view class="record-list-flex record-list-title">
+        <text class="record-list-cell">日期</text>
+        <text class="record-list-cell">类型</text>
+        <text class="record-list-cell">里程(公里)</text>
+        <text class="record-list-cell">费用（元）</text>
+        <!-- <text class="record-list-cell record-list-cell-img"> </text> -->
+      </view>
+      <view class="record-list-con">
+       <view class="record-list-flex" wx:for="{{queryData}}" wx:key="date">
+        <view class="record-list-cell">{{item.b_dateline}}</view>
+        <view class="record-list-cell">{{item.b_project_name}}</view>
+        <view class="record-list-cell">{{item.b_km}}</view>
+        <view class="record-list-cell">{{item.b_money}}</view>
+        <!-- <view class="record-list-cell record-list-cell-img" id="{{item.id}}" data-index = "{{index}}" bindtap="delRecord">
+          <image src="../../../images/del-btn.png"></image>
+        </view>         -->
+        </view>     
+      </view>
+      <view class="empty-list" wx:if="{{showEmpty}}">
+        <image class="empty-list-icon" src="../../../images/icon-empty-list.png"></image>
+        <text>您还没有添加保养维修记录</text>
+      </view>
+      <view class="loadover" wx:if="{{loadOver}}">- 已经到底了 -</view>
+    </view>
+    <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

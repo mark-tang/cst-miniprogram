@@ -1,0 +1,29 @@
+<!--add_car.wxml-->
+
+<view class="container" wx:if="{{showPage}}">
+  <form class="form-body" bindsubmit="submitForm">
+    <block wx:if="{{offerList.length > 0}}">
+      <view class="form-section">
+        <view class="form-label">充值优惠</view>
+      </view>
+      <view class="form-list">
+        <view class="{{idx == selectIndex ?'form-item item-act':'form-item'}}" wx:for="{{offerList}}" wx:for-index="idx" wx:key="idx" bindtap='selectView' id='{{idx}}'>
+          <view class="number">{{item.numbers}}元</view>
+          <view class="snum">赠送:{{item.giftNumber}}元</view>
+        </view>
+      </view>
+    </block>
+    
+    <view class="form-section">
+      <view class="form-label">{{placeholderText}}</view>
+      <input type="digit" name="amount" placeholder="请输入{{placeholderText}}" maxlength="8" placeholder-class ="gray-style" bindfocus='inputFocus' value="{{inputValue}}"/>
+    </view>
+    <view class="normal-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '提交'}}
+      </button>
+    </view> 
+  </form >
+  <view class='charge-history'
+      data-url='../charge_history/charge_history' bindtap='navigateTo'>查看充值记录</view>
+</view>

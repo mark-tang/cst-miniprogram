@@ -1,0 +1,14 @@
+/* pages/keep/member_reg/member_reg.wxss */
+.code-btn{
+  font-size: 24rpx;
+  border: 1rpx solid rgba(0, 0, 0, .2);
+  padding: 8rpx 22rpx;
+  border-radius: 6rpx;
+  color: #3f68f7;
+  background: #FFF;
+  z-index: 10000;
+  margin-top:-4px;
+}
+.code-btn:active{
+  background: rgba(255, 255, 255, .8)
+}

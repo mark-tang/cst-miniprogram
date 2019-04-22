@@ -1,0 +1,3 @@
+@import "../../../utils/keep_next.wxss"
+.tips{line-height:38rpx}
+.tips view{line-height:38rpx;margin-top:6rpx}

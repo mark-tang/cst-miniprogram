@@ -1,0 +1,53 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 0;
+}
+
+.pay-method{
+  background: #FFF;
+}
+.refund-code{
+  background: #FFF;
+  padding: 20rpx 20rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+.radio{
+  width: 100%;
+  display: block;
+  padding: 20rpx 20rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+  color: #666;
+}
+.radio:active{
+  background: #f8f8f8;
+}
+.radio radio{
+  padding-right: 30rpx;
+  position: absolute;
+  right:0rpx;
+}
+.refund-apply__cell{
+  display: flex;
+  justify-content: space-between;
+  padding:24rpx 20rpx;
+  font-size:32rpx;
+  background: #FFF;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.eva-textarea{
+  background: #FFF;
+  padding:10rpx 30rpx;
+}
+.eva-textarea textarea{
+  background: #f8f8f8;
+  border: 1rpx solid #ededed;
+  width: 100%;
+  padding: 20rpx;
+  border-radius: 5rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}

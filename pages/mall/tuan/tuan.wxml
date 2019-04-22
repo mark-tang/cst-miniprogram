@@ -1,0 +1,152 @@
+<!--index.wxml-->
+
+<view class="container" wx:if="{{showPage}}">
+  <view class="tuan-top">
+    <image src="/images/tuan-flow.png" mode="widthFix"></image>
+    <view class="tuan-flow">
+      <text>1.支付开团</text>
+      <text>2.邀请开团</text>
+      <text>3.人满成团</text>
+    </view>
+  </view>
+  <view class="mall-media" bindtap="navigateTo" data-url="../detail/detail?id={{info.goods_id}}">
+      <view class="mall-media__lt">
+        <view class="mall-media__lt__type type_1">
+          <text>拼团</text>
+        </view>
+        <image src="{{info.img_url_0}}"></image>
+      </view>
+      <view class="mall-media__rt">
+        <view class="mall-media__hd">
+          <text class="mall-media-title">{{info.goods_name}}</text>
+        </view>
+        <view class="mall-media__bd">
+          <view class="mall-media__price">
+            <view class="mall-media__price-red">￥<text>{{info.groups_price}}</text></view>
+            <view class="mall-media__price-orgin text-del">￥{{info.old_price}}</view>
+          </view>
+        </view>
+        <view class="mall-media__ft">
+          <view class="mall-media__ft__lt" wx:if="{{item.type == 1?true:false}}">
+            <view class="mall-media-cell_text">已售{{goodsInfo.process}}%</view>
+            <view class="mall-media-cell cell_process">
+              <view class="cell_process-inner" style="width:{{item.process}}%;"></view>
+            </view>
+          </view>  
+        </view>
+      </view>
+    </view> 
+    <view class="tuan-status">
+      <view class="status-main" wx:if="{{info.status == 0}}">
+        已开团，离成团还差 <text>{{num}}</text> 人
+      </view>
+      <view class="status-main text-red" wx:if="{{info.status == 1 && (membersInfo || fightGroups)}}">
+        拼团成功！
+      </view>
+      <view class="status-main text-red" wx:if="{{info.status == 1 && !membersInfo && !fightGroups}}">
+        已开团成功，您来晚了！
+      </view>
+      <view class="status-main text-red" wx:if="{{info.status == 2}}">
+        很遗憾，拼团失败！
+      </view>
+      <view class="status-main text-red" wx:if="{{info.status == 3}}">
+        管理员已关闭此团购
+      </view>
+      <view class="tuan-time cell_cut-down" wx:if="{{info.status == 0}}">
+        剩余 <view wx:if="{{diffTime.showDay}}"><text>{{diffTime.day}}</text> 天 </view> <text>{{diffTime.hour}}</text> : <text>{{diffTime.minute}}</text> : <text>{{diffTime.second}}</text> 结束
+      </view>
+      <text class="tuan-tips" wx:if="{{info.status == 0}}">快邀请好友参团吧！</text>
+      <text class="tuan-tips" wx:if="{{info.status == 1 && membersInfo}}">请前往门店自提商品</text>
+      <text class="tuan-tips" wx:if="{{info.status == 2}}">已为您申请退款，请留意订单状态</text>
+      <!-- <text class="tuan-tips" wx:if="{{info.status == 3}}">此团购已关闭</text> -->
+
+      <!--状态判断-->
+      <view wx:if="{{fatherid || id}}">
+        <!--是团长-->
+        <view wx:if="{{fightGroups}}">
+          <view class="tuan-tool">
+            <button 
+              class="tuan-btn_normal" 
+              bindtap="navigateTo" 
+              data-url="../order_detail_noconsume/order_detail_noconsume?orderid={{info.out_trade_no}}">
+                查看订单详情
+            </button>
+            <button class="tuan-btn_red" open-type="share" wx:if="{{info.status == 0}}">邀请好友参团</button>
+            <button class="tuan-btn_red" wx:if="{{info.status > 0}}" 
+            data-url="../detail/detail?id={{info.goods_id}}" bindtap="navigateTo">查看商城商品</button>
+          </view>
+        </view>
+        <!--不是团长-->
+        <view wx:if="{{!fightGroups}}">
+          <view class="tuan-tool">
+            <button 
+              class="tuan-btn_normal" 
+              wx:if="{{(isOverTime || getHead.status>0) && membersInfo}}" 
+              bindtap="navigateTo" 
+              data-url="../order_detail_noconsume/order_detail_noconsume?orderid={{info.out_trade_no}}"
+              >
+              查看订单详情
+            </button>
+          </view>
+          <view wx:if="{{!(isOverTime || getHead.status>0)}}">
+            <view wx:if="{{membersInfo}}">
+              <view class="tuan-tool">
+                <button 
+                  class="tuan-btn_normal" 
+                  bindtap="navigateTo" 
+                  data-url="../order_detail_noconsume/order_detail_noconsume?orderid={{info.out_trade_no}}"
+                  >
+                  查看订单详情
+                </button>
+                <button class="tuan-btn_red" open-type="share" wx:if="{{membersInfo.status == 0}}">邀请好友参团</button>
+                <button class="tuan-btn_red" wx:if="{{membersInfo.status >0}}" 
+                data-url="../detail/detail?id={{info.goods_id}}" bindtap="navigateTo">查看商城商品</button>
+              </view>
+            </view>
+            <view wx:if="{{!membersInfo}}">
+              <view class="tuan-tool">
+                <button class="tuan-btn_red" data-goodsid="{{info.goods_id}}" bindtap="joinTuan">立即参团</button>
+              </view>
+            </view>
+          </view>
+        </view>
+            
+      </view> 
+      
+      <view wx:if="{{gid}}">
+        <view class="tuan-tool" >
+          <button class="tuan-btn_normal"  bindtap="navigateTo" data-url="../order_detail_noconsume/order_detail_noconsume?orderid={{info.out_trade_no}}">查看订单详情</button>
+          <button class="tuan-btn_red" open-type="share"  wx:if="{{info.status == 0}}">邀请好友参团</button>
+          <button class="tuan-btn_red"  wx:if="{{info.status > 0}}" 
+            data-url="../detail/detail?id={{info.goods_id}}" bindtap="navigateTo">查看商城商品</button>
+        </view> 
+      </view> 
+    </view>
+    <!--参团记录-->
+    <view class="business-info">
+      <view class="business-info__hd">
+        <text>参团记录</text>
+      </view>
+      <view class="business-info__bd">
+        <view class="record-list" wx:for="{{FightGroupsList}}">
+          <view class="record-list__lf">
+            <image src="{{item.w_headimgurl}}"></image>
+          </view>
+          <view class="record-list__mid">
+            <view class="record-list__name">
+              {{item.w_user_name}}
+              <text wx:if="{{index == 0}}">团长</text>
+            </view>
+            <view class="record-list__time">
+              {{item.addTime}}
+            </view>
+          </view>
+          <view class="record-list__rt">
+            {{index == 0?'开团':'团员'}}
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+
+

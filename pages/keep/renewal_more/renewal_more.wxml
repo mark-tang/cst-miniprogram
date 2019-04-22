@@ -1,0 +1,43 @@
+<view class="container">
+   <view class="appoint-detail-status">
+   <image src="{{statuImage}}"></image>
+    <text>{{statuText}}</text> 
+   </view>
+   <view class="form-cutline"></view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-1.png"></image>
+    <text class="appoint-detail-list-title">预约车型</text>
+    <text>{{carType}}</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-2.png"></image>
+    <text class="appoint-detail-list-title">联系人</text>
+    <text>宋海鹏</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-3.png"></image>
+    <text class="appoint-detail-list-title">联系电话</text>
+    <text bindtap="callNum" id="15017507765">15017507765</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-4.png"></image>
+    <text class="appoint-detail-list-title">预约时间</text>
+    <text>2017-4-6 15:11:32</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-4.png"></image>
+    <text class="appoint-detail-list-title">预约到店时间</text>
+    <text>2017-4-6 15:11:32</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-5.png"></image>
+    <text class="appoint-detail-list-title">备注</text>
+    <text>无</text>
+   </view>
+   <view class="fixed-btn fixed-vice-btn">
+      <button type="vice" bindtap="appointEvaHref">服务点评</button>
+   </view> 
+   <view class="fixed-btn">
+      <button type="primary" form-type="submit">联系顾问</button>
+   </view> 
+</view>

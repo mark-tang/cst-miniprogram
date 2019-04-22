@@ -1,0 +1,45 @@
+<view class="container" wx:if="{{showPage}}">
+  <view class="keep-card">
+  <!--<image class="keep-card-bac keep-card-bac-left" src="../../../images/keep-bac-left.png"></image>-->
+    <view class="card-title">
+      <image class="card-titl-image" src="../../../images/card-title-left.png"></image>
+      我的保养维修记录
+      <image class="card-titl-image" src="../../../images/card-title-right.png"></image>
+    </view>
+    <view class="keep-list">
+      <view class="keep-list-item">
+        <view class="keep-list-cell">
+          <text class="keep-list-title">上次保养里程</text>
+          <text class="keep-list-con">{{itemData.preBaoYangKm}}</text>
+        </view>
+        <view class="keep-list-cell">
+          <text class="keep-list-title">上次保养时间</text>
+          <text class="keep-list-con">{{itemData.preBaoYangTime}}</text>
+        </view>
+      </view>
+      <view class="keep-list-item">
+        <view class="keep-list-cell">
+          <text class="keep-list-title">下次保养里程</text>
+          <text class="keep-list-con keep-list-con-red">{{itemData.nextBaoYangKm}}</text>
+        </view>
+        <view class="keep-list-cell">
+          <text class="keep-list-title">下次保养时间</text>
+          <text class="keep-list-con keep-list-con-red">{{itemData.nextBaoYangTime}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="keep-tool">
+       <button type="primary" data-url="../next_keep_add/next_keep_add" bindtap="navigateTo" wx:if="{{isAdd}}"><span>+ </span>添加保养维修记录</button>  
+      <button type="primary" data-url="../next_keep_add/next_keep_add" bindtap="navigateTo" wx:if="{{!isAdd}}">更新保养提醒</button> 
+      <text  data-url="../next_keep_record/next_keep_record" bindtap="navigateTo">保养维修记录</text>    
+    </view>
+  </view>
+
+  <view class="tips">
+    <text>温馨提示：</text>您可根据实际情况，自主为您的爱车添加保养维修记录，我们会根据您的保养时间，及时为您提供下次保养的服务～
+  </view>
+
+  <!--<view class="fixed-btn">
+    <button type="white" data-url="../appoint_add/appoint_add" bindtap="navigateTo">我要预约保养/维修</button>
+  </view>-->
+</view>

@@ -1,0 +1,18 @@
+<view class="container" wx:if="{{showPage}}">
+  <text class="form-title-tips">选择您要更换的{{adType}}顾问</text>
+  <view class="select-advisor">
+    <view class="advisor-info {{item.isActive ? 'active' : ''}}" wx:for="{{advisorInfo}}" wx:key="indexthis" bindtap="selectAdvisor" id="{{index}}"> 
+      <image class="advisor-pic" src="{{item.avatar || '/images/head.png'}}"></image>
+      <text>{{item.nickName}}</text>
+      <view class="selected">
+        <image src="../../../images/select-active.png"></image>
+      </view>
+    </view>
+  </view>
+   <view class="normal-btn fixed-btn">
+      <button type="primary" bindtap="submitBtn"  disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '确定'}}
+      </button>
+    </view>  
+    <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

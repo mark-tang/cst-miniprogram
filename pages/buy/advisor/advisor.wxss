@@ -1,0 +1,56 @@
+
+.advisor-list-wrap{
+  padding:0 20rpx;
+}
+.advisor-list{
+  background: #FFF;
+  box-shadow: 0 0 10rpx 8rpx rgba(0, 0, 0, .03);
+  border-radius: 10rpx;
+  padding-top: 30rpx;
+  margin-bottom: 40rpx;
+}
+.advisor-head{
+  height: 150rpx;
+  width: 150rpx;
+  border-radius: 50%;
+  display: block;
+  margin:0rpx auto 30rpx auto;
+}
+.advisor-name{
+  text-align: center;
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.advisor-mobile{
+  text-align: center;
+  display: block;
+  font-size: 32rpx;
+  color: #666;
+  padding: 20rpx 0;
+}
+.advisor-list-bar{
+  border-top: 1px solid #f8f8f8;
+  display: flex;
+}
+.advisor-list-bar-cell{
+  flex: 1;
+  text-align: center;
+  padding: 25rpx 0;
+}
+.advisor-list-bar-cell:last-child{
+  border-left: 1rpx solid #f8f8f8;
+  margin-left: -1rpx;
+}
+.advisor-list-bar-cell text{
+  height: 40rpx;
+  line-height: 40rpx;
+  display: inline-block;
+  padding: 0 10rpx;
+  color: #426cf8;
+}
+.advisor-list-bar-cell image{
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: top;
+}

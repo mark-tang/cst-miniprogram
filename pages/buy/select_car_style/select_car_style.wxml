@@ -1,0 +1,44 @@
+<scroll-view class="container" hidden="{{!showPage}}">
+  <view class="add-car car-top">
+    <image src="{{model_info.model_logo}}"></image>
+    <text class="text-mian">{{model_info.model_name}}</text>
+    <view class="text-sub">
+      门店价格：<text class="text-danger">{{model_info.price.minPrice || 0}}万─{{model_info.price.maxPrice || 0}}万</text>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_car-list">
+    <block wx:for="{{car_list}}" wx:key="modelId">
+      <template is="weui-cell" data="{{...item, brand_name: model_info.brand_name, model_name: model_info.model_name}}"></template>
+    </block>
+  </view>
+</scroll-view>
+
+<template name="weui-cell">
+  <view class="weui-cell weui-cell_access" 
+    data-brand_id="{{manufactureId}}" 
+    data-brand_name="{{brand_name}}"
+    data-model_id="{{seriesId}}"
+    data-model_name="{{model_name}}"
+    data-car_id="{{modelId}}"
+    data-car_name="{{modelName}}"
+    data-shop_price="{{shopPrice}}"
+    data-factory_price="{{factoryPrice}}"
+    bindtap="onTap">
+    <view class="weui-cell__hd">
+      <view class="weui-cell__title">{{modelName}}</view>
+      <view class="weui-cell__desc">
+        本店价：<text class="text-danger">{{shopPrice}}万</text>
+        指导价：<del>{{factoryPrice}}万</del>  
+      </view>
+      <view class="weui-cell__desc">
+        优惠:
+        <text class="text-success" wx:if="{{shopPrice < factoryPrice}}">{{factoryPrice - shopPrice}}万↓</text>
+        <text class="text-desc" wx:elif="{{shopPrice == factoryPrice}}">0万</text>
+        <text class="text-warning" wx:else>{{factoryPrice - shopPrice}}</text>
+      </view>
+    </view>
+    <view class="weui-cell__bd">
+      <button class="btn btn_plain-warning">设为心仪车型</button>
+    </view>
+  </view>
+</template>

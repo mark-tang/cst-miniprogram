@@ -1,0 +1,45 @@
+<view class='container' wx:if="{{showPage}}">
+  <view class='coin-card'>
+    <view class='coin-title'>
+      <view class='coin-title__hd'>{{coin}}</view>
+      <view class='coin-title__bd'>我的{{name}}</view>
+    </view>
+    <view class='exchange-balance'
+      wx:if="{{nextInteger > 0 }}"
+      data-url='../exchange_balance/exchange_balance?integral={{coin}}&exchange_value={{nextInteger}}' bindtap='navigateTo'>兑换余额</view>
+    <view class='coin-process'>
+      <view class='process-outer'>
+        <view class='process-inner' style="width:{{(addIndex / levelData.length)*100}}%"></view>
+      </view>
+      <view class='process-text'>
+        <div 
+          wx:for="{{levelData}}" 
+          wx:key="index" 
+          class="{{LevelIndex == index ?'active':''}}">
+          {{item.levelName}}
+        </div>
+      </view>
+      <view class='process-next' wx:if="{{(levelData[addIndex].range_min - growth) > 0}}">
+        距离下一等级还需<text>{{levelData[addIndex].range_min - growth}}</text>成长值
+      </view>
+    </view>
+    <view class='coin-tips'>
+      <view class='coin-tips-title'>如何获取成长值?</view>
+      <view class='coin-tips-item'>{{tips}}</view>
+      <view class='intoShop' bindtap='intoShop'>进入商城</view>
+    </view>
+  </view>
+  <view class='coin-record-wrap'>
+    <view class='coin-record-title'>最近记录</view>
+    <view class='coin-record' wx:for="{{growRecord}}" wx:key="index">
+      <view class='coin-record__bd'>
+        <view class='coin-text-main'>{{item.actRemark}}</view>
+        <view class='coin-text-sub'>{{item.datetime}}</view>
+      </view>
+      <view class="coin-record__ft {{item.actIntegralValue>0?'text-minus':'text-plus'}}" >
+        <text wx:if="{{item.actIntegralValue>0}}">+</text>{{item.actIntegralValue}}积分
+      </view>
+    </view>
+  </view>
+</view>
+

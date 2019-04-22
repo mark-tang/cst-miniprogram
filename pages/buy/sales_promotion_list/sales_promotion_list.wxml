@@ -1,0 +1,28 @@
+<view class="navbar" wx:if="{{showPage}}">
+  <view class="tab">
+    <view 
+    class="tab-item {{tabID == index? 'tab-item_active': ''}}" 
+    data-id="{{index}}" 
+    bindtap="tabSelect" 
+    wx:for="{{titleData}}" 
+    wx:key="{{item}}" 
+    >{{item}}</view>
+  </view>
+  <view class="tab__panel">
+      <block wx:for="{{listData}}" wx:key="{{item.title}}">
+        <view class="card" 
+        data-url="../sales_promotion_detail/sales_promotion_detail?id={{item.id}}&type={{tabID}}" 
+        bindtap="navigateTo">
+          <image src="{{item.imgPath}}" class="card__cover"></image>
+          <view class="card__bd">
+            <text class="card__title">{{item.title}}</text>
+            <text class="card__desc">{{item.addtime}}</text>
+          </view>
+        </view>
+      </block>
+  </view>
+  <view class="empty-list" wx:if="{{showEmpty}}">
+    <image class="empty-list-icon" src="../../../images/icon-empty-list.png"></image>
+    <text>{{emptyText}}</text>
+  </view>
+</view>

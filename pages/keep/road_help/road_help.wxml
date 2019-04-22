@@ -1,0 +1,43 @@
+
+<map id="myMap" bindcontroltap="controlTap" bindregionchange="regionchange" latitude="{{newLatitude}}" longitude="{{newLongitude}}" controls="{{controls}}" show-location/>
+
+<form class="form-body" bindsubmit="submitForm" report-submit="true">
+    <view class="now-location">
+      <image src="../../../images/loc-icon.png"></image>
+      <text>{{loctionText}}</text>
+    </view>
+    <!-- <view class="form-section">
+      <view class="form-label">车主姓名</view>
+      <input name="name" placeholder="请输入车主姓名(必填)" value="{{orginName}}" placeholder-class ="gray-style" maxlength="20"/>
+    </view> -->
+    <!-- <view class="form-section">
+      <view class="form-label">联系方式</view>
+      <input type="number" name="phone" placeholder="请输入手机号码(必填)" value="{{orginPhone}}" placeholder-class ="gray-style" maxlength="11"/>
+    </view> -->
+  <!-- <view class="fixed-btn" wx:if="{{hasAdmin}}">
+    <button class="fixed-btn-big" type="primary" form-type="submit" disabled="{{isDisable}}">一键救援</button>
+  </view>  -->
+</form >
+<text class="form-title-tips">快速救援电话</text>
+<view class="fast-help">
+  <view class="fast-help-list" data-num="{{num1.num}}" bindtap="callNum">
+    <text>24小时救援电话：{{num1.num}}</text>
+    <image src="../../../images/call-btn.png"></image>
+  </view>
+  <view class="fast-help-list" data-num="{{num2.num}}" bindtap="callNum">
+    <text>厂商服务热线：{{num2.num}}</text>
+    <image src="../../../images/call-btn.png"></image>
+  </view>
+  <view class="fast-help-list">
+    <picker bindchange="changeNum" range="{{insurer}}" style="width:80%;">
+      <view class="picker">
+        {{baoxian[TelIndex].name}}: {{baoxian[TelIndex].tel}}
+        <image mode="aspectFit" class="arrow-down-more" src="../../../images/arrow-down-more.png"></image>
+      </view>
+    </picker>
+    <image class="special-call" src="../../../images/call-btn.png" data-num="{{baoxian[TelIndex].tel}}" bindtap="callNum"></image>
+  </view>
+</view>
+
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+

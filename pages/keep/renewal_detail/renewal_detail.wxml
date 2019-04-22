@@ -1,0 +1,52 @@
+<view class="container" wx:if="{{showPage}}">
+   <view class="appoint-detail-status">
+    <icon type="{{statuType}}" size="30"/>
+    <text>{{statuText}}</text> 
+   </view>
+   
+   <view class="form-cutline"></view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-1.png"></image>
+    <text class="appoint-detail-list-title">询价车型</text>
+    <text>{{listData.u_car_model_name}}</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-2.png"></image>
+    <text class="appoint-detail-list-title">联系人</text>
+    <text>{{listData.u_name}}</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-3.png"></image>
+    <text class="appoint-detail-list-title">联系电话</text>
+    <text bindtap="callNum" id="{{listData.u_phone}}">{{listData.phone}}</text>
+   </view>
+   <view class="appoint-detail-list">
+    <image src="../../../images/appoint-detail-list-4.png"></image>
+    <text class="appoint-detail-list-title">询价时间</text>
+    <text>{{listData.dateline}}</text>
+   </view>
+   <view class="form-cutline"></view>
+   <view class="appoint-detail-list" wx:if="{{!hideTop}}">
+    <image src="../../../images/appoint-detail-list-5.png"></image>
+    <text class="appoint-detail-list-title">报表明细</text>
+    <view class="appoint-detail-table">
+      <text wx:for="{{reportForm}}">{{item.name}}:{{item.value}}元</text>
+    </view>
+   </view>
+   <view class="appoint-detail-list"  wx:if="{{!hideTop}}">
+    <image src="../../../images/appoint-detail-list-2.png"></image>
+    <text class="appoint-detail-list-title">总计金额</text>
+    <text style="color:#f91540">￥{{totalCount}}</text>
+   </view>
+   <view class="appoint-detail-list" wx:if="{{!hideTop}}">
+    <image src="../../../images/appoint-detail-list-5.png"></image>
+    <text class="appoint-detail-list-title">报价备注</text>
+    <text>{{remark}}</text>
+   </view>
+   <!--<view class="fixed-btn fixed-vice-btn"  wx:if="{{hideTop}}">
+      <button type="vice">取消询价</button>
+   </view> -->
+   <view class="fixed-btn"  wx:if="{{hideTop}}">
+      <button type="primary"  bindtap="callNum" id="{{listData.SA_phone}}">联系顾问</button>
+   </view>
+</view>

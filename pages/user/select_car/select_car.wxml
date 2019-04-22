@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{showPage}}">
+
+  <view class="band-list" wx:for="{{carList}}" wx:key="car" wx:for-item="pitem" >
+    <view class="band-title" id="{{index}}" bindtap="showChild">
+      <image src="{{pitem.imgs}}"></image>
+      <text class="car-band">{{pitem.manufacture}}</text>
+      <text class="car-band-tips">品牌</text>
+    </view>
+    <view class="type-list-wrap" wx:if="{{pitem.show}}">
+      <view 
+        class="type-list" 
+        wx:for="{{pitem.carModels}}" 
+        wx:key="typeIndex" 
+        wx:for-item="citem" 
+        data-manufactureId="{{pitem.brand_id}}"  
+        data-modelId="{{citem.cat_id}}" 
+        data-modelName="{{citem.title}}"
+        data-modelLogo="{{citem.img[160]}}"
+        bindtap="selectCar"
+        >
+        <image src="{{citem.img[160] || '/images/car.png'}}"></image>
+        <text class="car-name">{{citem.title}}</text>
+      </view>   
+    </view>
+
+  </view>
+  <view class="other-car" data-url="../select_more_car/select_more_car" bindtap="navigateTo">
+    <image src="../../../images/other-car.png"></image>
+    <text>其它车型</text>
+  </view>
+</view>

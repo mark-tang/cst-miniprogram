@@ -1,0 +1,36 @@
+.appoint-detail-status{
+  background: #FFF;
+  display: flex;
+  padding: 40rpx 25rpx;
+}
+.appoint-detail-status image{
+  width:62rpx;
+  height: 62rpx;
+}
+.appoint-detail-status text{
+  height: 62rpx;
+  line-height: 62rpx;
+  padding-left: 20rpx;
+}
+/*列表*/
+.appoint-detail-list{
+  background: #FFF;
+  padding: 24rpx 20rpx;
+  display: flex;
+}
+.appoint-detail-list image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.appoint-detail-list text{
+  height: 32rpx;
+  line-height: 32rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.appoint-detail-list .appoint-detail-list-title{
+  font-size: 28rpx;
+  color: #9b9b9b;
+  width: 180rpx;
+  padding: 0 20rpx;
+}

@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{showPage}}">
+  <view class="weui-cells">
+    <view class="weui-cell weui-cell_access" data-url="../coupon/coupon" bindtap="navigateTo">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd">我的卡包</view>
+      <view class="weui-cell__ft"></view>
+    </view>
+  </view>
+  <view class="card" 
+    data-id="{{item.id}}"
+    data-title="{{item.name}}" 
+    data-timetype="{{item.timeType}}" 
+    data-type="{{item.type_id}}"
+    data-sub="{{item.category_sub_type}}"
+    wx:for="{{gameList}}"
+    wx:key="index"
+    wx:if="{{item.active_category != '4s_active_kanjia'}}"
+    bindtap="goDetail">
+    <view class="card__hd">
+      <text class="card__title">{{item.name}}</text>
+      <view class="card__after">
+        <text class="card__after__color">{{item.totalJoinNum}}</text>人已参与
+      </view>
+    </view>
+    <image src="{{item.img}}" class="card__cover"></image>
+    <view class="card__bd">
+      <view class="card__desc text-right" wx:if="{{item.timeType == 'isForever'}}">
+        永久有效
+      </view>
+      <view class="card__desc text-right" wx:if="{{item.timeType == 'notBegin'}}">
+        距活动开始：
+        <text class="time-block">{{item.day}}</text> 天
+        <text class="time-block">{{item.hour}}</text> 时
+        <text class="time-block">{{item.minute}}</text> 分
+        <text class="time-block">{{item.second}}</text> 秒
+      </view>
+
+      <view class="card__desc text-right" wx:if="{{item.timeType == 'isBegin'}}">
+        距活动结束：
+        <text class="time-block">{{item.day}}</text> 天
+        <text class="time-block">{{item.hour}}</text> 时
+        <text class="time-block">{{item.minute}}</text> 分
+        <text class="time-block">{{item.second}}</text> 秒
+      </view>
+      <view class="card__desc text-right" wx:if="{{item.timeType == 'isEnd'}}">
+        活动已结束
+      </view>
+      
+    </view>
+  </view>
+  <view class="empty-list" wx:if="{{showEmpty}}">
+    <image class="empty-list-icon" src="/images/icon-empty-msg.png"></image>
+    <text>暂无活动</text>
+  </view>
+</view>
+
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

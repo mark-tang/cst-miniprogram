@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="search-wrap">
+      <input class="search-input" focus="true" placeholder="请输入车型搜索" bindinput="inputChange"/>
+      <button bindtap="searchPost">搜索</button>
+    </view>
+    <view class="type-list-wrap">
+      <view class="type-list"
+        wx:for="{{carList}}"
+        wx:key="model_name" 
+        data-manufactureId="{{item.brand_id}}"  
+        data-modelId="{{item.model_id}}" 
+        data-modelName="{{item.model_name}}" 
+        bindtap="selectCar"
+        >
+        <image src="{{item.logo || '/images/car.png'}}"></image>
+        <text class="car-name">{{item.model_name}}</text>
+        <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+      </view>   
+    </view>
+    <view style="margin-bottom:100rpx;"></view>
+</view>

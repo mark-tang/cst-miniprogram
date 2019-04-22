@@ -1,0 +1,71 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 20rpx 0;
+  padding-bottom: 120rpx;
+}
+
+.add_btn{
+  position: fixed;
+  bottom: 0;
+  background: #FFF;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  border-top: 1rpx solid #efefef;
+  padding-top: 16rpx;
+}
+.add_btn button{
+  font-size: 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: none;
+  width: 90%;
+}
+.wx-btn{
+  background: #44b549;
+  color: #FFF;
+}
+.adress-btn{
+  background: #e54b44;
+  color: #fff;
+}
+.add_btn button::after{
+  display: none;
+}
+
+.rece_info{
+  padding-left: 20rpx;
+  display: flex;
+  box-sizing: border-box;
+}
+.rece_info__radio{
+  width: 10%;
+  position: relative;
+}
+.rece_info__radio mycheckbox{
+  position: absolute;
+  top: 50rpx;
+  left: 10rpx;
+}
+.badge__red{
+  position: absolute;
+  background: #e54b44;
+  color: #FFF;
+  font-size:24rpx;
+  padding: 2rpx 10rpx;
+  top: 35rpx;
+}
+.chose-adress__text_badge{
+  padding-left: 80rpx;
+}
+.chose-adress__text{
+  width: 70%;
+}
+.adress-tool{
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  width: 20%;
+  line-height: 150rpx;
+}
+

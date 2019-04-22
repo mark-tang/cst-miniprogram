@@ -1,0 +1,56 @@
+.container{
+  padding: 0;
+}
+.keep-record{
+  width: 100%;
+  font-size: 28rpx;
+}
+.keep-record-title{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  position: fixed;
+  top:0px;
+  left: 0rpx;
+  background: #f8f8f8;
+}
+.record-list-flex{
+  width: 100%;
+  background: #FFF;
+  display: flex;
+  justify-content:space-between;
+  border-bottom: 1rpx solid #f8f8f8;
+  box-sizing: border-box;
+}
+.record-list-title{
+  color: #9b9b9b;
+  position: fixed;
+  top:72rpx;
+  left: 0rpx;
+}
+.record-list-con{
+  margin-top:150rpx;
+}
+.record-list-flex .record-list-cell{
+  width: 25%;
+  display: block;
+  text-align: center;
+  padding: 30rpx 0;
+}
+.record-list-cell-img{
+  flex-shrink: 6
+}
+.record-list-cell-img image{
+  display: block;
+  width: 30rpx;
+  height: 32rpx;
+  text-align: center;
+  margin: 0 auto;
+}
+.loadover{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center; 
+  color: #666;
+}

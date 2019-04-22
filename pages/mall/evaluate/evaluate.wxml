@@ -1,0 +1,56 @@
+<!--index.wxml-->
+
+<view class="container" wx:if="{{showPage}}">
+<!--商品消息-->
+  
+  <view class="order-list-media">
+   <view class="order-list-media__lt">
+      <image src="{{orderInfo.sub_goods[orderIndex].img}}"></image>
+    </view>
+    <view class="order-list-media__rt">
+        <view class="order-list-media__rt__hd">
+          {{orderInfo.sub_goods[orderIndex].name}}
+        </view>
+        <view class="order-list-media__rt__bd">
+          <view class="order-list-price">
+            <view class="order-list-price__now">￥ <text>{{orderInfo.sub_goods[orderIndex].price}}</text></view>
+            
+          </view>
+          <view class="order-list-count">
+            x {{orderInfo.sub_goods[orderIndex].num}}
+          </view>
+        </view>
+    </view>  
+  </view>
+  <!--星级-->
+  <view class="eva-star">
+    <view class="star-cell" data-index="{{index}}"  bindtap="starTap" wx:for="{{[0,1,2,3,4]}}">
+      <view class="star-cell_icon {{starValue >= index?'active':''}}"></view>
+    </view>
+  </view>
+  <!--快速评价-->
+  <view class="fast-eva">
+    <view class="fast-eva-cell {{item.isSelect?'active':''}}" wx:for="{{fastEva}}" data-index="{{index}}" bindtap="fastEva">{{item.text}}</view>
+  </view>
+  <view class="eva-textarea">
+    <form bindsubmit="bindFormSubmit">
+      <textarea placeholder="请输入您想评价的内容" name="textarea" cursor-spacing="120"/>
+      <view class="fixed-btn">
+        <button type="primary" form-type="submit">提交</button>
+      </view>  
+    </form>
+    <view class="anonymous-eva">
+      <view class="anonymous-eva-btn" bindtap="tapAnonymous">
+        <mycheckbox class="{{isAnonymous?'active':''}}"></mycheckbox>
+        <text>匿名评价</text>
+      </view>
+      <view class="anonymous-eva-text">
+        您的评论将会以匿名的形式展现
+      </view>
+    </view>
+  </view>
+
+
+  <view style="height:500px"></view>
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

@@ -1,0 +1,54 @@
+<!--add_car.wxml-->
+<view class="container" wx:if="{{showPage}}">
+  <form class="form-body" bindsubmit="submitForm">
+    <text class="form-title-tips">请填写个人信息</text>
+    <view class="form-section">
+      <view class="form-label">车主姓名</view>
+      <input name="name" value="{{userInfo.u_name}}" placeholder="请输入车主姓名(必填)" placeholder-class ="gray-style"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">联系方式</view>
+      <input class='code-input' type="number" name="phone" value="{{userInfo.u_phone}}" placeholder="请输入联系方式(必填)" placeholder-class ="gray-style" maxlength="11" bindinput="inputEvent"/>
+      <view class="form-unit code-btn" wx:if="{{coding}}">{{codeTime}}秒后重发</view>
+      <view class="form-unit code-btn" data-sendtype='1' bindtap='getCode' wx:else>获取验证码</view>
+      
+    </view>
+    <view class="form-section">
+      <view class="form-label">验证码</view>
+      <input type="number" name="code" placeholder="请输入验证码" placeholder-class ="gray-style" maxlength="6"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">在用车型</view>
+      <view class="input-select-view" data-url="../select_car/select_car" bindtap="navigateTo">{{modelname}}</view>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section">
+      <view class="form-label">车牌号码</view>
+      <input name="plateNumber" value="{{userInfo.u_chepai}}" placeholder="请输入车牌号码" placeholder-class ="gray-style"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">出生日期</view>
+      <picker class="input-select-view" mode="date" start="1950-01-01" end="{{nowDate}}" bindchange="bindDateChange">
+        <view class="keep-date">
+          {{dateTips}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    
+
+    <view class="normal-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">      
+        {{isSubmit? '提交中...': '立即注册会员'}}
+      </button>
+    </view> 
+    <view class='text-center' data-sendtype="2" bindtap='getCode' wx:if="{{codingVoice}}">
+    <text>收不到短信？您可<text class='text-blue'  >语音获取</text></text>
+    </view>
+    <view class='text-center' wx:if="{{codingVoiceText}}">
+    <text>车商通将拨打您的手机告知动态码</text>
+    </view>
+  </form >
+  
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

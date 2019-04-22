@@ -1,0 +1,25 @@
+<form class="form-body" bindsubmit="submitForm">
+  <view class="form-section">
+    <view class="form-label">可兑换积分</view>
+    <input name="name" value="{{integral}}"/>
+  </view>
+  <view class="form-section">
+    <view class="form-label">兑换（分）</view>
+    <input 
+      type="number" 
+      name="money" 
+      placeholder="{{exchange_value}}积分兑换1元余额" 
+      placeholder-class ="gray-style"
+      maxlength="12"
+      bindinput="inputMoney"/>
+  </view>
+  <view class='exchange-value'>
+    ￥{{exchangeMoney}}
+  </view>
+  <view class="normal-btn">
+    <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+      {{isSubmit? '提交中...': '充进余额'}}
+    </button>
+  </view> 
+</form >
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

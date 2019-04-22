@@ -1,0 +1,44 @@
+<!--add_car.wxml-->
+<view class="container" wx:if="{{showPage}}">
+  <form class="form-body" bindsubmit="submitForm">
+    <text class="form-title-tips">请填写置换信息</text>
+    <view class="form-section">
+      <view class="form-label">置换车型</view>
+      <view class="input-select-view" data-url="../select_car/select_car" bindtap="navigateTo">{{modelname}}</view>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section">
+      <view class="form-label">已有车型</view>
+      <input name="hasCarType" disabled="true" value="{{owner_car}}" style="color:#999"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">上牌时间</view>
+      <picker class="input-select-view" mode="date" value="{{date}}" start="2000-01-01" end="{{nowDate}}" bindchange="bindDateChange">
+        <view class="keep-date">
+          {{dateTips}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section">
+      <view class="form-label">行驶里程</view>
+      <input name="mileage" type="digit" placeholder="请输入行驶里程(必填)" placeholder-class ="gray-style"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">车主姓名</view>
+      <input name="name" value="{{name}}" placeholder="请输入车主姓名(必填)" placeholder-class ="gray-style"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">联系方式</view>
+      <input type="number" name="phone" value="{{phone}}" placeholder="请输入联系方式(必填)" placeholder-class ="gray-style" maxlength="11"/>
+    </view>
+
+    <view class="normal-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">      
+        {{isSubmit? '提交中...': '提交置换信息'}}
+      </button>
+    </view> 
+  </form >
+  
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

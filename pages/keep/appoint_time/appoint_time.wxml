@@ -1,0 +1,59 @@
+<view class="container" wx:if="{{showPage}}">
+  <view class="time-bar">
+    <view class="time-item-wrap" wx:for="{{dateList}}" wx:key="index">
+      <view 
+        class="time-item {{activeDate === item.date_value?'active':''}}" 
+        data-full_date="{{item.full_date}}"
+        data-value="{{item.date_value}}"
+        bindtap= "dateHandler"
+        >
+        <view class="time-date">{{item.date_title}}</view>
+        <view class="time-day">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="time-panel"  wx:if="{{timeList.morning.length > 0}}">
+    <view class="time-panel__hd">
+      上午
+    </view>
+    <view class="time-panel__bd">
+      <view 
+        class="time-span {{item.disabled == 1?'disabled':''}} {{(activeTitle == item.title && item.disabled == 0 && item.is_full == 0)?'active':''}}" 
+        wx:for="{{timeList.morning}}" 
+        wx:key="{{index}}"
+        data-data="{{item}}"
+        bindtap="timeHandler"
+        >
+        {{item.title}}
+        <text wx:if="{{item.is_full == 1}}">(预约已满)</text>
+        <text class="time-discount" wx:if="{{item.is_full == 0 && item.content}}"> ({{item.content}})</text>
+      </view>
+    </view>
+  </view>
+  <view class="time-panel" wx:if="{{timeList.afternoon.length > 0}}">
+    <view class="time-panel__hd">
+      下午
+    </view>
+    <view class="time-panel__bd">
+      <view 
+        class="time-span {{item.disabled == 1?'disabled':''}} {{(activeTitle == item.title && item.disabled == 0 && item.is_full == 0)?'active':''}}" 
+        wx:for="{{timeList.afternoon}}" 
+        wx:key="{{index}}"
+        data-data="{{item}}"
+        bindtap="timeHandler"
+        >
+        {{item.title}}
+        <text wx:if="{{item.is_full == 1}}">(预约已满)</text>
+        <text class="time-discount" wx:if="{{item.is_full == 0 && item.content}}"> ({{item.content}})</text>
+      </view>
+    </view>
+  </view>
+  <view class="empty-list" wx:if="{{timeList.morning.length == 0 && timeList.afternoon.length == 0}}">
+    <image class="empty-list-icon" src="/images/icon-empty-list.png"></image>
+    <text>今天没有可预约的时段</text>
+  </view>
+  <view class="fixed-btn">
+    <button type="primary" class="confirm-btn" bindtap="confirm">确定</button>
+  </view>
+</view>

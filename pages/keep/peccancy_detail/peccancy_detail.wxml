@@ -1,0 +1,36 @@
+<view class="container">
+
+  <view class="peccency-list">
+    <view class="pec-list-carNum">{{queryData.chepai}}</view>
+    <view class="pec-list-vice">违章<text>{{queryData.count}}</text>次 
+    扣分<text>{{queryData.point}}</text>分 
+    罚款<text>{{queryData.money}}</text>元
+    </view>
+    <image src="../../../images/refresh-btn.png" bindtap="refresh"></image>   
+  </view>  
+  <view class="peccency-detail" wx:for="{{peccancyList}}" wx:key="name">
+    <view class="peccency-detail-title">
+    {{item.detail}}
+ 
+    </view>
+    <view class="peccency-detail-con">
+      <view class="peccency-detail-con-cell">
+        时间:<text>{{item.dateline}}</text>
+      </view>
+      <view class="peccency-detail-con-cell">
+        地点:<text>{{item.location}}</text>
+      </view>
+      <view class="peccency-detail-con-cell">
+        扣分:<text class="text-red">{{item.point}}</text>
+      </view>
+      <view class="peccency-detail-con-cell">
+        罚款:<text class="text-red">{{item.money}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="empty-list" wx:if="{{showEmpty}}">
+    <image class="empty-list-icon" src="../../../images/no-peccancy.png"></image>
+    <text>您没有违章记录</text>
+  </view> 
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

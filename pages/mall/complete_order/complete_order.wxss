@@ -1,0 +1,54 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 0;
+}
+
+.com-top{
+  background: #FFF;
+  width: 100%;
+  text-align: center;
+  padding: 40rpx 0;
+}
+.com-top__status{
+  display: flex;
+  justify-content: center;
+}
+
+.com-top__status text{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  color: #e54b44;
+  padding: 0 20rpx;
+}
+
+.com-top__btn{
+  width: 35%;
+  background: #FFF;
+  border: 1rpx solid #c7c7c7;
+  color: #666;
+  line-height: 2.4;
+  font-size: 28rpx;
+  margin: 30rpx auto;
+}
+.com-top__btn::after{
+  box-shadow: none;
+  border: none;
+}
+.com-top__btn:active{
+  background: #ededed;
+}
+.com-top__tips{
+  text-align: center;
+  font-size: 26rpx;
+  color: #999;
+}
+.com-title{
+  line-height: 2.5;
+  font-size: 28rpx;
+  color: #333;
+  padding: 0 20rpx;
+}
+
+
+

@@ -1,0 +1,15 @@
+<!--pages/keep/member_service/member_service.wxml-->
+<view class='container'>
+  <view class='service-title'>
+    <!-- <view>车商通SCRM</view>  -->
+    <view>会员享受服务标准</view>
+  </view>
+  <view class='service-item' wx:for="{{inStr}}" :key="index">
+    <view class='service-item__hd'>
+      <text>{{item.card_name}}</text>
+    </view>
+    <view class='service-item__bd'>
+      {{item.prerogative}}
+    </view>
+  </view>
+</view>

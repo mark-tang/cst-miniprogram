@@ -1,0 +1,298 @@
+<!--index.wxml-->
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<import src="/template/business_info/business_info.wxml" />
+<scroll-view wx:if="{{showPage}}" scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll"  style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+<view class="container">
+  <!--轮播图-->
+  <swiper indicator-dots="{{goodsInfo.image.length>1}}" indicator-active-color="#e54b44">
+    <block wx:for="{{goodsInfo.image}}">
+      <swiper-item>
+        <image mode="aspectFit" src="{{item}}" data-index="{{index}}" bindtap="previewImage" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--详情-->
+  <view class="detail-top">
+    <view class="detail-top__hd">
+      <view class="detail-top__hd__title detail-panel__title">
+        {{goodsInfo.name}}
+      </view>
+    </view>
+    <view class="detail-top__bd">
+      <view class="detail-top__bd__lt">
+        <view class="price-red" wx:if="{{goodsInfo.tuan.id}}">￥<text>{{goodsInfo.tuan.groups_price}}</text></view>
+        <view class="price-red" wx:if="{{!goodsInfo.tuan.id}}">￥<text>{{goodsInfo.now_price}}</text></view>
+        <view class="price-orgin">￥{{goodsInfo.old_price}}</view>
+        <view class="price-red" wx:if="{{goodsInfo.integral != 0 && isInteg}}" style="padding-left:20rpx;">
+           <text>{{goodsInfo.integral}}</text>积分
+        </view>
+      </view>
+      <view class="detail-top__bd__rt detail-cutdown" wx:if="{{goodsInfo.type == 1 || goodsInfo.type == 3}}">
+        <view wx:if="{{goodsInfo.timeStatus == 0}}">
+          距活动开始 <view wx:if="{{diffTimeBefore.showDay}}"><text>{{diffTimeBefore.day}}</text> 天 </view> <text>{{diffTimeBefore.hour}}</text> : <text>{{diffTimeBefore.minute}}</text> : <text>{{diffTimeBefore.second}}</text>
+        </view>
+        <view wx:if="{{goodsInfo.timeStatus == 1}}">
+          距活动结束 <view wx:if="{{diffTime.showDay}}"><text>{{diffTime.day}}</text> 天 </view> <text>{{diffTime.hour}}</text> : <text>{{diffTime.minute}}</text> : <text>{{diffTime.second}}</text>
+        </view>
+        <view wx:if="{{goodsInfo.timeStatus == 2}}">活动已结束</view>
+      </view>
+    </view>
+    <view class="detail-top__ft">
+      <view class="detail-top__ft__lt">
+        收货方式：{{goodsInfo.express_desc}}
+      </view>
+      <!-- <view class="detail-top__ft__rt" wx:if="{{goodsInfo.type == 1}}">
+        已有354人参团
+      </view> -->
+      <view class="detail-top__ft__rt">
+        已售 {{goodsInfo.sell_num}}  |  剩余 {{goodsInfo.max_num}}
+      </view>
+    </view>
+  </view>
+  <!--商家信息-->
+  <template is="bussinessInfo" data="{{...serviceInfo}}"></template>
+  <!--detail tab-->
+  <view class="detail-tab">
+    <view class="tab__hd detail-tab__hd">
+      <view 
+      class="tab__hd_title {{tabIndex == index?'active':''}}" 
+      wx:for="{{TabTitle}}" 
+      data-index="{{index}}" 
+      bindtap="switchTab"
+      >
+        {{item}}
+      </view>    
+      <view class="tab__hd_dot" style="transform: translateX({{tabIndex*100}}%);"></view>
+    </view>
+    <view class="tab__bd">
+      <template wx:if="{{tabIndex == 0}}" is="wxParse" data="{{wxParseData:detail.nodes}}" />
+      <template wx:if="{{tabIndex == 1}}" is="notice" data="{{...goodsInfo}}"/>
+      <template wx:if="{{tabIndex == 2}}" is="evaluate" data="{{...goodsInfo}}"/>
+      <template wx:if="{{tabIndex == 3}}" is="recommend" data="{{...goodsInfo}}"/>
+    </view>
+  </view>
+  <!-- 猜你喜欢 -->
+  <view class="mall-panel_list-title" wx:if="{{goodsInfo.like[0].goods_id}}" >
+    - 猜你喜欢 -
+  </view>
+  <view class="mall-panel_list">
+    <view class="mall-panel" 
+      wx:for="{{goodsInfo.like}}" 
+      wx:for-item="citem" 
+      bindtap="recomdQuery" 
+      data-id = "{{citem.goods_id}}" 
+      data-url="../detail/detail?id={{citem.goods_id}}"
+    >   
+      <view class="mall-panel__hd">
+        <image src="{{citem.image}}"></image>
+      </view>
+      <view class="mall-panel__bd">
+        <text class="mall-panel__title">{{citem.name}}</text>
+        <text class="mall-panel__sub-title">已售{{citem.sell_num}}</text>
+      </view>
+      <view class="mall-panel__ft">
+        <view class="mall-media__price-red">￥<text>{{citem.now_price}}</text></view>
+        <view class="mall-media__price-orgin">￥{{citem.old_price}}</view>
+        <!-- <image src="/images/mall-index-buy.png"></image> -->
+      </view>
+    </view>
+  </view>
+  <!-- 选择面板 -->
+  <view class="select-panel {{showCount?'select-panel__active':''}}">
+    <view class="select-panel-cell">
+      <view class="select-text">
+        选择购买数量
+      </view>
+      <view class="shopcar-list__num" >
+        <button 
+          data-type="subtract" 
+          bindtap="changeQuentity" 
+          disabled="{{count.isMinDis}}"
+        >-</button>
+
+        <input value="{{count.num}}" disabled="false"/>
+
+        <button 
+          data-type="add" 
+          data-maxnum="{{goodsInfo.max_num}}" 
+          bindtap="changeQuentity" 
+          disabled="{{count.isMaxDis}}"
+          >+</button>
+      </view>  
+    </view>
+    <button class="select-panel__btn" bindtap="buy">确定</button>
+  </view>
+  <!-- 选择面板 -->
+  <view class="select-panel {{showCount2?'select-panel__active':''}}">
+    <view class="select-panel-cell">
+      <view class="select-text">
+        选择购买数量
+      </view>
+      <view class="shopcar-list__num" >
+        <button 
+          data-type="subtract" 
+          bindtap="changeQuentity" 
+          disabled="{{count.isMinDis}}"
+        >-</button>
+
+        <input value="{{count.num}}" disabled="false"/>
+
+        <button 
+          data-type="add" 
+          data-maxnum="{{goodsInfo.max_num}}" 
+          bindtap="changeQuentity" 
+          disabled="{{count.isMaxDis}}"
+          >+</button>
+      </view>  
+    </view>
+    <button class="select-panel__btn" bindtap="buy2">确定</button>
+  </view>
+
+  <view class="select-panel {{showCount3?'select-panel__active':''}}">
+    <view class="select-panel-cell">
+      <view class="select-text">
+        选择购买数量
+      </view>
+      <view class="shopcar-list__num" >
+        <button 
+          data-type="subtract" 
+          bindtap="changeQuentity" 
+          disabled="{{count.isMinDis}}"
+        >-</button>
+
+        <input value="{{count.num}}" disabled="false"/>
+
+        <button 
+          data-type="add" 
+          data-maxnum="{{goodsInfo.once_num}}" 
+          bindtap="changeQuentity" 
+          disabled="{{count.isMaxDis}}"
+          >+</button>
+      </view>  
+    </view>
+    <button class="select-panel__btn" bindtap="buy2">确定</button>
+  </view>
+  <view class="mask" bindtap="countPicker" wx:if="{{showCount}}"></view>
+  <view class="mask" bindtap="countPicker2" wx:if="{{showCount2}}"></view>
+  <view class="mask" bindtap="countPicker3" wx:if="{{showCount3}}"></view>
+  <!--detail bar-->
+  <!-- type值  0:普通  1：拼团  2：限购  3：抢购 --> 
+  <view class="detail-bar">
+    <view class="detail-bar__cell__shopcar" bindtap="navigateTo" data-url="../shop_car/shop_car">
+      <view class="shopcar__num" wx:if="{{shopcarCount != 0}}">{{shopcarCount}}</view>
+      <image src="/images/mall-index-buy.png"></image>
+    </view>
+    <!-- 0:普通 -->
+    <view class="detail-bar__handle" wx:if="{{goodsInfo.type == 0}}">
+      <button class="detail-bar__cell detail-bar__orange" bindtap="addCar" wx:if="{{isToCar && goodsInfo.max_num != 0 && goodsInfo.now_price != 0}}">加入购物车</button>
+      <button class="detail-bar__cell detail-bar__red" bindtap="countPicker" disabled="{{goodsInfo.max_num == 0}}"> 
+        {{goodsInfo.max_num == 0?'已售罄':'立即购买'}}
+      </button>
+    </view>
+    <!-- 1：拼团 -->
+    <view class="detail-bar__handle" wx:if="{{goodsInfo.type == 1}}">     
+      <button class="detail-bar__cell detail-bar__orange" wx:if="{{goodsInfo.max_num != 0}}">
+        <view class="tuan-btn" bindtap="countPicker2">
+          <view class="tuan-btn__text">￥{{goodsInfo.now_price}}</view>
+          直接购买
+        </view>
+      </button>
+      <button class="detail-bar__cell detail-bar__red" wx:if="{{!goodsInfo.fightGroups.id && goodsInfo.max_num != 0}}" data-istuan="true"  bindtap="buyTuan" disabled="{{goodsInfo.timeStatus == 1?false:true}}">
+        <text wx:if="{{goodsInfo.timeStatus == 0}}">拼团未开始</text>
+        <view class="tuan-btn" wx:if="{{goodsInfo.timeStatus == 1}}">
+          <view class="tuan-btn__text">￥{{goodsInfo.tuan.groups_price}}</view>
+          立即拼团
+        </view>
+        <text wx:if="{{goodsInfo.timeStatus == 2}}">拼团已结束</text>
+      </button>
+      <button class="detail-bar__cell detail-bar__red" wx:if="{{goodsInfo.fightGroups.id && goodsInfo.max_num != 0}}" data-id="{{goodsInfo.fightGroups.id}}" bindtap="tuanDetail">
+        <text>查看团详情</text>
+      </button>     
+     <button wx:if="{{goodsInfo.max_num == 0}}" class="detail-bar__cell detail-bar__red" bindtap="countPicker" disabled="{{goodsInfo.max_num == 0}}">
+        已售罄
+     </button>
+    </view>
+
+    <!-- 2：限购 -->
+    <view class="detail-bar__handle" wx:if="{{goodsInfo.type == 2}}">
+      <button class="detail-bar__cell detail-bar__orange" bindtap="addCar" wx:if="{{isToCar && goodsInfo.max_num != 0 && goodsInfo.now_price != 0}}">加入购物车</button>
+      <button class="detail-bar__cell detail-bar__red" bindtap="countPicker3" disabled="{{goodsInfo.max_num == 0}}">
+        {{goodsInfo.max_num == 0?'已售罄':'立即购买'}}
+      </button>
+    </view>
+    <!-- 3：抢购 -->
+    <view class="detail-bar__handle" wx:if="{{goodsInfo.type == 3}}">
+      <button class="detail-bar__cell detail-bar__orange" bindtap="addCar"  wx:if="{{isToCar && goodsInfo.max_num != 0 && goodsInfo.now_price != 0}}">加入购物车</button>
+      <button class="detail-bar__cell detail-bar__red" disabled="{{goodsInfo.timeStatus == 1?false:true}}"  bindtap="countPicker">
+        <text wx:if="{{goodsInfo.timeStatus == 0}}">抢购未开始</text>
+        <text wx:if="{{goodsInfo.timeStatus == 1}}">立即抢购</text>
+        <text wx:if="{{goodsInfo.timeStatus == 2}}">抢购已结束</text>
+      </button>
+    </view>
+  </view>
+
+  <!--悬浮图标-->  
+  <view class="float-view">
+    <image class="float-icon" src="/images/mall-backtop.png" hidden="{{!showBackTop}}" bindtap="goTop"></image>
+  </view>
+</view>
+</scroll-view>
+
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+<!--商品详情-->
+<!--套餐-->
+<!-- <template name="meal">
+    <view class="flex-wrp">
+    <view class="flex-item">套餐内容</view>
+    <view class="flex-item">单价</view>
+    <view class="flex-item">数量/规格</view>
+    <view class="flex-item">小计</view>
+  </view>
+</template> -->
+<!--购买须知-->
+<template name="notice">
+   <view wx:for="{{rule}}">{{item}}</view>
+</template>
+<!--评价-->
+<template name="evaluate">
+  <text wx:if="{{comments.length == 0}}">暂无评价内容</text>
+  <view class="comment" wx:for="{{comments}}" wx:for-item="item">
+    <view class="comment-title">
+      <text class="comment-name">{{item.name}}</text>
+      <text class="comment-time">{{item.created_at}}</text>
+    </view>
+    <view class="eva-star">
+      <view class="star-cell" wx:for="{{[1,2,3,4,5]}}" wx:for-item="citem">
+        <view class="star-cell_icon {{item.score >= citem?'active':''}}"></view>
+      </view>   
+    </view>
+    <view class="comment-con">
+      {{item.content}}
+    </view>
+  </view>
+</template>
+<!--推荐-->
+<template name="recommend">
+  <view class="mall-panel_list">
+    <view class="mall-panel" 
+      wx:for="{{loop}}" 
+      wx:for-item="citem" 
+      bindtap="recomdQuery" 
+      data-id = "{{citem.goods_id}}" 
+      data-url="../detail/detail?id={{citem.goods_id}}"
+    >   
+      <view class="mall-panel__hd">
+        <image src="{{citem.image}}"></image>
+      </view>
+      <view class="mall-panel__bd">
+        <text class="mall-panel__title">{{citem.name}}</text>
+        <text class="mall-panel__sub-title">已售{{citem.sell_num}}</text>
+      </view>
+      <view class="mall-panel__ft">
+        <view class="mall-media__price-red">￥<text>{{citem.now_price}}</text></view>
+        <view class="mall-media__price-orgin">￥{{citem.old_price}}</view>
+        <!-- <image src="/images/mall-index-buy.png"></image> -->
+      </view>
+    </view>
+  </view>
+</template>

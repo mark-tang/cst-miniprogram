@@ -1,0 +1,19 @@
+<import src="../../../../utils/wxParse/wxParse.wxml" />
+<view class='store-box'>
+  <image src="{{data.companyImage}}"></image>
+  <view class='jike-nav'>
+    <view class='jike-nav-cell' data-lat='{{data.latitude}}' data-long='{{data.longitude}}' data-name='{{data.fullName}}' data-address='{{data.address}}' bindtap='openLoc'>
+      <image src='/images/icon-loction.png'></image>
+      <text>地址导航</text>
+    </view>
+    <view class='jike-nav-cell' data-phone='{{data.phone}}' bindtap='showCall'>
+      <image src='/images/icon-telphone.png'></image>
+      <text>拨打电话</text>
+    </view>
+  </view>
+  <view class='content-box'>
+    <view class='content-title'>- 经销商简介 -</view>
+    <template is="wxParse" data="{{wxParseData:detail.nodes}}" />
+  </view>
+  
+</view>

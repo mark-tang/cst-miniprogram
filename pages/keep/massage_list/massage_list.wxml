@@ -1,0 +1,51 @@
+  <!--<view wx:if="{{showPage}}" class="time-badge">
+    <view class="badge badge_default">2017-5-26</view>
+  </view>
+  <view wx:if="{{showPage}}" class="card" data-url="../massage_detail/massage_detail" bindtap="navigateTo">
+    <image src="../../../../images/car.jpeg" class="card__cover"></image>
+    <view class="card__bd">
+      <text class="card__desc">测试图文消息</text>
+    </view>
+  </view>-->
+<block wx:for="{{listData}}">
+  <view class="" wx:if="{{item.msg_type == 1?true:flase}}">
+    <view class="time-badge">
+      <view class="badge badge_default">{{item.send_date}}</view>
+    </view>
+    <view class="card">
+      <view class="card__bd">
+        <text class="card__desc">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="" wx:if="{{item.msg_type == 2?true:flase}}">
+    <view class="time-badge">
+      <view class="badge badge_default">{{item.send_date}}</view>
+    </view>
+    <view class="card card-singe" wx:if="{{item.img_single_text}}" data-id="{{item.msg_id}}" bindtap="toDatail">
+      <view class="card-singe-text">{{item.img_single_text.title}}</view>
+      <view class="card-singe-img">
+        <image src="{{item.img_single_text.imgUrl}}"></image>
+      </view>
+      <view class="card-singe-con">{{item.img_single_text.content}}</view>
+    </view>
+    <view class="card card-singe" wx:if="{{item.img_many_text}}">
+      <view class="card-many-list {{index != 0?'card-many-sub':''}}" 
+        wx:for="{{item.img_many_text}}" 
+        wx:for-item="citem" 
+        data-id="{{citem.msg_id}}" 
+        bindtap="toDatail"
+        >
+        <view class="card-many-text">{{citem.title}}</view>
+        <view class="card-many-img">
+          <image src="{{citem.imgUrl}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="empty-list" wx:if="{{showEmpty}}">
+  <image class="empty-list-icon" src="../../../images/icon-empty-msg.png"></image>
+  <text>您还没有消息通知！</text>
+</view>
+<view class="loadover" wx:if="{{loadOver}}">- 已经到底了 -</view>

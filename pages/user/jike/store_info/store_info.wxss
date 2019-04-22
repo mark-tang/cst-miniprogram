@@ -1,0 +1,36 @@
+.store-box image{
+  width: 100%;
+  vertical-align: top;
+}
+
+.content-box{
+  padding: 15px;
+  font-size: 28rpx;
+  background: #FFF;
+  margin-top: 10rpx;
+}
+.content-title{
+  font-size: 32rpx;
+  padding-bottom: 10px;
+  color: #3F69F7;
+  text-align: center;
+}
+
+.jike-nav{
+  display: flex;
+  background: #FFF;
+  font-size: 28rpx;
+  width: 100%;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.06);
+}
+.jike-nav-cell{
+  display: flex; 
+  justify-content: center;
+  width: 100%;
+  padding: 30rpx 0rpx;
+}
+.jike-nav-cell image{
+  width: 32rpx;
+  height: 32rpx; 
+  padding:  0 5rpx;
+}

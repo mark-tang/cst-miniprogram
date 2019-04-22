@@ -1,0 +1,64 @@
+<view class="container" wx:if="{{showPage}}">
+  <form class="form-body" bindsubmit="submitForm">
+    <view class="form-section">
+      <view class="fast-provice" bindtap="selectPro">
+        <text>{{proText}}</text>
+        <image src="../../../images/arrow-down-more.png"></image>
+      </view>
+      <view class="form-label">车牌号码</view>
+      <input 
+        class="fast-provice-input" 
+        name="carNum" 
+        value="{{carNumChange}}" 
+        placeholder="请输入车牌号码(必填)" 
+        placeholder-class ="gray-style" 
+        maxlength="7" 
+        bindinput="inputCarNum"/>
+    </view>
+    <view class="form-section" wx:if="{{isVin}}">
+      <view class="form-label">车架号码</view>
+      <input
+       type="text" 
+       name="vinNum" 
+       placeholder="请输入车架号码{{vinLengthText}}(必填)" 
+       placeholder-class ="gray-style" 
+       maxlength="{{vinLength}}"/>
+      <image class="form-tips-image" src="/images/peccancy-tips.png" bindtap="showImage"></image>
+    </view>
+    <view class="form-section" wx:if="{{isCarCode}}">
+      <view class="form-label">发动机号</view>
+      <input type="text" 
+        name="carCode" 
+        placeholder="请输入发动机号{{carCodeLengthText}}(必填)" 
+        placeholder-class ="gray-style" 
+        maxlength="{{carCodeLength}}"/>
+      <image class="form-tips-image" src="/images/peccancy-tips.png" bindtap="showImage"></image>
+    </view>
+    <view class="normal-btn">
+      <button 
+        type="primary" 
+        form-type="submit" 
+        disabled="{{btnDisabled}}"
+        >
+        {{btnDisabled? '提交中...': '添加并查询'}}
+      </button>
+    </view>  
+  </form >
+  <view class="pro-select-wrap" wx:if="{{showProSelect}}">
+   <view 
+    class="pro-select" 
+    wx:for="{{proData}}" 
+    wx:key="item" 
+    data-item="{{item}}" 
+    data-index="{{index}}" 
+    bindtap="changePro"
+    >
+      <text>{{item}}</text>
+   </view>
+  </view>
+  <view class="frameImage" wx:if="{{showFrameImage}}" bindtap="showImage">
+    <image src="{{host}}/images/sample-pic.png"></image>
+    <view class="mask"></view>
+  </view>
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

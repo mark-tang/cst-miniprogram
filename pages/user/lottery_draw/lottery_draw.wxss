@@ -1,0 +1,237 @@
+.container{
+  padding: 0;
+}
+.lt-draw__bd{
+  height: 842rpx;
+  position: relative;
+}
+.lt-draw__bd__backtop{
+  width: 100%;
+  height: 842rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.lt-draw__bd__tip{
+  text-align: center;
+  font-size: 34rpx;
+  display: inline;
+  background: rgba(255, 255, 255, .65);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 20rpx 60rpx;
+  border-radius: 100rpx;
+  top: 20rpx;
+  font-weight: 600;
+}
+.lt-draw__ft{
+  background: #2746ae;
+  padding-top:30rpx;
+  padding-bottom:66rpx; 
+}
+/*抽奖转盘*/
+.lt-draw-main{
+  position: relative;
+}
+.lt-draw__disc{
+  width: 580rpx;
+  height: 580rpx;
+  position: absolute;
+  top: 160rpx;
+  left: 50%;
+  margin-left: -290rpx;
+  box-shadow: 0rpx 0rpx 45rpx 20rpx #269df5;
+  border-radius: 500rpx;
+}
+.lt-draw__finger{
+  width: 232rpx;
+  height: 232rpx;
+  position: absolute;
+  top: 334rpx;
+  left: 50%;
+  margin-left: -116rpx;
+}
+/*抽奖说明*/
+.lt-draw__rule{
+  color: #FFF;
+  width: 580rpx;
+  border:1rpx solid rgba(255, 255, 255, .6);
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin:5rpx auto;
+  margin-bottom: 30rpx;
+}
+.lt-draw__rule__hd{
+  text-align: center;
+  font-size: 30rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-weight: 600;
+}
+.lt-draw__rule__hd image{
+  height: 25rpx;
+  width: 107rpx;
+  margin: 0 15rpx;
+}
+.lt-draw__rule__bd text{
+  font-size: 28rpx;
+  display: block;
+  margin: 10rpx 0;
+  text-align: center;
+  line-height:50rpx;
+}
+.lt-draw__rule__bd.text-right text{
+  text-align: left;
+}
+/*抽奖弹窗*/
+.lt-dialog{
+  position: fixed;
+  top: 26%;
+  width:600rpx;
+  left: 50%;
+  margin-left: -300rpx;
+  border-radius: 20rpx; 
+  overflow: hidden;
+  z-index: 10001;
+  transform: scale(0);
+  opacity: 0;
+}
+.lt-dialog__hd{
+  background: #3f69f7;
+  text-align: center;
+  position: relative; 
+}
+.lt-dialog__hd icon{
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lt-dialog__hd text{
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #FFF;
+  font-size: 32rpx;
+}
+.lt-dialog__bd{
+  background: #3f69f7;
+  padding:60rpx 20rpx;
+  padding-top:20rpx;
+  color: #FFF; 
+  text-align: center;
+  font-size: 34rpx;
+  line-height: 60rpx;
+}
+.lt-dialog__ft{
+  background: #fff4e0;
+  display: flex;
+  padding:20rpx;
+  box-sizing: border-box;
+}
+.lt-dialog__ft button{
+  padding:10rpx 50rpx;
+  line-height: 1.5;
+  border-radius:100rpx; 
+  font-size: 32rpx;
+  color: #FFF;
+  border: 4rpx solid rgba(0, 0, 0, 0.2);
+}
+.lt-dialog__btn_cancel{
+  background-color:#1c81fd;
+}
+.lt-dialog__btn_ok{
+  background-color:#3f69f7;
+}
+.lt-dialog__ft button::after{
+  border:0px;
+}
+/*奖品详情*/
+.award-detail{
+  position: fixed;
+  top: 6%;
+  height: 80%;
+  width: 90%;
+  left: 5%;
+  background: #f8f8f8;
+  border-radius: 20rpx;
+  border:  3rpx solid #2746ae;
+  z-index: 1010;
+  padding: 30rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  transform: scale(0);
+  opacity: 0;
+}
+.award-detail__hd{
+  height: 40rpx;
+  position: relative;
+}
+.award-detail__hd icon{
+ position: absolute;
+ right: 0;
+}
+.award-img{
+  width: 367rpx;
+  height: 245rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  box-shadow: 0 5rpx 5rpx rgba(0, 0, 0, 0.2);
+  margin: 30rpx auto;
+}
+.award-img image{
+  width: 100%;
+  height: 100%;
+}
+.award-info{
+  background: #FFF;
+  border-radius: 10rpx;
+  border:1px solid #EFEFEF;
+}
+.award-info-cell{
+  padding: 16rpx 20rpx;
+  border-bottom: 1px solid #EFEFEF;
+  display: flex;
+  font-size: 34rpx;
+}
+.award-info-cell:last-child{
+  border-bottom: 0px solid #ff0000;
+}
+.award-info-main{
+  width: 30%;
+  text-align: right;
+  padding: 0 10rpx;
+  border-right: 1px dashed #efefef;
+}
+.award-info-sub{
+  padding: 0 10rpx;
+}
+.text-yellow{
+  color: #ff6021;
+}
+.award-rules{
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+.award-rules-title{
+  font-size: 34rpx;
+  padding: 15rpx 0;
+}
+.award-rules-detail{
+  color: #999;
+  font-size: 30rpx;
+  padding: 10rpx;
+}
+
+/*信息确认*/
+.confirm_info{
+  position: fixed;
+  top: 20%;
+  left: 8%;
+  width: 84%;
+  height: auto;
+  z-index: 10000;
+  background: #FFF;
+}

@@ -1,0 +1,89 @@
+@import '../index/index.wxss';
+
+.image-stage {
+  position: relative;
+}
+.image-stage image{
+  width: 750rpx;
+  height: 562.5rpx;
+}
+.image-stage text {
+  position: absolute;
+  right: 0;
+  bottom: 40rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 56rpx 0 0 56rpx;
+  padding: 12rpx 15rpx 12rpx 28rpx;
+}
+
+.text-desc {
+  font-size: 26rpx;
+  line-height: 2rem;
+}
+
+.color-block {
+  display: inline-block;
+}
+.color-block::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.color-block-item {
+  margin: 0 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+  width: 36rpx;
+  height: 36rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.08)
+}
+
+.weui-cell_desc {
+  color: #333333;
+}
+
+.container {
+  margin-bottom: 130rpx;
+  height: auto;
+}
+
+.canvas {
+  margin: 0 auto;
+  width: 345px;
+  height: 166px;
+  overflow: hidden;
+  /*transform: scale(.5) ;
+  -webkit-transform-origin-x: 0;
+  -webkit-transform-origin-y: 0;*/
+}
+
+.weui-cells__title {
+  color: #333333;
+}
+
+.panel {
+  margin: 0;
+  background: #FFF;
+}
+.panel__hd {
+  padding: 10px 15px;
+}
+.panel__title {
+  padding-left: 15rpx;
+  border-left: 3px solid #228ade;
+  font-size: 32rpx;
+}
+.panel__hd__more {
+  margin-top: 5px;
+  float: right;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.weui-cell__title{
+  font-size: 34rpx;
+  color: #333;
+  padding-bottom: 10rpx;
+}

@@ -1,0 +1,71 @@
+<!--add_car.wxml-->
+
+<view class="container" wx:if="{{showPage}}">
+  <form class="form-body" bindsubmit="submitForm">
+    <view class="form-section">
+      <view class="form-label">爱车型号</view>
+      <view class="input-select-view" bindtap="selectCar">{{modelname}}</view>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="select-carNum-tab" wx:if="{{showSelectTab}}">
+        <view class="carNum-tab" id="0" bindtap="changeTab">车牌号</view>
+        <!-- <view class="carNum-tab" id="1" bindtap="changeTab">车架号</view> -->
+    </view>
+    <view class="form-section" wx:if="{{selectTabCar}}">
+      <view class="fast-provice" bindtap="selectPro">
+        <text>{{proText}}</text>
+        <image src="../../../images/arrow-down-more.png"></image>
+      </view>
+      <!-- <view class="form-label form-special-label" bindtap="selectCarTab"> -->
+      <view class="form-label form-special-label" >
+      车牌号
+        <!-- <image src="../../../images/arrow-down-more.png"></image>  -->
+      </view>
+      <input class="fast-provice-input"  value="{{carNumChange}}" name="carNum" placeholder="请输入车牌号(必填)" placeholder-class ="gray-style" maxlength="7"  bindinput="inputCarNum"/>
+    </view>
+    <view class="form-section" wx:else="{{selectTabCar}}">
+      <view class="form-label" bindtap="selectCarTab">
+      车架号
+      <image src="../../../images/arrow-down-more.png"></image>
+      </view>
+      <input name="vinNum" placeholder="请输入车架号(必填)" value="{{VinNumChange}}" placeholder-class ="gray-style" maxlength="17" bindinput="inputVinNum"/>
+      <image class="form-tips-image" src="../../../images/peccancy-tips.png" bindtap="showImage"></image>
+    </view>
+    <view class="form-section">
+      <view class="form-label">车主姓名</view>
+      <input name="name" value="{{uName}}" placeholder="请输入车主姓名(必填)" placeholder-class ="gray-style"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">联系方式</view>
+      <input type="number" name="phone" value="{{uPhone}}" placeholder="请输入联系方式(必填)" placeholder-class ="gray-style" maxlength="11" bindinput="inputMoblie"/>
+    </view>
+    <view class="fixed-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '提交'}}
+        </button>
+    </view> 
+  </form >
+  <!-- <text class="form-title-tips">选择专属售后顾问</text>
+  <view class="select-advisor">
+    <view class="advisor-info {{item.isActive ? 'active' : ''}}" wx:for="{{advisorInfo}}" wx:key="indexthis" bindtap="selectAdvisor" id="{{index}}"> 
+      <image class="advisor-pic" src="{{item.avatar || '/images/head.png'}}"></image>
+      <text>{{item.nickname}}</text>
+      <view class="selected">
+        <image src="../../../images/select-active.png"></image>
+      </view>
+    </view>
+  </view> -->
+  <!--选择省份面板-->
+  <view class="pro-select-wrap {{showProSelect?'active':''}}">
+   <view class="pro-select" wx:for="{{proData}}" wx:key="item" data-item="{{item}}" data-index="{{index}}" bindtap="changePro">
+      <text>{{item}}</text>
+   </view>
+  </view>
+  <view class="mask global-mask" wx:if="{{showProSelect}}" bindtap="selectPro"></view>
+  <view class="frameImage" wx:if="{{showFrameImage}}" bindtap="showImage">
+    <image src="{{host}}/images/sample-pic.png"></image>
+    <view class="mask"></view>
+  </view>
+  
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

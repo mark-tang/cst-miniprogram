@@ -1,0 +1,14 @@
+@import "../../../utils/wxParse/wxParse.wxss";
+.container{
+  padding: 20rpx 30rpx;
+  background: #FFF;
+}
+.article-title{
+  font-size: 40rpx;
+  font-weight: 600;
+  line-height: 50rpx;
+  padding: 40rpx 0;
+}
+.article-detail{
+
+}

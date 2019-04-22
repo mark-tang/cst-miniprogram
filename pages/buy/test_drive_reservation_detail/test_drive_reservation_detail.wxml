@@ -1,0 +1,86 @@
+<scroll-view class="container" hidden="{{!showPage}}">
+  <template is="status" data="{{status}}"></template>
+  <template name="status">
+    <view class="top-tip" wx:if="{{status == 0}}">
+      <icon type="waiting" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的试驾预约正在处理!</text>
+    </view>
+    <view class="top-tip" wx:if="{{status == 1}}">
+      <icon type="cancel" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的试驾预约已经取消!</text>
+    </view>
+    <view class="top-tip" wx:if="{{status == 2}}">
+      <icon type="info" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的试驾预约已经确认!</text>
+    </view>
+    <view class="top-tip" wx:if="{{status == 3}}">
+      <icon type="warn" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的试驾预约未到店!</text>
+    </view>
+    <view class="top-tip" wx:if="{{status == 4}}">
+      <icon type="success" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的试驾预约已经完成!</text>
+      <button class="btn btn_plain-primary"
+      data-url="../activity_list/activity_list?type=1"
+      bindtap="navigateTo"
+      >抽奖</button>
+    </view>
+</template>
+
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">询价车型</text>
+      </view>
+      <view class="weui-cell__bd">{{style}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">联系人</text>
+      </view>
+      <view class="weui-cell__bd">{{name}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">联系电话</text>
+      </view>
+      <view class="weui-cell__bd">{{tel}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">预约时间</text>
+      </view>
+      <view class="weui-cell__bd">{{addtime}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">预约到店时间</text>
+      </view>
+      <view class="weui-cell__bd">{{promise_time}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">备注</text>
+      </view>
+      <view class="weui-cell__bd" wx:if="{{status == 0}}">{{des || '无'}}</view>  
+      <view class="weui-cell__bd" wx:if="{{status == 1}}">{{remarks || '无'}}</view>
+      <view class="weui-cell__bd" wx:if="{{status == 2}}">{{remarks || '无'}}</view>
+      <view class="weui-cell__bd" wx:if="{{status == 3}}">{{remarks || '无'}}</view>
+      <view class="weui-cell__bd" wx:if="{{status == 4}}">{{remarks || '无'}}</view>
+    </view>
+  </view>
+  <view class="fixed-btn">
+    <!-- <button type="secondary" 
+      class="confirm-btn"
+      wx:if="{{status == 4}}"
+      data-url="/pages/keep/advisor_evaluate/advisor_evaluate?id={{id}}&type=1"
+      bindtap="navigateTo">服务点评</button> -->
+    <button type="primary" 
+      class="confirm-btn" 
+      bindtap="phoneCall"
+      wx:if="{{advisor_tel || sale_tel}}">
+      <text wx:if="{{advisor_tel}}">联系顾问</text>
+      <text wx:else>服务热线</text>
+    </button>
+  </view> 
+</scroll-view>

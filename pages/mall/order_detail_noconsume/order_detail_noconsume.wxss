@@ -1,0 +1,24 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 0;
+  padding-bottom: 120rpx;
+}
+.order-list {
+  margin-bottom: 20rpx;
+}
+
+.tool-btn{
+  padding:0rpx 16rpx;
+  line-height: 2.2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  white-space: nowrap;
+}
+.con-fixed{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

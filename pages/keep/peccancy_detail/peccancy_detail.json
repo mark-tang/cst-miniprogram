@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "违章查询",
+  "enablePullDownRefresh" : true ,
+  "backgroundTextStyle"  : "dark"
+}

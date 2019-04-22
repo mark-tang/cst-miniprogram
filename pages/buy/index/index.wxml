@@ -1,0 +1,149 @@
+<!--index.wxml-->
+<view class="loading" wx:if="{{!showPage}}">
+  <view class="load-icon"></view>
+  <text>努力加载中...</text>
+</view>
+<view class="container" wx:if="{{showPage}}">
+  <!-- 4S店信息 -->
+  <view class="store-info">
+    <view class="store-logo">
+      <image src="{{company.logo || '/images/store-bac.png'}}"></image>
+    </view>
+    <view class="store-name" bindtap='openLoc'>
+      <view class="store-text__main">
+        <text>{{company.name}}</text>
+      </view>
+      <view class="store-text__sub">
+        <image src='/images/icon-loc.png'></image>
+        <text>{{company.address}}</text>
+      </view> 
+    </view>
+    <view class="store-sa" data-phone="{{advisor.phone}}" bindtap="openAction">
+      <image src="/images/call-icon.png"></image>
+      <view>
+        <text wx:if="{{advisor.name}}"></text>{{advisor.name || '联系门店'}}</view>
+    </view>
+  </view>
+  <!-- 优惠促销 -->
+  <view class="menu menu-lg" data-url="../sales_promotion_list/sales_promotion_list" bindtap="navigateTo">
+    <view class="weui-cell" style='padding:14px 15px;font-size:16px;'>
+      <view class="weui-cell__hd">
+        <!-- <image src="../../../images/menu13.png"></image> -->
+        <text style="height: 20px;">消息动态 |</text>
+      </view>
+      <view class="weui-cell__bd">
+        <!-- <swiper autoplay="true" vertical="true" style="height: 40px;">
+            <block wx:for="{{tipsList}}" wx:key="index">
+              <swiper-item>
+                <text class="tips">{{item.first || '暂无优惠信息'}}</text>
+                <text class="tips">{{item.second}}</text>
+              </swiper-item>
+            </block>
+          </swiper> -->
+        <swiper autoplay="true" vertical="true" style="height: 20px;padding-left:20rpx;">
+          <block wx:for="{{promotion}}" wx:key="index">
+            <swiper-item>
+              <text class="tips">{{item.title || '暂无优惠信息'}}</text>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+   <view class='input-wrap'>
+    <icon class="icon-style" type="search" size="18"/> 
+    <input class='input-style'  bindinput="bindReplaceInput" placeholder="搜索车型" value='{{keyword}}' bindconfirm="bindconfirm"/>
+     <icon class="icon-clear" type="clear" size="18" wx:if="{{keyword}}" bindtap='clearKeyword'/>
+  </view>
+  
+  <!-- 车型展厅 -->
+  <view class='car-exhi-wrap' wx:for="{{list}}" wx:for-item="brands" wx:key="index" wx:if="{{!isSearch}}">
+    <view class='car-exhi-title' wx:if="{{brands.carModels}}">
+      <image src='{{brands.imgs}}'></image>
+      <text>{{brands.manufacture}}</text>
+    </view>
+    <view class='car-exhibition'>
+      <view class='car-exhi' wx:for="{{brands.carModels}}" wx:for-item="car" wx:key="cat_id">
+        <view class='car-exhi__hd' data-id="{{car.cat_id}}" bindtap='goCarDisplay'>
+          <image mode='widthFix' src="{{car.img[260] || '/images/car.png'}}"></image>
+        </view>
+        <view class='car-exhi__bd' data-id="{{car.cat_id}}" bindtap='goCarDisplay'>
+          <view class='car-name'>{{car.title}}</view>
+          <view class='car-price'>{{car.minPrice}}-{{car.maxPrice}}万</view>
+          <view class='car-sub'>{{car.total}}款车型</view>
+        </view>
+        <view class='car-exhi__ft'>
+          <view class='car-btn text-blue' data-type="testDrive" data-id="{{car.cat_id}}" bindtap='goCarDisplay'>试驾</view>
+          <view class='car-btn text-yellow' data-type="priceInquiry" data-id="{{car.cat_id}}" bindtap='goCarDisplay'>询底价</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='car-exhi-wrap'  wx:if="{{isSearch}}">
+    <view class='car-exhibition'>
+      <view class='car-exhi' wx:for="{{searchList}}" wx:for-item="car" wx:key="cat_id">
+        <view class='car-exhi__hd' data-id="{{car.cat_id}}" bindtap='goCarDisplay'>
+          <image mode='widthFix' src="{{car.img[260] || '/images/car.png'}}"></image>
+        </view>
+        <view class='car-exhi__bd' data-id="{{car.cat_id}}" bindtap='goCarDisplay'>
+          <view class='car-name'>{{car.title}}</view>
+          <view class='car-price'>{{car.minPrice}}-{{car.maxPrice}}万</view>
+          <view class='car-sub'>{{car.total}}款车型</view>
+        </view>
+        <view class='car-exhi__ft'>
+          <view class='car-btn text-blue' data-type="testDrive" data-id="{{car.cat_id}}" bindtap='goCarDisplay'>试驾</view>
+          <view class='car-btn text-yellow' data-type="priceInquiry" data-id="{{car.cat_id}}" bindtap='goCarDisplay'>询底价</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{searchList.length==0 && isSearch}}" class='no-result'>
+    <image src='../../../images/noresult.png'> </image>
+    <view>暂无搜索车型</view>
+  </view>
+
+</view>
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+  <view class="weui-loading"></view>
+  <view class="weui-loadmore__tips">正在加载</view>
+</view>
+
+<!-- list-title -->
+<template name="list-title">
+  <view class="list-title">
+    <image src="http://cst.img16888.com/picLib/57802/127362/22170214766_thumb260_195.jpg"></image>
+    扯扯
+  </view>
+</template>
+
+<template name="weui-cell">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__hd" data-url="../new_car_detail/new_car_detail?car_id={{modelId}}&model_id={{seriesId}}" bindtap="navigateTo">
+      <view class="weui-cell__title">{{modelName}}</view>
+      <view class="weui-cell__desc">
+        本店价：
+        <text class="text-danger">{{shopPrice}}万</text> 指导价：
+        <del>{{factoryPrice || '无'}}</del>
+        <del wx:if="{{factoryPrice}}">万</del>
+      </view>
+      <view class="weui-cell__desc">
+        优惠:
+        <text class="text-warning" wx:if="{{(shopPrice > factoryPrice) && factoryPrice}}">{{shopPrice - factoryPrice}}万↑</text>
+        <text class="text-desc" wx:if="{{(shopPrice == factoryPrice) && factoryPrice}}">0万</text>
+        <text class="text-success" wx:if="{{(shopPrice < factoryPrice) && factoryPrice}}">{{factoryPrice - shopPrice}}万↓</text>
+        <text class="text-desc" wx:if="{{!factoryPrice}}">0万</text>
+      </view>
+    </view>
+    <view class="weui-cell__tool">
+      <button class="btn btn_plain-primary" data-url="../test_drive_reservation_create/test_drive_reservation_create?car_id={{modelId}}" bindtap="navigateTo">试驾</button>
+      <button class="btn btn_plain-warning" data-url="../price_inquiry_create/price_inquiry_create?car_id={{modelId}}" bindtap="navigateTo">询底价</button>
+    </view>
+  </view>
+</template>
+
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+
+<!-- <view class='toast'>
+  <view class='toast-title'>授权失败</view> 
+ <button open-type="getUserInfo" type="primary">允许获取我的个人信息</button>
+</view> -->

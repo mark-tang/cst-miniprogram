@@ -1,0 +1,140 @@
+{
+  "pages": [
+    "pages/buy/index/index",
+    "pages/jurisdiction/jurisdiction",    
+    "pages/buy/new_car_list/new_car_list",
+    "pages/buy/new_car_display/new_car_display",
+    "pages/buy/new_car_detail/new_car_detail",
+    "pages/buy/price_inquiry_create/price_inquiry_create",
+    "pages/buy/price_inquiry_detail/price_inquiry_detail",
+    "pages/buy/test_drive_reservation_create/test_drive_reservation_create",
+    "pages/buy/test_drive_reservation_detail/test_drive_reservation_detail",
+    "pages/buy/test_drive_reservation_form/test_drive_reservation_form",
+    "pages/buy/sales_promotion_list/sales_promotion_list",
+    "pages/buy/sales_promotion_detail/sales_promotion_detail",
+    "pages/buy/select_car_model/select_car_model",
+    "pages/buy/select_car_style/select_car_style",
+    "pages/buy/advisor/advisor",
+    "pages/keep/index/index",
+    "pages/keep/add_car/add_car",
+    "pages/keep/select_car/select_car",
+    "pages/keep/select_more_car/select_more_car",
+    "pages/keep/peccancy/peccancy",
+    "pages/keep/peccancy_edit/peccancy_edit",
+    "pages/keep/peccancy_add/peccancy_add",
+    "pages/keep/peccancy_detail/peccancy_detail",
+    "pages/keep/next_keep/next_keep",
+    "pages/keep/next_keep_add/next_keep_add",
+    "pages/keep/next_keep_record/next_keep_record",
+    "pages/keep/next_insurance/next_insurance",
+    "pages/keep/next_insurance_add/next_insurance_add",
+    "pages/keep/next_mot/next_mot",
+    "pages/keep/next_mot_add/next_mot_add",
+    "pages/keep/appoint_add/appoint_add",
+    "pages/keep/appoint_time/appoint_time",
+    "pages/keep/appoint_detail/appoint_detail",
+    "pages/keep/appoint_evaluate/appoint_evaluate",
+    "pages/keep/appoint_chose/appoint_chose",
+    "pages/keep/renewal_add/renewal_add",
+    "pages/keep/renewal_chose/renewal_chose",
+    "pages/keep/renewal_detail/renewal_detail",
+    "pages/keep/renewal_more/renewal_more",
+    "pages/keep/second_handcarexchange/second_handcarexchange",
+    "pages/keep/road_help/road_help",
+    "pages/keep/road_help_wait/road_help_wait",
+    "pages/keep/advisor/advisor",
+    "pages/keep/advisor_evaluate/advisor_evaluate",
+    "pages/keep/advisor_change/advisor_change",
+    "pages/keep/member/member",
+    "pages/keep/member_reg/member_reg",
+    "pages/keep/member_charge/member_charge",
+    "pages/keep/member_pay/member_pay",
+    "pages/keep/member_service/member_service",
+    "pages/keep/member_coin/member_coin",
+    "pages/keep/exchange_balance/exchange_balance",
+    "pages/keep/charge_history/charge_history",
+    "pages/keep/webview/webview",
+    "pages/mall/index/index",
+    "pages/mall/index_more/index_more",
+    "pages/mall/detail/detail",
+    "pages/mall/shop_car/shop_car",
+    "pages/mall/order_list/order_list",
+    "pages/mall/confirm_order/confirm_order",
+    "pages/mall/evaluate/evaluate",
+    "pages/mall/order_detail_nopay/order_detail_nopay",
+    "pages/mall/order_detail_noconsume/order_detail_noconsume",
+    "pages/mall/order_detail_refund/order_detail_refund",
+    "pages/mall/order_detail_eva/order_detail_eva",
+    "pages/mall/complete_order/complete_order",
+    "pages/mall/refund_detail/refund_detail",
+    "pages/mall/tuan/tuan",
+    "pages/mall/chose_receiving_info/chose_receiving_info",
+    "pages/mall/refund_apply/refund_apply",
+    "pages/mall/receive_info/receive_info",
+    "pages/user/index/index",
+    "pages/user/edit_info/edit_info",
+    "pages/user/select_car/select_car",
+    "pages/user/select_more_car/select_more_car",
+    "pages/user/coupon/coupon",
+    "pages/user/lottery_bargain/lottery_bargain",
+    "pages/user/lottery_golden_egg/lottery_golden_egg",
+    "pages/user/lottery_draw/lottery_draw",
+    "pages/user/apply_card/apply_card",
+    "pages/user/get_card/get_card"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/user/jike/",
+      "pages": [
+        "index/index",
+        "sign_up/sign_up",
+        "store_info/store_info",
+        "result/result",
+        "select_car/select_car",
+        "sign/sign",
+        "payment/payment"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#228ade",
+    "navigationBarTitleText": "车商通SCRM",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#aeaeae",
+    "selectedColor": "#228ade",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/tab1-press.png",
+        "iconPath": "images/tab1-normal.png",
+        "pagePath": "pages/buy/index/index",
+        "text": "买车"
+      },
+      {
+        "selectedIconPath": "images/tab2-press.png",
+        "iconPath": "images/tab2-normal.png",
+        "pagePath": "pages/keep/index/index",
+        "text": "养车"
+      },
+      {
+        "selectedIconPath": "images/tab3-press.png",
+        "iconPath": "images/tab3-normal.png",
+        "pagePath": "pages/mall/index/index",
+        "text": "商城"
+      },
+      {
+        "selectedIconPath": "images/tab4-press.png",
+        "iconPath": "images/tab4-normal.png",
+        "pagePath": "pages/user/index/index",
+        "text": "发现"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 15000,
+    "downloadFile": 30000
+  }
+}

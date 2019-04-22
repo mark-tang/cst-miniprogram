@@ -1,0 +1,114 @@
+<!--index.wxml-->
+<view class="container" hidden="{{!showPage}}">
+  <view class="lt-draw__bd">
+    <view class="lt-draw__bd__tip">
+      您今天还有<text class="text-red">{{lotNum}}</text>次抽奖机会 
+    </view>
+    <image class="lt-draw__bd__backtop" src="{{backtopImgUrl}}" bindload="imageLoad"></image>
+    <view class="lt-draw__main">
+      <image class="lt-draw__disc"
+       src="{{discImgUrl}}"
+       animation="{{discAnimaData}}"
+       wx:if="{{showDisc}}" 
+      >
+      </image>
+      <image class="lt-draw__finger"
+       src="{{fingerImgUrl}}"
+       bindtap="discCtrl"
+       wx:if="{{showDisc}}" 
+      >
+      </image>
+    </view>
+  </view>
+  
+  <view class="lt-draw__ft">
+    <view class="lt-draw__rule" wx:if="{{awards.length==0?false:true}}">
+      <view class="lt-draw__rule__hd">
+        <image src="../../../images/lottery-title-left.png"></image>
+        奖项设置
+        <image src="../../../images/lottery-title-right.png"></image>
+      </view>
+      <view class="lt-draw__rule__bd">
+       <text wx:for="{{awards}}" wx:key="{{index}}" data-id="{{item.pid}}" bindtap="awardCtrl">
+       {{item.name}} ：{{item.aw_name}} {{item.p_price}} 数量{{item.p_num_show}} >
+       </text>
+      </view>
+    </view>
+     <view class="lt-draw__rule" wx:if="{{rules}}">
+      <view class="lt-draw__rule__hd">
+        <image src="../../../images/lottery-title-left.png"></image>
+        活动规则
+        <image src="../../../images/lottery-title-right.png"></image>
+      </view>
+      <view class="lt-draw__rule__bd text-right">
+       <text wx:for="{{rules}}">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <!--弹窗-->
+  <view class="lt-dialog" animation="{{dialogAnimaData}}">
+    <view class="lt-dialog__hd">
+      <text>{{dialogTitle}}</text>
+      <icon type="clear" color="#2b51d1"  bindtap="dialogCtrl"/>
+    </view>
+    <view class="lt-dialog__bd">
+      {{dialogCon}}
+    </view>
+    <view class="lt-dialog__ft">
+      <!--<button class="lt-dialog__btn_cancel">取消</button>-->
+      <button class="lt-dialog__btn_ok"  bindtap="dialogCtrl">确定</button>
+    </view>
+  </view>
+  <!--奖品详情-->
+  <view class="award-detail" animation="{{awardAnimaData}}">
+    <view class="award-detail__hd">
+      <icon type="clear" color="#3f69f7"  bindtap="awardCtrl"/>
+    </view>
+    <view class="award-img" hidden="{{!showAwardMore}}">
+     <image src="{{awardDetail.p_pic_path}}"></image>
+    </view>
+    <view class="award-info" hidden="{{!showAwardMore}}">
+     <view class="award-info-cell">
+      <text class="award-info-main">奖品名称</text>
+      <text class="award-info-sub">{{awardDetail.p_name}}</text>
+     </view>
+     <view class="award-info-cell">
+      <text class="award-info-main">奖品价值</text>
+      <text class="award-info-sub text-yellow">{{awardDetail.p_price}}</text>
+     </view>
+    <view class="award-info-cell">
+      <text class="award-info-main">奖品数量</text>
+      <text class="award-info-sub">{{awardDetail.p_num_show}}</text>
+     </view>
+    </view>
+    <view class="award-rules" hidden="{{!showAwardMore}}">
+     <view class="award-rules-title">使用规则</view>
+     <view class="award-rules-detail" wx:for="{{awardDetail.rules}}" wx:key="{{index}}">{{item}}</view>
+    </view>
+    <view class="award-rules" hidden="{{!showAwardMore && awardDetail.intro?false:true}}">
+     <view class="award-rules-title">礼包介绍</view>
+     <view class="award-rules-detail" wx:for="{{awardDetail.intro}}" wx:key="{{index}}">{{item}}</view>
+    </view>
+  </view>
+  <!-- 信息确认 -->
+  <view class='confirm_info' wx:if="{{showConfirm}}">
+    <form class="form-body" bindsubmit="confirmAward" wx:if='{{showPage}}'>
+      <text class="form-title-tips">请确认中奖信息</text>
+      <view class="form-section">
+        <view class="form-label">姓名</view>
+        <input name="name" value="{{name}}" placeholder="请输入姓名" placeholder-class ="gray-style"/>
+      </view>
+      <view class="form-section">
+        <view class="form-label">手机号码</view>
+        <input type="number" name="phone" value="{{phone}}" placeholder="请输入手机号码" placeholder-class ="gray-style" maxlength="11"/>
+      </view>
+      <view class="normal-btn">
+        <button type="primary" class="confirm-btn" form-type="submit" >确 认</button>
+      </view>
+    </form >
+  </view>
+  <view class="mask" bindtap="dialogCtrl" wx:if="{{showMask}}"></view>
+  <view class="mask" bindtap="awardCtrl" wx:if="{{showMask2}}"></view>
+  <view class="mask" wx:if="{{showConfirm}}"></view>
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

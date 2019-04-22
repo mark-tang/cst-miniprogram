@@ -1,0 +1,67 @@
+<!--index.wxml-->
+<view class="container">
+  <form class="form-body" bindsubmit="submitForm">
+    <!--<text class="form-title-tips">个人信息</text> -->
+    <view class="form-section" wx:if="{{showForm.name}}">
+      <view class="form-label">申请姓名：</view>
+      <input name="name" value="{{user_info.name}}" placeholder="请输入用户名" placeholder-class="gray-style" bindinput="inputName" />
+    </view>
+    <view class="form-section" wx:if="{{showForm.phone}}">
+      <view class="form-label">联系电话：</view>
+      <input type="number" value="{{user_info.phone}}" name="phone" placeholder="请输入手机号" placeholder-class="gray-style" maxlength="11" bindinput="inputMoblie" />
+    </view>
+    <view class="form-section" style="padding-left: 16rpx;" wx:if="{{showForm.car_num}}">
+      <view class="fast-provice" bindtap="selectPro">
+        <text>{{proText}}</text>
+        <image src="../../../images/arrow-down-more.png"></image>
+      </view>
+      <!-- <view class="form-label form-special-label" bindtap="selectCarTab"> -->
+      <view class="form-label form-special-label" >
+      车牌号码：
+        <!-- <image src="../../../images/arrow-down-more.png"></image>  -->
+      </view>
+      <input class="fast-provice-input"  value="{{carNumChange}}" name="carNum" placeholder="请输入车牌号(必填)" placeholder-class ="gray-style" maxlength="7"  bindinput="inputCarNum"/>
+    </view>
+    <view class="form-section" wx:if="{{showForm.car_after}}">
+      <view class="form-label">在用车辆：</view>
+      <view class="input-select-view" bindtap="selectCar">{{carOrigin.modelname}}</view>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section" wx:if="{{showForm.car_sell}}">
+      <view class="form-label">意向车型：</view>
+      <view class="input-select-view" bindtap="selectCarModel">{{carInfo.car_name}}</view>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section" style="height: 120rpx;">
+      <textarea class="weui-textarea" maxlength="400" style="height: 120rpx;" value="{{apply_remark}}" placeholder='领券备注（非必填）' bindinput="bindTextAreaBlur"></textarea>
+    </view>
+
+
+
+    <!--<text class="text-gray">请尽量填写完善的信息，以便我们给您提供更好的服务</text>-->
+    <cover-view class="fixed-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+        {{isSubmit? '申请领取中...': '申请领取'}}
+      </button>
+    </cover-view>
+  </form>
+  <view class="frameImage" wx:if="{{showFrameImage}}" bindtap="showImage">
+    <image src="{{host}}/images/sample-pic.png"></image>
+    <view class="mask"></view>
+  </view>
+  <view style="height:140rpx;"></view>
+
+  <!--选择省份面板-->
+  <view class="pro-select-wrap {{showProSelect?'active':''}}">
+   <view class="pro-select" wx:for="{{proData}}" wx:key="item" data-item="{{item}}" data-index="{{index}}" bindtap="changePro">
+      <text>{{item}}</text>
+   </view>
+  </view>
+  <view class="mask global-mask" wx:if="{{showProSelect}}" bindtap="selectPro"></view>
+  <view class="frameImage" wx:if="{{showFrameImage}}" bindtap="showImage">
+    <image src="{{host}}/images/sample-pic.png"></image>
+    <view class="mask"></view>
+  </view>
+  
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

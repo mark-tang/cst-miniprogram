@@ -1,0 +1,69 @@
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+
+<view class="container" hidden="{{!showPage}}">
+  <form bindsubmit="formSubmit" report-submit="true">
+    <view class="car-panel">
+      <view class="car-panel__hd">
+        <image src="{{carInfo.model_logo}}"></image>
+      </view>
+      <view class="car-panel__bd">
+        <view class="car-text-mian">{{carInfo.car_name}}</view>
+        <view class="car-text-sub">
+         门店价格：<text class="text-danger">{{carInfo.shop_price || '无'}}</text><text wx:if="{{carInfo.shop_price}}">万</text>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">姓名{{hasAppoint}}</text>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="name" 
+            placeholder="请输入(必填)" 
+            value="{{customer_info.name}}"
+          />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">电话</text>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="tel" 
+            placeholder="请输入(必填)" 
+            value="{{customer_info.tel}}"
+          />
+        </view>
+      </view>
+      <picker mode="date" name="yuyueDay_date" start="{{start}}" bindchange="dateChange">
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__hd">
+            <text class="weui-label">到店日期</text>
+          </view>
+          <view class="weui-cell__bd {{date? '': 'text-right'}}">{{date || '请选择（必填）'}}</view>
+          <view class="weui-cell__ft"></view>
+        </view>
+      </picker>
+      <picker mode="time" name="yuyueData_time" bindchange="timeChange">
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__hd">
+            <text class="weui-label">到店时间</text>
+          </view>
+          <view class="weui-cell__bd {{time? '': 'text-right'}}">{{time || '请选择（必填）'}}</view>
+          <view class="weui-cell__ft"></view>
+        </view>
+      </picker>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea name="remark" class="weui-textarea" placeholder="备注信息" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button type="primary" formType="submit" disabled="{{isSubmit}}">{{isSubmit? '提交中...': '立即预约'}}</button>
+    </view>
+  </form>
+</view>

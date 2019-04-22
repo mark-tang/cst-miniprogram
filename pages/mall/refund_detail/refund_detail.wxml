@@ -1,0 +1,64 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="refund-detail">
+    <view class="refund-detail__hd">
+      <view class="refund-detail__li">
+        <text class="refund-detail__li-title">消费付款码</text>
+        <text class="refund-detail__li-con">15484115154</text>
+      </view>
+      <view class="refund-detail__li">
+        <text class="refund-detail__li-title">退款金额</text>
+        <text class="refund-detail__li-con red-color">￥240</text>
+      </view>
+      <view class="refund-detail__li">
+        <text class="refund-detail__li-title">退回账户</text>
+        <text class="refund-detail__li-con">微信支付</text>
+      </view>
+    </view>
+    <view class="refund-detail__bd">
+      <view class="refund-detail__list">
+        <view class="refund-detail__list-title">
+          车商通SCRM测试店正在审核
+        </view>
+        <view class="refund-detail__list-subTitle">
+          2017-6-29 12：12：12
+        </view>
+      </view>
+      <view class="refund-detail__list">
+        <view class="refund-detail__list-title">
+          已确认申请，微信支付正在处理中
+        </view>
+        <view class="refund-detail__list-subTitle">
+          2017-6-29 12：12：12
+        </view>
+      </view>
+    </view>
+  </view> 
+
+  <view class="refund-detail">
+    <view class="refund-detail__hd">
+      <view class="refund-detail__li">
+        <text class="refund-detail__li-title">消费付款码</text>
+        <text class="refund-detail__li-con">15484115154</text>
+      </view>
+      <view class="refund-detail__li">
+        <text class="refund-detail__li-title">退款金额</text>
+        <text class="refund-detail__li-con">￥240</text>
+      </view>
+      <view class="refund-detail__li">
+        <text class="refund-detail__li-title">退回账户</text>
+        <text class="refund-detail__li-con">微信支付</text>
+      </view>
+    </view>
+    <view class="refund-detail__bd">
+      <view class="refund-detail__list">
+        <view class="refund-detail__list-title">
+          车商通SCRM测试店正在审核
+        </view>
+        <view class="refund-detail__list-subTitle">
+          2017-6-29 12：12：12
+        </view>
+      </view>
+    </view>
+  </view> 
+</view>

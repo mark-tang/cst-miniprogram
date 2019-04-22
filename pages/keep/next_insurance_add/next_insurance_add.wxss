@@ -1,0 +1,6 @@
+@import "../../../utils/keep_next.wxss"
+.form-label{
+  width: 300rpx;
+}
+
+

@@ -1,0 +1,6 @@
+<!--pages/user/jike/result/result.wxml-->
+<view class="qrcode">
+  <text>{{data.user_name}}</text>
+  <canvas canvas-id="qrcode" />
+  <text>- 到店向工作人员出示此二维码 -</text> 
+</view>

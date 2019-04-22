@@ -1,0 +1,40 @@
+<view class="sign-container">
+  <view class="sign-banner"></view>
+  <form bindsubmit="getInfo">
+    <view class="sign">
+      <view class="sign-pay {{payStatus == 1 ?'sign-active':''}}" wx:if="{{showResult}}">{{payStatus == 1 ?'已支付':'未支付'}}</view>
+      <view class="sign__hd" wx:if="{{showResult}}">
+        <image class="sign-icon" src="/images/icon-success.png" wx:if="{{signStatus == 0}}"></image>
+        <image class="sign-icon" src="/images/icon-warn.png" wx:if="{{signStatus != 0}}"></image>
+        <view class="sign-status sign-status-success" wx:if="{{signStatus == 0}}">{{signStatusText}}</view>
+        <view class="sign-status sign-status-warn" wx:if="{{signStatus != 0}}">{{signStatusText}}</view>
+      </view>
+      <view class="sign__bd" wx:if="{{showInput}}" >
+        <view class="sign-title">{{activeInfo.active_name}}</view>
+        <input class="sign-input" name="phone" value="{{phone}}" type="number" placeholder="请输入报名时填写的手机号" maxlength="11"></input>
+      </view>
+      <view class="sign__ft">
+        <view class="sign-form-wrap" wx:if="{{showForm}}">
+          <view class="sign-form">
+            <view class="sign-form__hd">活动主题</view>
+            <view class="sign-form__bd">{{activeInfo.active_name}}</view>
+          </view>
+          <view class="sign-form">
+            <view class="sign-form__hd">客户姓名</view>
+            <view class="sign-form__bd">{{joinInfo.name}}</view>
+          </view>
+          <view class="sign-form">
+            <view class="sign-form__hd">手机号码</view>
+            <view class="sign-form__bd">{{joinInfo.phone}}</view>
+          </view>
+          <view class="sign-form">
+            <view class="sign-form__hd">报名时间</view>
+            <view class="sign-form__bd">{{joinInfo.dateline}}</view>
+          </view>
+        </view>
+        <button class="sign-btn" wx:if="{{!hasJoin}}" form-type="submit">确认签到</button>
+        <button class="sign-btn" bindtap="goActive" wx:else>活动内容</button>
+      </view>
+    </view>
+  </form>
+</view>

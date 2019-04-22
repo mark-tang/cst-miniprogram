@@ -1,0 +1,301 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.5",
+	"appid": "cstappid",
+	"projectname": "cst",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 43,
+			"list": [
+				{
+					"id": -1,
+					"name": "add-car",
+					"pathName": "pages/keep/add_car/add_car",
+					"query": "type=add"
+				},
+				{
+					"id": 14,
+					"name": "车型详情",
+					"pathName": "pages/buy/new_car_detail/new_car_detail",
+					"query": "car_id=160313&model_id=127362"
+				},
+				{
+					"id": -1,
+					"name": "车主",
+					"pathName": "pages/keep/index/index",
+					"query": "car_id=160313&model_id=127362"
+				},
+				{
+					"id": 3,
+					"name": "砸金蛋",
+					"pathName": "pages/user/lottery_golden_egg/lottery_golden_egg",
+					"query": "id=33&title=捡钱活动&type=3"
+				},
+				{
+					"id": -1,
+					"name": "购车询价",
+					"pathName": "pages/buy/price_inquiry_create/price_inquiry_create",
+					"query": "car_id=160314"
+				},
+				{
+					"id": 5,
+					"name": "养修预约",
+					"pathName": "pages/keep/appoint_time/appoint_time",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "违章查询",
+					"pathName": "pages/keep/peccancy/peccancy",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "养车首页",
+					"pathName": "pages/keep/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "会员",
+					"pathName": "pages/keep/member/member",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "充值",
+					"pathName": "pages/keep/member_charge/member_charge",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "金币",
+					"pathName": "pages/keep/member_coin/member_coin",
+					"query": "coin=10001"
+				},
+				{
+					"id": -1,
+					"name": "付款",
+					"pathName": "pages/keep/member_pay/member_pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "服务标准",
+					"pathName": "pages/keep/member_service/member_service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "车型详情",
+					"pathName": "pages/buy/new_car_detail/new_car_detail",
+					"query": "car_id=160314&model_id=127362"
+				},
+				{
+					"id": -1,
+					"name": "续保询价",
+					"pathName": "pages/keep/renewal_add/renewal_add",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "续保询价",
+					"pathName": "pages/user/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发现",
+					"pathName": "pages/user/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "砍价",
+					"pathName": "pages/user/lottery_bargain/lottery_bargain",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "续保询价",
+					"pathName": "pages/keep/renewal_add/renewal_add",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的卡包",
+					"pathName": "pages/user/coupon/coupon",
+					"query": ""
+				},
+				{
+					"id": 20,
+					"name": "集客首页",
+					"pathName": "pages/user/jike/index/index",
+					"query": "id=74&title=前端测试&type=2"
+				},
+				{
+					"id": -1,
+					"name": "提交集客",
+					"pathName": "pages/user/jike/sign_up/sign_up",
+					"query": "id=357"
+				},
+				{
+					"id": -1,
+					"name": "经销商信息",
+					"pathName": "pages/user/jike/store_info/store_info",
+					"query": ""
+				},
+				{
+					"id": 25,
+					"name": "我的等级",
+					"pathName": "pages/keep/member_coin/member_coin",
+					"query": "coin=10001&growth=10002&name=积分"
+				},
+				{
+					"id": 26,
+					"name": "兑换余额", 
+					"pathName": "pages/keep/exchange_balance/exchange_balance",
+					"query": "&integral=10001&exchange_value=100"
+				},
+				{
+					"id": 25,
+					"name": "会员注册",
+					"pathName": "pages/keep/member_reg/member_reg",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "在售车型",
+					"pathName": "pages/buy/new_car_display/new_car_display",
+					"query": "id=57307&type=notype"
+				},
+				{
+					"id": -1,
+					"name": "商城首页",
+					"pathName": "pages/mall/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "优惠促销列表",
+					"pathName": "pages/buy/sales_promotion_list/sales_promotion_list",
+					"query": "id=51"
+				},
+				{
+					"id": 29,
+					"name": "报名",
+					"pathName": "pages/user/jike/sign_up/sign_up",
+					"query": "type=2&need=1&reason=支付定金&amount=0.10"
+				},
+				{
+					"id": 30,
+					"name": "签到",
+					"pathName": "pages/user/jike/sign/sign",
+					"query": "id=62"
+				},
+				{
+					"id": 31,
+					"name": "大转盘",
+					"pathName": "pages/user/lottery_draw/lottery_draw",
+					"query": "id=26&title=sdf&type=3"
+				},
+				{
+					"id": 32,
+					"name": "更多",
+					"pathName": "pages/mall/index_more/index_more",
+					"query": "type=0"
+				},
+				{
+					"id": 33,
+					"name": "集客报名反馈",
+					"pathName": "pages/user/jike/payment/payment",
+					"query": "id=72&isFail=true&payAmount=0.88"
+				},
+				{
+					"id": -1,
+					"name": "在售车型",
+					"pathName": "pages/buy/new_car_display/new_car_display",
+					"query": "id=57869&type=priceInquiry"
+				},
+				{
+					"id": -1,
+					"name": "预约时间选择",
+					"pathName": "pages/keep/appoint_time/appoint_time",
+					"query": ""
+				},
+				{
+					"id": 36,
+					"name": "养修预约",
+					"pathName": "pages/keep/appoint_add/appoint_add",
+					"query": "",
+					"scene": "1014"
+				},
+				{
+					"id": -1,
+					"name": "个人信息",
+					"pathName": "pages/user/edit_info/edit_info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "添加爱车",
+					"pathName": "pages/keep/add_car/add_car",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/mall/detail/detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "卡包",
+					"pathName": "pages/user/coupon/coupon",
+					"query": ""
+				},
+				{
+					"id": 41,
+					"name": "通用申请",
+					"pathName": "pages/user/apply_card/apply_card",
+					"query": "apply_id=1&apply_id=2&apply_id=3"
+				},
+				{
+					"id": 42,
+					"name": "领取卡券",
+					"pathName": "pages/user/get_card/get_card",
+					"query": "apply_id=1"
+				},
+				{
+					"id": -1,
+					"name": "我的卡包",
+					"pathName": "pages/user/coupon/coupon"
+				}
+			]
+		}
+	}
+}

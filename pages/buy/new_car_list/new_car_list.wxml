@@ -1,0 +1,35 @@
+<view class="container" wx:if="{{showPage}}">
+  <block wx:for="{{list}}" wx:key="brand">
+    <template 
+      is="list-title" 
+      data="{{...item}}" 
+      wx:if="{{item.carModels && item.carModels.length !== 0}}"
+      >
+    </template>
+    <view class="avg avg-2">
+      <block wx:for="{{item.carModels}}" wx:key="model">
+        <template is="avg-item" data="{{...item}}"></template>
+      </block>
+    </view>
+  </block>
+</view>
+
+<!-- list-title -->
+<template name="list-title">
+  <view class="list-title">
+    <image src="{{imgs}}"></image>
+    {{manufacture}}
+  </view>
+</template>
+
+<!-- avg-item -->
+<template name="avg-item">
+  <view class="avg-item">
+    <navigator class="avg-item__content" url="../new_car_display/new_car_display?id={{cat_id}}">
+      <image src="{{img['260'] || '/images/car.png'}}" class="avg-item__image"></image>
+      <text class="avg-item__title">{{title}}</text>
+      <text class="avg-item__price">{{minPrice || 0}}-{{maxPrice || 0}}万</text>
+      <text class="avg-item__desc">{{total || 0}}款车型</text>
+    </navigator>
+  </view>
+</template>

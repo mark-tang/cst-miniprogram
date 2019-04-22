@@ -1,0 +1,149 @@
+<!--index.wxml-->
+<import src="/template/business_info/business_info.wxml" />
+<view class="container {{fixed?'con-fixed':''}}" wx:if="{{showPage}}">
+  <!--订单列表-->
+  <!--快递信息-->
+  <view class="chose-adress" bindtap="getAdressInfo">
+    <image class="adress-image" src="/images/adress.png"></image>
+    <view class="chose-adress__text">
+      <view class="chose-adress__text_main">
+        <text>{{u_name}}</text>
+        <text>{{u_phone}}</text>
+      </view>
+      <view class="chose-adress__text_sub" wx:if="{{hasSend}}">
+        {{u_addr}}
+      </view>
+    </view>
+  </view>
+  <view class="order-list-num">订单号：{{out_trade_no}}</view>
+  <view class="order-list" wx:for="{{sub_goods}}" wx:for-index="idx">
+    <view class="order-list__bd">
+      <view class="order-list-media">
+        <view class="order-list-media__lt">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="order-list-media__rt">
+          <view class="order-list-media__rt__hd">
+            {{item.name}}
+          </view>
+          <view class="order-list-media__rt__bd">
+            <view class="order-list-price">
+              <view class="order-list-price__now">￥
+                <text>{{item.price}}</text>
+              </view>
+              <!-- <view class="order-list-price__orgin">￥{{item.orginPrice}}</view> -->
+            </view>
+            <view class="order-list-count">
+              x {{item.num}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="order-list__ft">
+        <view class="order-detail__ft">
+          <text>配送方式</text>
+          <text style="color:#999999">{{item.is_express == 0?'自提':'寄送'}}</text>
+        </view>
+      </view>
+      <view class="order-list__ft" wx:if="{{use_type==1 && item.is_express==1 && pay_status == 1}}">
+        <view class="order-detail__ft">
+          <text>配送状态</text>
+          <text class="green-color" wx:if="{{send_status == 0}}">待发货</text>
+          <text class="green-color" wx:if="{{send_status == 1}}">已发货</text>
+          <text class="green-color" wx:if="{{send_status == 2}}">已签收</text>
+        </view>
+      </view>
+      <view class="order-list__ft" wx:if="{{pay_status == 1 || pay_status == 2}}">
+        <view class="order-detail__ft">
+          <text>已支付</text>
+          <text wx:if="{{bank_type != 'JF'}}" style="color:#e54b44;font-size:32rpx;">￥{{item.num * item.price}}</text>
+          <text wx:if="{{bank_type == 'JF'}}" style="color:#e54b44;font-size:32rpx;">{{points}}积分</text>
+        </view>
+      </view>
+      <view class="order-list__ft" wx:if="{{order_status == 1 && item.refund_num > 0 && item.use_num > 0 && send_status != 2 && group.status != 0 && bank_type != 'JF'}}">
+        <view class="order-detail__ft">
+          <text>操作</text>
+          <button class="order-list__btn" data-url="../refund_apply/refund_apply?orderid={{orderid}}&subid={{item.goods_id}}" bindtap="navigateTo" style="padding:0 14rpx;line-height:2">
+            申请退款
+          </button>
+        </view>
+      </view>
+      <view class="order-list__ft" wx:if="{{order_status == 1 && group.groups_id}}">
+        <view class="order-detail__ft">
+          <text>操作</text>
+          <button class="order-list__btn" data-url="../tuan/tuan?id={{group.id}}" bindtap="navigateTo" style="padding:0 14rpx;line-height:2">
+            查看团详情
+          </button>
+        </view>
+      </view>
+      <view class="order-list__ft" wx:if="{{ send_status == 1 && item.is_express == 1}}">
+        <view class="order-detail__ft">
+          <text>操作</text>
+          <button class="order-list__btn" data-orderid="{{orderid}}" bindtap="confirmReceipt" style="padding:0 14rpx;line-height:2">
+            确认收货
+          </button>
+        </view>
+      </view>
+    </view>
+    <view class="com-bom">
+      <view class="com-bom__title" style="padding:0;"></view>
+      <view class="com-list" wx:for="{{item.code}}" wx:for-item="citem" wx:if="{{order_status == 1}}">
+        <view class="com-list__lt">
+          <view class="com-list__lt-text" wx:if="{{citem.pay_status == 1}}">消费码：{{citem.code}}</view>
+          <view class="com-list__lt-text" wx:if="{{citem.pay_status == 2 || citem.pay_status == 3}}">消费码：******</view>
+          <view class="com-list__lt-code" data-code="{{citem.code}}" bindtap="showCode" wx:if="{{citem.pay_status == 1}}">
+            <image src="/images/order-code-icon.png"></image>
+            查看二维码
+          </view>
+        </view>
+        <view class="com-list__rt">
+          <text wx:if="{{citem.pay_status == 1 && !citem.use_status}}" class="{{citem.use_status?'':'green-color'}}">待消费</text>
+          <button class="order-list__btn tool-btn" data-url="../evaluate/evaluate?orderid={{orderid}}&subid={{citem.order_goods_id}}&index={{idx}}" bindtap="navigateTo" wx:if="{{citem.pay_status == 1 && citem.use_status}}">
+            去评价
+          </button>
+          <text wx:if="{{citem.pay_status == 2}}">退款中</text>
+          <text wx:if="{{citem.pay_status == 3}}">已退款</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--商家信息-->
+  <template is="bussinessInfo" data="{{...serviceInfo}}"></template>
+  <!--底栏-->
+  <!-- <view class="order-detail__bar">
+    <view class="order-detail__bar-price">
+      合计： <text>￥{{totalMoney}}</text>
+    </view>
+    <view class="detail__bar__btn">
+      <picker data-orderid="{{out_trade_no}}" bindchange="cancelOrder" value="{{index}}" range="{{cancelRenson}}" range-key="text">      
+        <view class="detail__btn detail__btn-cancel">取消订单</view>
+      </picker>
+    </view>
+    <view class="detail__bar__btn" wx:if="{{use_status == 0}}">
+      <view class="detail__btn  detail__btn-cancel" bindtap="conformOrder">申请退款</view>
+    </view>
+  </view> -->
+</view>
+<!-- <view class="code-panel__canvas" hidden="{{!showCode}}">
+  <canvas canvas-id="qrcode" />
+</view> -->
+<view class="code-panel-wrap" hidden="{{!showCode}}">
+  <view class="code-panel">
+    <view class="code-panel_close" bindtap="showCode"></view>
+    <view wx:if="{{!isImgLoad}}">
+      <image  class="load-img" mode="widthFix" src='/images/loading.gif'></image>
+    </view>
+    
+    <view class="code-wrap">
+      <image 
+        mode="widthFix"
+        class="code-img" 
+        bindload="imgLoad" 
+        src="https://api.qrserver.com/v1/create-qr-code/?download=0&margin=0&size=200x200&data={{enCode}}">
+      </image>
+    </view>
+    <text>— 商家扫消费码即可消费 —</text>
+  </view>
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

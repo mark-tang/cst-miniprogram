@@ -1,0 +1,81 @@
+<!--index.wxml-->
+
+<view class="container" wx:if="{{showPage}}">
+  <!--快递信息-->
+  <form bindsubmit="payMent" report-submit="true">
+  <view class="chose-adress arrow_right" bindtap="getAdressInfo" wx:if="{{hasSend}}">
+    <image class="adress-top-image" src="/images/adress-top.png"></image>
+    <image class="adress-image" src="/images/adress.png"></image>
+
+    <view class="chose-adress__text">
+      <view class="chose-adress__text_main">
+        <text>{{receiveData[0].name || '选择收货信息'}} </text>
+        <text wx:if="{{receiveData[0].tel}}">{{receiveData[0].tel}}</text>
+      </view>
+      <view  class="chose-adress__text_sub" wx:if="{{receiveData[0].provice && hasSend}}">
+       {{receiveData[0].provice}}{{receiveData[0].city}}{{receiveData[0].counties}}{{receiveData[0].detail_info}}
+      </view>
+    </view>
+  </view>
+  <!--自提信息-->
+  <!-- <view class="since_adress">
+    <form bindsubmit="formSubmit">
+      <view class="input-row">
+        <label>收货姓名</label>
+        <input type="text" placeholder="收货姓名"/>
+      </view>
+      <view class="input-row">
+        <label>联系电话</label>
+        <input type="tel" placeholder="联系电话"/>
+      </view>
+    </form>
+  </view> -->
+  <!--订单列表-->
+  <block wx:for="{{listData}}">
+    <view class="mall-media_wrap">
+      <view class="mall-media">
+        <view class="mall-media__lt">
+          <image mode="aspectFit" src="{{item.imgUrl}}"></image>
+        </view>
+        <view class="mall-media__rt">
+          <view class="mall-media__hd">
+            <text class="mall-media-title">{{item.name}}</text>
+          </view>
+          <view class="mall-media__bd">
+            <view class="mall-media__price">
+              <view class="mall-media__price-red">￥<text>{{item.now_price}}</text></view>
+              <view class="mall-media__price-orgin">* {{item.num}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="mall-media__footer">
+          <text>配送方式</text> 
+          <text class="express-way">{{item.express_desc}}</text>
+      </view>
+    </view>
+  </block>
+  <view class="pay-method">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.methods}}" checked="{{item.checked}}" color="#f24b4b"/>
+        {{item.value}} 
+        <text wx:if="{{item.value == '积分兑换'}}" style="font-size:24rpx;color:#666">({{listData[0].integral}}积分)</text>
+      </label>
+    </radio-group>
+  </view>
+  <!--bar-->
+  <view class="shop-bar">
+    <view class="shop-bar__text" wx:if="{{methods !=3}}">
+      合计：<text class="shop-bar__text-price">￥{{totalMoney}}</text>
+    </view>
+    <view class="shop-bar__text" wx:if="{{methods ==3}}">
+      合计：<text class="shop-bar__text-price">{{listData[0].num * listData[0].integral}} 积分</text>
+    </view>
+    <view class="shop-bar__handle">
+      <button class="shop-bar__btn" formType="submit" disabled="{{isPaying}}">{{payBtnText}}</button>
+    </view>
+  </view>
+  </form>
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

@@ -1,0 +1,49 @@
+.appoint-detail-status{
+  background: #FFF;
+  display: flex;
+  padding: 40rpx 25rpx;
+  text-align: center;
+  justify-content: center;
+}
+
+.appoint-detail-status text{
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+  font-size: 36rpx;
+}
+/*列表*/
+.appoint-detail-list{
+  background: #FFF;
+  padding: 24rpx 20rpx;
+  display: flex;
+}
+.appoint-detail-list image{
+  width: 32rpx;
+  height: 32rpx;
+  display: block;
+}
+.appoint-detail-list text{
+  /*height: 32rpx;*/
+  line-height: 42rpx;
+  font-size: 28rpx;
+  color: #333;
+  width: 90%;
+}
+.appoint-detail-list .appoint-detail-list-title{
+  font-size: 28rpx;
+  color: #9b9b9b;
+  width: 20%;
+  padding: 0 20rpx;
+}
+.appoint-detail-table{
+  width: 80%;
+}
+.appoint-detail-table text{
+  display: block;
+  padding-bottom: 20rpx;
+}
+.appoint-detail-table text:last-child{
+  padding-bottom: 0;
+}
+

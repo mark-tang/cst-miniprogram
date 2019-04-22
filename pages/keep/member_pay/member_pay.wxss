@@ -1,0 +1,4 @@
+/* pages/keep/member_pay/member_pay.wxss */
+picker {
+  width:100%;
+}

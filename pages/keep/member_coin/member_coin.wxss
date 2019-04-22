@@ -1,0 +1,127 @@
+/* pages/keep/member_coin/member_coin.wxss */
+
+.coin-card{
+  background: #FFF;
+  width: 96%;
+  margin: 0 auto;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 5rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+.coin-title{
+  text-align: center;
+  padding: 14rpx 0;
+}
+.coin-title__hd{
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #228ade;
+}
+.coin-title__bd{
+  font-size: 24rpx;
+}
+.coin-process{
+  padding: 25rpx 0;
+}
+.process-outer{
+  background: rgba(0, 0, 0, 0.1);
+  height: 20rpx;
+  width: 98%;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  position: relative;
+}
+.process-inner{
+  width: 100rpx;
+  height: 20rpx;
+  border-radius: 50px;
+  background: #228ade;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.coin-tips{position: relative}
+.intoShop{position: absolute;right:10rpx;top:20rpx;width:140rpx;height:46rpx;background: #228ade;border-radius: 6rpx;line-height: 46rpx;color:#fff;font-size:24rpx;text-align: center}
+.process-text{
+  width: 94%;
+  margin: 0 3%;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 46rpx;
+  line-height: 46rpx;
+}
+.process-text .active{
+  color: #3f69f7;
+}
+.process-next{
+  font-size: 24rpx;
+  padding-top: 20rpx;
+}
+.process-next text{
+  color: #3f69f7;
+}
+.coin-tips-title{
+  font-size: 24rpx;
+  color: #3f69f7;
+  padding: 26rpx 0 6rpx;
+}
+.coin-tips-item {
+  font-size: 24rpx;
+  color: #999;
+  padding: 20rpx 0;
+}
+
+/*记录*/
+.coin-record-title{
+  font-size: 32rpx;
+  padding: 30rpx 15rpx;
+}
+.coin-record{
+  display: flex;
+  justify-content: space-between;
+  padding: 0rpx 20rpx;
+}
+.coin-record__bd{
+  padding: 15rpx 20rpx 30rpx;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.coin-record__bd::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 10px;
+  height: 10px;
+  background: #FFF;
+  border-radius: 50px;
+  border: 1rpx solid #3f69f7;
+}
+.coin-text-main{
+  font-size: 28rpx;
+  padding: 8rpx 0;
+}
+.coin-text-sub{
+  font-size: 28rpx;
+  color: #999;
+}
+.coin-record__ft{
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+}
+.coin-record__ft.text-plus{
+  color: green;
+}
+.coin-record__ft.text-minus{
+  color: #ff7b52;
+}
+
+.exchange-balance{
+  font-size: 28rpx;
+  text-align: center;
+  padding: 30rpx 0;
+  color: #3f69f7;
+}

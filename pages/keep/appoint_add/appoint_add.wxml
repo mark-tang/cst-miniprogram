@@ -1,0 +1,67 @@
+<!--add_car.wxml-->
+
+<view class="container" wx:if="{{showPage}}">
+  <view class="appoint-top-tips" wx:if="{{showTips}}">
+    <view class="appoint-top-tips-text">
+      <text class="tips-main-text">{{tipstext}}</text>
+      <view>
+        提前<text wx:if="{{tipsTime==0?false:true}}">{{tipsTime}}小时</text>预约，方可享受此优惠  
+      </view>
+    </view>
+    <view class="appoint-top-tips-status">
+      <text>生效中</text>
+    </view>
+    <image src="../../../images/appoint-top.png"></image>
+  </view>
+  <form class="form-body" bindsubmit="submitForm" report-submit="true">
+    <view class="form-section">
+      <view class="form-label">预约车辆</view>
+      <picker bindchange="carNumbersPicker" value="{{carNumbersIndex}}" range="{{carNumbers}}" range-key="car_model_name">
+        <view class="input-select-view">
+          {{carNumbers[carNumbersIndex].car_model_name}} 
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view><view class="form-section">
+      <view class="form-label">车主姓名</view>
+      <input name="name" value="{{name}}" placeholder="请输入联系人（必填）" placeholder-class ="gray-style" maxlength="11"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">联系电话</view>
+      <input type="number" value="{{phoneNum}}" name="phone" placeholder="请输入联系电话（必填）" placeholder-class ="gray-style" maxlength="11"/>
+    </view>
+    <view class="form-cutline"></view>
+    <view class="form-section">
+      <view class="form-label">到店时间</view>
+      <view class="input-select-view" bindtap="navigateTo" data-url="../appoint_time/appoint_time?activeDate={{childActiveDate}}&activeTitle={{childActiveTitle}}&fullDate={{childFullDate}}">
+        {{timeToStore}}
+      </view>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section" wx:if="{{isChosedTime}}">
+      <view class="form-label">预约优惠</view>
+      <view class="input-select-view">{{discountContent || '此时段暂无优惠'}}</view>
+    </view>
+    <view class="form-section">
+      <view class="form-label">服务类别</view>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{serviceType}}" wx:key="{{index}}">
+          <radio value="{{item.value}}" checked="{{item.checked}}" color="#228ade"/>{{item.name}}
+        </label>
+      </radio-group>
+    </view>
+    <view class="fixed-btn">
+      <button 
+        type="primary" 
+        class="confirm-sub-btn" 
+        bindtap="navigateTo" 
+        data-url="../next_keep_add/next_keep_add"
+        wx:if="{{isFrom}}"
+        >我已保养</button>
+
+      <button type="primary" class="confirm-btn" form-type="submit"  disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '提交'}}
+      </button>
+    </view>  
+  </form >
+</view>

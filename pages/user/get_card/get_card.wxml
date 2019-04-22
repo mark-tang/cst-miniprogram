@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+  <form class="form-body" bindsubmit="submitForm">
+  <view class="coupon-list-wrap" style="height:{{windowHeight}}px">
+    <view class="apply-from">
+      <view class="coupon-list canUse" data-code='{{item.wx_coupon_id}}' wx:for="{{cardList}}" wx:key="index" data-item="{{item}}" data-index="{{index}}" >
+      <view class="coupon-list-left">
+        <view class="coupon-left-title">{{item.title}}</view>
+        <!-- <view class="coupon-left-cell">卡券类型{{item.card_type}}</view> -->
+        <view class="coupon-left-cell ellipsis-span">卡券价值：{{item.value_info}}</view>
+        <view class="coupon-left-cell">{{item.effect_date_desc}}</view>
+      </view>
+      <view class="coupon-list-right">
+        <view class="coupon-right-money">
+          {{item.right_desc}}
+        </view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class="fixed-btn">
+    <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+      {{isSubmit? '领取中...': '领取到卡包'}}
+    </button>
+  </view>
+  </form>
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

@@ -1,0 +1,153 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 0;
+}
+.tuan-top{
+  background: #FFF;
+  padding: 40rpx 0;
+}
+.tuan-top image{
+  width: 100%;
+}
+.tuan-flow{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tuan-flow text{
+  font-size: 28rpx;
+  color: #999;
+  padding-top: 10rpx;
+}
+.mall-media__lt{
+  height: 160rpx;
+  width: 160rpx;
+}
+.mall-media__lt image{
+  height: 160rpx;
+  width: 160rpx;
+}
+.mall-media{
+  margin-top: 20rpx;
+}
+.tuan-status{
+  width: 100%;
+  text-align: center;
+  background: #FFF;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.tuan-tool{
+  display: flex;
+}
+.tuan-tool button{
+  width: 40%;
+  font-size: 28rpx;
+  line-height: 2.8;
+  border-radius: 2px;
+  background: #FFF;
+  color: #666;
+  border:1rpx solid #c7c7c7;
+}
+.tuan-tool button::after{
+  border: 1px solid #FFF;
+  background: none;
+  display: none;
+}
+.tuan-tool button.tuan-btn_red{
+  color: #FFF;
+  background: #f24b4b;
+  border: 1rpx solid #f24b4b; 
+}
+.status-main{
+  font-size: 32rpx;
+  padding-bottom: 30rpx;
+}
+.status-main text{
+  color: #f24b4b;
+}
+.tuan-tips{
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+  margin: 30rpx 0;
+}
+/*参团记录*/
+.business-info__bd{
+  padding: 0;
+  padding-left: 20rpx;
+  display: block;
+}
+.record-list{
+  display: flex;
+  align-items:center;
+  border-bottom: 1rpx solid #ededed;
+  width: 100%;
+  padding: 15rpx 20rpx;
+  padding-left: 0;
+  box-sizing: border-box;
+}
+.record-list__lf{
+  width: 110rpx;
+  height: 110rpx;
+}
+.record-list__lf image{
+  width: 90rpx;
+  height: 90rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 1;
+}
+.record-list__mid{
+  width: 100%;
+  font-size: 30rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+.record-list__name text{
+  color: #FFF;
+  font-size: 24rpx;
+  background: #f24b4b;
+  border-radius: 4rpx;
+  padding: 0rpx 6rpx;
+  margin-left: 10rpx;
+}
+.record-list__time{
+  color: #999;
+  font-size: 24rpx;
+}
+.record-list__rt{
+  width: 140rpx;
+  text-align: center;
+  flex-shrink: 1;
+  color: #999;
+  font-size: 26rpx;
+}
+
+
+/*倒计时*/
+.cell_cut-down{
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 5rpx;
+}
+.cell_cut-down view{
+  display: inline;
+}
+.cell_cut-down text{
+  background-color: #f24b4b;
+  color: #FFF;
+  font-size: 32rpx;
+  padding: 5rpx 5rpx;
+  min-width: 40rpx;
+  display: inline-block;
+  text-align: center;
+  border-radius: 5rpx;
+  line-height: 1.2;
+}
+
+.text-red{
+  color: #f24b4b
+}

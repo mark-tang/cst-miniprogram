@@ -1,0 +1,51 @@
+<view class='container' wx:if="{{showPage}}">
+  <view class='member-top-wrap'>
+    <view class='member-top top-color' wx:if="{{!isImg}}" style="background:{{cardBackground}}">
+      <view class='company'>
+        <image src='{{company.logo}}'></image>
+        <text>{{company.name}}</text>
+      </view>
+      <view class='member-info' style='font-weight:bold;'>{{memberInfo.name}}</view>
+      <view class='member-info-wrap'>
+        <view class='member-info'>车牌：{{memberInfo.licensePlateNumber}}</view>
+        <view class='member-info'>手机号：{{memberInfo.phone}}</view>
+      </view>
+    </view>
+    <view class='member-top top-img' wx:if="{{isImg}}" style="background-image:{{cardBackground}}">
+      <view class='company'>
+        <image src='{{company.logo}}'></image>
+        <text>{{company.name}}</text>
+      </view>
+      <view class='member-info' style='font-weight:bold;'>{{memberInfo.name}}</view>
+      <view class='member-info-wrap'>
+        <view class='member-info'>车牌：{{memberInfo.licensePlateNumber}}</view>
+        <view class='member-info'>手机号：{{memberInfo.phone}}</view>
+      </view>
+      <image class="card-back-img" src="{{cardBackground}}"></image>
+    </view>
+
+  </view>
+  <view class='balance' wx:if="{{memberInfo.isOpen==0}}">
+    <view class='balance-text'>余额：￥{{memberInfo.balance}}</view>
+    <view class="group-btn balance-btn">
+      <button type="primary"
+        data-url="../member_charge/member_charge" 
+        bindtap="navigateTo">充值</button>
+      <button type="secondary"
+        data-url="../member_pay/member_pay" 
+        bindtap="navigateTo">付款</button>
+    </view>
+  </view>
+  <view class="weui-cells">
+    <view class="weui-cell weui-cell_access" data-url="../member_service/member_service" bindtap="navigateTo">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd">会员权益</view>
+      <view class="weui-cell__ft"></view>
+    </view>
+    <view class="weui-cell weui-cell_access" data-url="../member_coin/member_coin?coin={{memberInfo.integral}}&growth={{memberInfo.growth}}&name={{integralAlias}}" bindtap="navigateTo">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd">我的{{integralAlias}}:{{memberInfo.integral}} 等级:（{{memberInfo.levelName}}）</view>
+      <view class="weui-cell__ft"></view>
+    </view>
+  </view>
+</view>

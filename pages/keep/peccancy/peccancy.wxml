@@ -1,0 +1,52 @@
+<view class="container  form-hasfixedBtn">
+  <view 
+   class="peccency-list" 
+   wx:for="{{queryData}}"
+   wx:key="carNum" 
+   id="{{index}}"   
+   bindtouchstart="drawStart" 
+   bindtouchmove="drawMove" 
+   bindtouchend="drawEnd" 
+   style="right:{{item.right}}rpx"
+   >
+  <view class="classname"
+   data-id="{{item.id}}"
+   data-chepai="{{item.chepai}}" 
+   data-count="{{item.peccancy.rule_count}}" 
+   data-point="{{item.peccancy.total_point}}" 
+   data-money="{{item.peccancy.total_money}}"  
+   bindtap="detailHref"
+   >
+    <view class="pec-list-carNum">{{item.chepai}}</view>
+    <view class="pec-list-vice">违章<text>{{item.peccancy.rule_count}}</text>次 
+      扣分<text>{{item.peccancy.total_point}}</text>分 
+      罚款<text>{{item.peccancy.total_money}}</text>元
+    </view>
+    <view class="arrow-right">
+       <image src="../../../images/arrow-right.png"></image>
+    </view>
+  </view>
+    <view class="list-handle">
+      <view
+      class="list-handle-cell edit"
+      data-id="{{item.id}}" 
+      data-index="{{index}}"
+      data-chepai="{{item.chepai}}"
+      data-carcode="{{item.carcode}}"
+      data-cardrivenumber="{{item.cardrivenumber}}"
+      bindtap="editHref">编辑</view> 
+      <view 
+      id="{{index}}"  
+      class="list-handle-cell remove" 
+      data-index="{{item.id}}"
+      bindtap="delItem">删除</view> 
+    </view>
+  </view>
+  <view class="empty-list" wx:if="{{showEmpty}}">
+    <image class="empty-list-icon" src="../../../images/icon-empty-list.png"></image>
+    <text>您还没有添加车辆</text>
+  </view>
+  <view class="fixed-btn">
+    <button type="primary" bindtap="addHref"><span>+ </span>添加车辆</button>
+  </view>
+</view>

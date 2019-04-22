@@ -1,0 +1,75 @@
+page{
+  background: #228ade;
+}
+.road-help-wait{
+  margin-top:60rpx;
+}
+.road-help-wait>image{
+  width: 100%;
+  height: 614rpx;
+  position: absolute;
+  top: 60rpx;
+  left: 0;
+  z-index: -1;
+}
+.help-wait-text{
+  text-align: center;
+  color: #FFF;
+  font-size: 36rpx;
+  height: 614rpx;
+  padding-top:190rpx;
+  box-sizing: border-box;
+}
+.help-wait-time{
+  display: block;
+  font-size: 90rpx;
+  padding: 30rpx 0 20rpx 0; 
+  font-weight: bold;
+}
+.help-wait-tips{
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  display: block;
+  padding: 20rpx 0;
+  color: rgba(255, 255, 255, .5);
+}
+.help-wait-tips-image{
+  width: 77rpx;
+  height: 18rpx;
+  padding: 0 5rpx;
+}
+.help-wait-handle{
+  padding: 30rpx 120rpx;
+}
+.help-wait-btn{
+  margin: 40rpx 0;
+  border-radius: 100rpx;
+}
+.help-wait-btn1{
+  color: #228ade;
+}
+.help-wait-btn2{
+  color: #FFF;
+  background: #228ade;
+  border: 1rpx solid #FFF;
+}
+.help-wait-comple{
+  text-align: center;
+  color: #FFF;
+  padding-top: 160rpx;
+}
+.help-wait-comple-main{
+  font-size: 40rpx;
+  padding-top: 20rpx;
+  font-weight: bold;
+}
+.help-wait-comple-sub{
+  font-size: 34rpx;
+  padding-top: 12rpx;
+}
+
+button[disabled][type="default"], wx-button[disabled]:not([type]) {
+  color:rgba(255, 255, 255, .6);
+  background-color:#3f69f7;
+}

@@ -1,0 +1,23 @@
+<view class="container" wx:if="{{showPage}}">
+    <view class="advisor-list-wrap">
+      <view class="advisor-list">
+        <image class="advisor-head" src="{{advisorList.avatar || '/images/head.png'}}"></image>
+        <text class="advisor-name">{{advisorList.nickName}}</text>
+        <text class="advisor-mobile">{{advisorList.au_Tel}}</text>
+        <view class="advisor-list-bar">
+          <view class="advisor-list-bar-cell" data-num="{{advisorList.au_Tel}}" bindtap="callNum">
+            <image src="../../../images/advisor-call.png"></image>
+            <text>打电话</text>
+          </view>
+          <view class="advisor-list-bar-cell" data-url="../../keep/advisor_evaluate/advisor_evaluate?id={{advisorList.au_id}}&type=2" bindtap="navigateTo">
+            <image src="../../../images/advisor-eva.png"></image>
+            <text>点评</text>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+  <view class="empty-list" wx:if="{{showEmpty}}">
+    <image class="empty-list-icon" src="../../../images/icon-empty-list.png"></image>
+    <text>您还没有销售顾问!</text>
+  </view>

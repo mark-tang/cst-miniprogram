@@ -1,0 +1,120 @@
+.sign-container{
+  position: relative;
+}
+.sign-banner{
+  width: 90%;
+  height: 16rpx;
+  position: absolute;
+  left: 5%;
+  top: -12rpx;
+  background: #2544af;
+  border-radius: 20rpx 20rpx 10rpx 10rpx;
+  box-shadow: 0 -2rpx 0rpx 10rpx #3f69f7;
+  z-index: 0;
+}
+.sign{
+  width: 86%;
+  margin: 60rpx auto 0rpx;
+  border-radius:  0rpx 0rpx 8rpx 8rpx;
+  background: #FFF;
+  box-shadow: 0 8rpx 12rpx rgba(0, 0, 0, .1);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+    
+.sign__hd{
+  padding: 40rpx 0
+}     
+.sign-icon{
+  height:120rpx;
+  width:120rpx;
+}      
+.sign-status{
+  font-size:40rpx;
+  font-weight:bold;
+}     
+.sign-status.sign-status-success{
+  color: #33b719;
+} 
+.sign-status.sign-status-warn{
+  color: #ff5a16;
+}      
+.sign__bd{
+  position:relative;
+  padding: 40rpx 0;
+  border-top:2rpx solid rgba(0,0,0,0.06);
+}   
+.sign-title{
+  font-size:36rpx;
+  font-weight:bold;
+  padding:20rpx 0;
+}
+        
+.sign-input{
+  background-color:#f7f7f7;
+  width: 70%;
+  margin: 30rpx auto;
+  padding:20rpx;
+  border-radius: 100rpx;
+  text-align: left;
+  font-size: 28rpx;
+}
+        
+.sign__ft{
+  position: relative;
+  border-top: 2rpx solid rgba(0,0,0,0.06);
+}
+      
+.sign-form-wrap{
+  padding: 20rpx;
+}
+    
+.sign-form{
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  display: flex;
+}
+  
+.sign-form__hd{
+  width: 30%;
+  text-align: center;
+  color: #666;
+}
+  
+.sign-form__bd{
+  width: 70%;
+  text-align: left;
+  padding: 0 20rpx;
+}
+      
+.sign-btn{
+  color: #FFF;
+  background: #228ade;
+  width: 70%;
+  padding: 10rpx;
+  border-radius: 100rpx;
+  font-size: 28rpx;
+  margin: 40rpx auto;
+}
+  
+.sign-btn:active{
+  background: #284fd2;
+}
+      
+.sign-pay{
+  line-height: 60rpx;
+  padding: 40rpx 60rpx 0;
+  font-size: 12px;
+  color: #FFF;
+  background: #c7c7c7;
+  position: absolute;
+  top: -28rpx;
+  left: -72rpx;
+  transform: rotate(-45deg);
+}
+  
+.sign-pay.sign-active{
+   background: #FF0000;
+}
+   

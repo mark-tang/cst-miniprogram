@@ -1,0 +1,136 @@
+@import "../../keep/index/index.wxss";
+page{
+  position: relative;
+}
+.appoint-top-tips{
+  margin: 20rpx;
+  position: relative;
+  display: flex;
+  padding: 35rpx;
+}
+.appoint-top-tips-text{
+  width: 80%;
+}
+.appoint-top-tips-status{
+  width: 20%;
+  text-align: center;
+  color: #FFF;
+  font-size: 32rpx;
+  position: relative;
+} 
+.appoint-top-tips-status text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  white-space: nowrap;
+}
+.appoint-top-tips-text .tips-main-text{
+  display: block;
+  font-size: 36rpx;
+  color: #FFF;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.appoint-top-tips-text view{
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, .8);
+  margin-top: 15rpx;
+}
+.appoint-top-tips image{
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 160rpx;
+  top: 0;
+  left: 0;
+}
+/*表单*/
+.form-body{
+  margin-top: 50rpx;
+}
+picker{
+  width: 100%;
+}
+.type-picker{
+  width: 100%;
+  text-align: right;
+  line-height: 1.4rem;
+  padding-right:30rpx;
+  box-sizing: border-box;
+}
+/*到店时间选择*/
+.we-picker{
+  width: 100%;
+  border: 1px solid #EFEFEF;
+  bottom: 0rpx;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  background: #FFF;
+}
+picker-view{
+  height: 520rpx;
+}
+picker-view-column view{
+  line-height: 50px;
+  text-align: center;
+}
+.come-time{
+  width: 100%;
+  text-align: right;
+  line-height: 1.4rem;
+  padding-right:30rpx;
+  box-sizing: border-box;
+}
+.we-picker-handle{
+  display: flex;
+  justify-content: space-between; 
+  font-size: 30rpx;
+}
+.we-picker-handle text{
+  color: #333;
+  padding: 20rpx 25rpx;
+}
+.we-picker-handle text:last-child{
+  color: #3983fb;
+}
+
+/*活动横幅*/
+.car-top{
+  height: 150rpx;
+}
+.car-top > image{
+  margin-top: -50rpx;
+  height: 100rpx;
+  width: 100rpx;
+  box-shadow:0 0 0 0 #FFF;
+}
+.car-top .text-mian{
+  top: 35rpx;
+  left: 170rpx;
+}
+.car-top .text-sub{
+  left: 170rpx;
+  bottom: 35rpx;
+}
+
+.radio-group{
+  width: 100%;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fixed-btn{
+  flex-direction:column;
+}
+.fixed-btn button{
+  margin: 15rpx;
+}
+button[type="primary"].confirm-sub-btn {
+  background: #FFF;
+  color: #228ade;
+}

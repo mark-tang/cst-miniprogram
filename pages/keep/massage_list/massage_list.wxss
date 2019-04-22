@@ -1,0 +1,85 @@
+.card:active{
+  background: #FFF
+}
+.time-badge {
+  margin: 20rpx auto;
+  text-align: center;
+}
+.card__cover{
+  padding-top:20rpx; 
+}
+
+.card-singe{
+  padding: 20rpx;
+}
+.card-singe:active{
+  background: #ededed;
+}
+.card-singe-text{
+  padding: 20rpx;
+  font-size: 32rpx;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.card-singe-img image{
+  width: 100%;
+}
+.card-singe-con{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1.6;
+}
+
+.card-many-list{
+  display: display;
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid #ededed;
+}
+.card-many-list:active{
+  background: #ededed;
+}
+.card-many-list:last-child{
+  border-bottom: 0rpx solid #FFF;
+}
+.card-many-text{
+  padding: 10rpx 0;
+  font-size: 32rpx;
+  line-height: 1.4;
+  font-weight: bold;
+}
+.card-many-img{
+  
+}
+.card-many-img image{
+  
+}
+.card-many-sub{
+  display: flex;
+}
+.card-many-sub .card-many-text{
+  width: 100%;
+  font-size: 28rpx;
+}
+.card-many-sub .card-many-img{
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+}
+.card-many-sub .card-many-img image{
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+}
+.card-many-list.card-many-main{
+
+}
+.loadover{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center; 
+  color: #999;
+  font-size: 28rpx;
+  padding-bottom: 50rpx;
+}

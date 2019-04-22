@@ -1,0 +1,18 @@
+/* pages/keep/member_service/member_service.wxss */
+.service-title{
+  text-align: center;
+  font-size: 32rpx;
+}
+.service-item{
+  width: 92%;
+  margin: 15rpx auto;
+  font-size: 28rpx;
+}
+.service-item__hd{
+  font-size: 32rpx;
+  padding: 10rpx 0;
+}
+.service-item__bd{
+  font-size: 24rpx;
+  color: #999;
+}

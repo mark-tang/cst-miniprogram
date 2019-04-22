@@ -1,0 +1,21 @@
+.history-list{
+  padding-top: 24rpx;
+}
+.list{
+  padding: 0 20rpx;
+}     
+        
+.item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 1px solid #f8f8f8;
+}
+.item-amount, .item-time{
+  font-size: 28rpx;
+  color: #666;
+}
+.item-time{
+  color: #999;
+}

@@ -1,0 +1,24 @@
+<view class="container">
+  <form class="form-body" bindsubmit="submitForm">
+    <view class="form-section">
+      <view class="form-label">{{type==1?'上次投保时间':'保险到期时间'}}</view>
+
+      <picker class="select-date" mode="date" value="{{date}}" start="2000-01-01" end="{{nowDate}}" bindchange="bindDateChange">
+        <view class="input-select-view">
+          {{dateTips}}{{keepDate}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+
+    <view class="normal-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '提交'}}
+      </button>
+    </view>
+    <view class="tips" wx:if="{{type==1}}">
+      <text>温馨提示：</text>您可根据实际情况，为爱车添加保险购买记录，我们会根据您的购买时间，及时提醒您续保。
+    </view>
+  </form>
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

@@ -1,0 +1,25 @@
+
+<view class="road-help-wait">
+  <view class="help-wait-text" wx:if="{{!isComple}}">
+    <text>{{hdText}}</text>
+    <text class="help-wait-time">{{waitTime}}</text>
+    <view class="help-wait-tips">
+      <image class="help-wait-tips-image" src="../../../images/help-wait-tips-left.png"></image>
+      {{ftText}}
+      <image class="help-wait-tips-image" src="../../../images/help-wait-tips-right.png"></image>
+    </view>
+  </view>
+
+  <view class="help-wait-comple" wx:if="{{isComple}}">
+    <icon type="success" color="white" size="80"/>
+    <view class="help-wait-comple-main">救援完成</view>
+    <view class="help-wait-comple-sub">感谢使用，祝您一路平安！</view>
+  </view>
+
+  <image mode="aspectFit" src="../../../images/help-bac.png" wx:if="{{!isComple}}"></image>
+  <view class="help-wait-handle" wx:if="{{!isComple}}">
+   <button class="help-wait-btn help-wait-btn1" bindtap="callNum">拨打电话</button>
+   <button class="help-wait-btn help-wait-btn2" bindtap="cancelHelp" disabled="{{isDisabled}}">取消救援</button> 
+  </view>
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

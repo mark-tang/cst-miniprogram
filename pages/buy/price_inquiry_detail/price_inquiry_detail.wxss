@@ -1,0 +1,21 @@
+.top-tip {
+  padding: 50rpx 30rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.top-tip__icon {
+  width: 62rpx;
+  height: 62rpx;
+  margin-right: 20rpx;
+}
+.top-tip__text {
+  flex: 1;
+  font-size: 34rpx;
+  color: #333;
+}
+
+.weui-cells {
+  font-size: 28rpx;
+  color: #1a1a1f;
+}

@@ -1,0 +1,5 @@
+@import "/utils/mall.wxss";
+.container{
+  padding: 0;
+  padding-bottom: 120rpx;
+}

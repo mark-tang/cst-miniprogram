@@ -1,0 +1,22 @@
+<!--pages/user/jike/payment/payment.wxml-->
+<view class='jike-name' data-code="123456" bindtap='showCode'>
+  <image src='{{data.company_logo}}'></image>
+  <text>{{data.active_name}}</text>
+</view>
+<view class='payment-tips'>
+  <image class="payment-icon" src="/images/icon-success.png"></image>
+  <view class='payment-main'>报名成功</view>
+  <view class='payment-sub' wx:if="{{options.isFail == 'false'}}">成功支付{{options.payAmount}}元</view>
+  <view class='payment-sub' wx:else>未完成支付,请<text bindtap="goPay">重新支付</text></view>
+</view>
+<view class='jike-info'>
+  <view class='jike-info-cell'>
+    <text>经销商:</text> {{data.company_name}}
+  </view>
+  <view class='jike-info-cell'>
+    <text>时间:</text> {{data.dateline}}
+  </view>
+  <view class='jike-info-cell'>
+    <text>地址:</text> {{data.active_address}}
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<!--pages/keep/member_pay/member_pay.wxml-->
+<view class="container">
+  <form class="form-body" bindsubmit="submitForm" report-submit="true">
+    <view class="form-section">
+      <view class="form-label">消费金额</view>
+      <input type="digit" name="amount" placeholder="请输入金额" placeholder-class ="gray-style" maxlength="8"/>
+      <text class="form-unit">元</text>
+    </view>
+    <view class="form-section">
+      <view class="form-label">支付方式</view>
+      <picker bindchange="typePicker" value="{{payIndex}}" range="{{payMethods}}">
+        <view class="input-select-view">
+          {{payMethods[payIndex]}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea name="remark" class="weui-textarea" placeholder="备注信息" />
+        </view>
+      </view>
+    </view>
+    <view class="normal-btn">
+      <button type="primary" class="confirm-btn" form-type="submit"  disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '确定'}}
+      </button>
+    </view>  
+  </form >
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

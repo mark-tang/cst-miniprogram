@@ -1,0 +1,7 @@
+/* pages/buy/sales_promotion_list/sales_promotion_list.wxss */
+.navbar{
+  height: auto;
+}
+.tab{
+  
+}

@@ -1,0 +1,32 @@
+/* pages/user/jike/payment/payment.wxss */
+
+@import '../index/index.wxss';
+
+.payment-tips{
+  padding: 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFF;
+  border-bottom: 1rpx solid #F1F1F1;
+}
+.payment-icon{
+  height: 120rpx;
+  width: 120rpx;
+  padding: 20rpx 0;
+}
+.payment-main{
+  font-size: 44rpx;
+  font-weight: bold;
+}
+.payment-sub{
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #666;
+  padding: 20rpx 0;
+}
+.payment-sub text{
+  color: #F00;
+}

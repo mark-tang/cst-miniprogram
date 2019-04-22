@@ -1,0 +1,84 @@
+.container{
+  width: 100%;
+  overflow: hidden;
+}
+.peccency-list{
+  width: 100%;
+  height: 200rpx;
+  position: relative; 
+  margin-top: 10rpx;
+  background: #FFF;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.peccency-list .list-handle{
+    width: 280rpx;
+    height: 200rpx;
+    line-height: 200rpx;
+    position: absolute;
+    top: 0;
+    right: -280rpx;
+    display: flex;
+    font-size: 30rpx;
+}
+.list-handle-cell{
+  width: 50%;
+  text-align: center;
+  color: #FFF;
+}
+.peccency-list .list-handle .edit{  
+  background: #3f69f7;
+}
+.peccency-list .list-handle .remove{
+  background: #ff5a16;
+}
+.pec-list-carNum{
+  font-size: 34rpx;
+  font-weight: bold;
+  padding-bottom: 15rpx;
+  margin-top: 25rpx;
+}
+.pec-list-vice{
+  font-size: 26rpx;
+  color: #666;
+  padding:10rpx 0 ;
+}
+.pec-list-vice text{
+  color: #f91540;
+}
+
+.peccency-list image{
+  width: 54rpx;
+  height: 54rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -37rpx;
+  right: 60rpx;
+}
+/*列表*/
+.peccency-detail{
+  background: #FFF;
+  margin: 20rpx;
+}
+.peccency-detail-title{
+  border-bottom: 1rpx solid #f8f8f8;
+  padding: 15rpx;
+  line-height: 45rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.peccency-detail-title text{
+  color: #666;
+  float: right;
+  font-size: 24rpx;
+  font-weight: normal;
+}
+.peccency-detail-con{
+  padding: 15rpx;
+}
+.peccency-detail-con-cell{
+  font-size: 28rpx;
+  padding: 10rpx 0;
+}

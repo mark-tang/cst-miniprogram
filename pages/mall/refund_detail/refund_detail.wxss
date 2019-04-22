@@ -1,0 +1,58 @@
+@import "/utils/mall.wxss";
+
+.refund-detail{
+  width: 100%;
+  background: #FFF;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+.refund-detail__hd{
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ededed;
+}
+.refund-detail__li{
+  height: 60rpx;
+  line-height: 60rpx;
+  display: flex;
+}
+.refund-detail__li-title{
+  width: 200rpx;
+}
+.red-color{
+  color: #e54b44;
+}
+.refund-detail__bd{
+  padding: 20rpx;
+  padding-left: 30rpx;
+}
+.refund-detail__list{
+  border-left: 2rpx solid #e54b44;
+  padding:0rpx 0rpx 10rpx 30rpx; 
+  position: relative;
+}
+.refund-detail__list:last-child{
+  padding-bottom: 0rpx;
+}
+.refund-detail__list:last-child .refund-detail__list-subTitle{
+  padding-bottom: 5rpx;
+}
+.refund-detail__list::before{
+  content: '';
+  position: absolute;
+  width:20rpx;
+  height: 20rpx;
+  background: #e54b44;
+  border-radius: 50%;
+  left: -14rpx;
+  top: 0rpx;
+  border: 4rpx solid #FFF;
+  box-shadow: 0 0 0 2rpx #e54b44;
+}
+.refund-detail__list-title{
+  height: 50rpx;
+  margin-top:0rpx;
+}
+.refund-detail__list-subTitle{
+  color: #999;
+  padding-bottom: 20rpx;
+}

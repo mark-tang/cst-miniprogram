@@ -1,0 +1,62 @@
+@import '../index/index.wxss';
+
+.add-car:active {
+  background: #dcdcdc;
+}
+
+picker {
+  position: relative;
+}
+picker::after {
+  content:" ";
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  height:1px;
+  border-top:1px solid #e5e5e5;
+  color:#e5e5e5;
+  -webkit-transform-origin:0 0;
+  transform-origin:0 0;
+  -webkit-transform:scaleY(0.5);
+  transform:scaleY(0.5);
+  z-index:2;
+}
+
+/*到店时间选择*/
+.we-picker{
+  width: 100%;
+  border: 1px solid #EFEFEF;
+  bottom: 0rpx;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  background: #FFF;
+}
+picker-view{
+  height: 520rpx;
+}
+picker-view-column view{
+  line-height: 50px;
+  text-align: center;
+}
+.come-time{
+  width: 100%;
+  text-align: right;
+  line-height: 1.4rem;
+  padding-right:30rpx;
+  box-sizing: border-box;
+}
+.we-picker-handle{
+  display: flex;
+  justify-content: space-between; 
+  font-size: 30rpx;
+}
+.we-picker-handle text{
+  color: #333;
+  padding: 20rpx 25rpx;
+}
+.we-picker-handle text:last-child{
+  color: #3983fb;
+}

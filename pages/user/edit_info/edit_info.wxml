@@ -1,0 +1,83 @@
+<view class="container">
+  <form class="form-body" bindsubmit="submitForm">
+    <!--<text class="form-title-tips">个人信息</text> -->
+    <view class="form-section">
+      <view class="form-label">客户姓名</view>
+      <input name="name" value="{{base.archive.name}}" placeholder="请输入车主姓名(必填)" placeholder-class="gray-style" bindinput="inputName" />
+    </view>
+    <view class="form-section">
+      <view class="form-label">性别</view>
+      <view class="input-select-view" style='height:auto'>
+        <radio-group class="radio-group" name="sex" bindchange="radioChange">
+          <label class="radio radio24">
+            <radio checked="true" color="#228ade" checked="{{base.archive.sex==1}}" value='1' />男
+          </label>
+          <label class="radio">
+            <radio color="#228ade" value='2' checked="{{base.archive.sex==2}}" />女
+          </label>
+        </radio-group>
+
+      </view>
+
+    </view>
+    <view class="form-section">
+      <view class="form-label">出生日期</view>
+      <picker class="select-date" value="{{base.archive.birthday}}" name="birthday" mode="date" start="1900-01-01" end="{{nowDate}}" bindchange="getLicenseDate">
+        <view class="input-select-view input-select-view1">
+          {{licenseDate}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section">
+      <view class="form-label">手机号码</view>
+      <input type="number" value="{{base.archive.tel}}" name="phone" placeholder="请输入车主手机号(必填)" placeholder-class="gray-style" maxlength="11" bindinput="inputMoblie" />
+    </view>
+    <view class="form-section margin24">
+      <view class="form-label">当前在用车辆</view>
+      <view class="input-select-view input-select-view1">
+        <picker bindchange="bindCarChange" value="{{carIndex}}" range="{{Lpns}}" range-key="carSeriesName">
+          <view class="picker">
+            {{Lpns[carIndex].carSeriesName?Lpns[carIndex].carSeriesName:'未知车系'}}
+             <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+          </view>
+        </picker>
+      </view>
+
+
+      <!-- <view class="form-label">当前在用车辆</view>
+      <view class="input-select-view input-select-view1" bindtap="tapCarOrigin">{{carOrigin.modelname}}</view>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image> -->
+    </view>
+    <view wx:for="{{base.cars}}">
+      <view class="form-section margin24">
+        <view class="form-label">车辆{{index+1}}</view>
+        <view class="input-select-view">{{item.carSeriesName?item.carSeriesName:'未知车系'}}</view>
+      </view>
+      <view class="form-section">
+        <view class="form-label">车牌</view>
+        <input type="text" value="{{item.lpn}}" bindinput="bindKeyInput" data-idx="{{index}}" placeholder="请输入车牌" placeholder-class="gray-style" maxlength="8" />
+      </view>
+
+      <view class="form-section">
+        <view class="form-label">vin码</view>
+        <view class="input-select-view">{{item.vin?item.vin:'----'}}</view>
+      </view>
+    </view>
+
+
+
+    <!--<text class="text-gray">请尽量填写完善的信息，以便我们给您提供更好的服务</text>-->
+    <view class="fixed-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '提交'}}
+      </button>
+    </view>
+  </form>
+  <view class="frameImage" wx:if="{{showFrameImage}}" bindtap="showImage">
+    <image src="{{host}}/images/sample-pic.png"></image>
+    <view class="mask"></view>
+  </view>
+  <view style="height:140rpx;"></view>
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

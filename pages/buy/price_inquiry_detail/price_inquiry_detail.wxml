@@ -1,0 +1,85 @@
+ <view class="container" hidden="{{!showPage}}">
+  <template is="status" data="{{status}}"></template>
+  <view class="weui-cells" hidden="true">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">总计金额</text>
+      </view>
+      <view class="weui-cell__bd">
+        <text class="text-danger">￥40000.00</text>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">报价备注</text>
+      </view>
+      <view class="weui-cell__bd">
+        100000公里
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">询价车型</text>
+      </view>
+      <view class="weui-cell__bd">{{car_name}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">联系人</text>
+      </view>
+      <view class="weui-cell__bd">{{name}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">联系电话</text>
+      </view>
+      <view class="weui-cell__bd">{{tel}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="weui-label">询价时间</text>
+      </view>
+      <view class="weui-cell__bd">{{ask_time}}</view>
+    </view>
+    <view class="weui-cell" wx:if="{{status!=1?true:false}}">
+      <view class="weui-cell__hd">
+        <text class="weui-label">备注</text>
+      </view>
+      <view class="weui-cell__bd">{{des}}</view>
+    </view>
+    <view class="weui-cell" wx:if="{{status==1?true:false}}">
+      <view class="weui-cell__hd">
+        <text class="weui-label">报价内容</text>
+      </view>
+      <view class="weui-cell__bd">{{price || '无'}}</view>
+    </view>
+  </view>
+  <view class="fixed-btn">
+    <button type="primary" 
+      class="confirm-btn" 
+      bindtap="phoneCall"
+      wx:if="advisor_tel || sale_tel">
+      <text wx:if="advisor_tel">联系顾问</text>
+      <text wx:else>服务热线</text>
+    </button>
+  </view> 
+</view>
+
+<template name="status">
+  <view class="top-tip">
+    <block wx:if="{{status == 0}}">
+      <icon type="waiting" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的购车询价正在处理!</text>
+    </block>
+    <block wx:if="{{status == 1}}">
+      <icon type="success" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的购车询价已经报价!</text>
+    </block>
+    <block wx:if="{{status == 2}}">
+      <icon type="cancel" class="top-tip__icon" size="30" />
+      <text class="top-tip__text">您提交的购车询价已经取消!</text>
+    </block>
+  </view>
+</template>

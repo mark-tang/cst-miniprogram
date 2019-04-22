@@ -1,0 +1,178 @@
+<!--index.wxml-->
+<view class="loading" wx:if="{{!showPage && hasMall}}">
+  <view class="load-icon"></view>
+  <text>努力加载中...</text>
+</view>
+<view class='empty-mall' wx:if="{{!hasMall && showPage}}">
+  <image src='/images/icon-shop-empty.png'></image>
+  <view class='empty-mall-text'>暂无商品上架</view>
+</view>
+<view class="container" wx:if="{{showPage && hasMall}}">
+  <!--轮播图-->
+  <swiper indicator-dots="{{loopData.length>1}}" autoplay="true" circular="true" interval="4000" duration="300" indicator-active-color="#e54b44">
+    <block wx:for="{{loopData}}" wx:key="id">
+      <swiper-item  bindtap="navigateTo" data-url="../detail/detail?id={{item.goods_id}}">
+        <image mode="aspectFit" src="{{item.image}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--导航菜单-->
+  <view class='mall-fast-menu' >
+    <view class='fast-menu-item' bindtap="navigateTo" data-url="../order_list/order_list">
+      <image src='/images/icon-order.png'></image>
+      <text>我的订单</text> 
+    </view>
+    <view class='fast-menu-item' bindtap="navigateTo" data-url="../shop_car/shop_car">
+      <image src='/images/icon-shopcar.png'></image>
+      <text>购物车</text>
+    </view>
+  </view>
+  <!--热销产品-->
+  <view class="mall-extend-title" bindtap="getScrollOffset">
+    <image class="mall-extend-title-img" src="/images/mall-title-left.png"></image>
+      <text class="mall-extend-text">热销商品</text>
+    <image class="mall-extend-title-img" src="/images/mall-title-right.png"></image>
+    <text class="mall-title__more" 
+      data-url="../index_more/index_more?type=0" 
+      bindtap="navigateTo"
+      wx:if="{{hotData.length >= 10 ?true:false}}"
+      >更多 ></text>
+  </view>
+  <block wx:for="{{hotData}}" wx:key="id">
+    <view class="mall-media">
+      <view class="mall-media__lt" 
+       data-url="../detail/detail?id={{item.goods_id}}" 
+       bindtap="navigateTo"
+      >
+        <view class="mall-media__lt__type type_{{item.type}}">
+          <text wx:if="{{item.type == 0}}"></text>
+          <text wx:if="{{item.type == 1}}">拼团</text>
+          <text wx:if="{{item.type == 2}}">限购</text>
+          <text wx:if="{{item.type == 3}}">抢购</text>
+        </view>
+        <image mode="aspectFit" src="{{item.image}}"></image>
+      </view>
+      <view class="mall-media__rt">
+        <view class="mall-media__hd" data-url="../detail/detail?id={{item.goods_id}}" 
+       bindtap="navigateTo">
+          <text class="mall-media-title">{{item.name}}</text>
+        </view>
+        <view class="mall-media__bd" data-url="../detail/detail?id={{item.goods_id}}" 
+       bindtap="navigateTo">
+          <view class="mall-media__price">
+            <view class="mall-media__price-red" wx:if="{{item.type == 1}}">￥<text>{{item.tuan.groups_price}}</text></view>
+            <view class="mall-media__price-red" wx:if="{{item.type != 1}}">￥<text>{{item.now_price}}</text></view>
+            <view class="mall-media__price-orgin">￥{{item.old_price}}</view>
+          </view>
+        </view>
+        <view class="mall-media__ft">
+          <view class="mall-media__ft__lt"  wx:if="{{item.type == 0 || item.type == 2}}">
+            <view class="mall-media-cell_text"  wx:if="{{item.max_num == 0}}">{{item.max_num == 0?'已售罄':'购买'}}</view>
+            <view class="mall-media-cell_text" wx:else>已售{{item.process}}%</view>
+            <view class="mall-media-cell cell_process">
+              <view class="cell_process-inner" style="width:{{item.process}}%;"></view>
+            </view>
+          </view>
+          <view class="mall-media__ft__lt"  wx:if="{{item.type == 1 || item.type == 3}}">
+            <view class="mall-media-cell_text">
+              <text wx:if="{{item.timeStatus == 0}}">活动未开始</text>
+              <text wx:if="{{item.timeStatus == 1}}">距活动结束</text>
+              <text wx:if="{{item.timeStatus == 2}}">活动已结束</text>
+            </view>
+            <view class="mall-media-cell cell_cut-down" wx:if="{{item.timeStatus == 1}}">
+              <view wx:if="{{item.showDay}}"><text>{{item.day}}</text> 天 </view> <text>{{item.hour}}</text> : <text>{{item.minute}}</text> : <text>{{item.second}}</text>
+            </view>
+          </view>
+          <view class="mall-media__ft__btn">
+            <button 
+              class="mall-media__btn {{item.max_num == 0?'mall-media__btn-gray':''}}" 
+              data-url="../detail/detail?id={{item.goods_id}}" 
+              bindtap="navigateTo" 
+              wx:if="{{item.type == 0}}"
+            >
+              <text>{{item.max_num == 0?'已售罄':'购买'}}</text>
+            </button>
+            <button 
+              class="mall-media__btn {{(item.timeStatus == 0 || item.timeStatus == 2)?'mall-media__btn-gray':''}} {{item.max_num == 0?'mall-media__btn-gray':''}}" 
+              data-url="../detail/detail?id={{item.goods_id}}" 
+              bindtap="navigateTo" 
+              wx:if="{{item.type == 1}}"
+            >
+              <!-- timeStatus = 0:未开始  1：进行中  2：已结束 -->
+              <text wx:if="{{item.timeStatus == 0}}">未开始</text>
+              <text wx:if="{{item.timeStatus == 1}}">{{item.max_num == 0?'已售罄':'去拼团'}}</text>
+              <text wx:if="{{item.timeStatus == 2}}">已结束</text>
+            </button>
+            <button 
+              class="mall-media__btn {{(item.timeStatus == 0 || item.timeStatus == 2)?'mall-media__btn-gray':''}}" 
+              data-url="../detail/detail?id={{item.goods_id}}" 
+              bindtap="navigateTo" 
+              wx:if="{{item.type == 2}}"
+            >
+              <text wx:if="{{item.timeStatus == 0}}">未开始</text>
+              <text wx:if="{{item.timeStatus == 1}}">{{item.max_num == 0?'已售罄':'购买'}}</text>
+              <text wx:if="{{item.timeStatus == 2}}">已结束</text>
+            </button>
+            <button 
+              class="mall-media__btn  {{(item.timeStatus == 0 || item.timeStatus == 2)?'mall-media__btn-gray':''}}" 
+              data-url="../detail/detail?id={{item.goods_id}}" 
+              bindtap="navigateTo" 
+              wx:if="{{item.type == 3}}"
+            >
+              <text wx:if="{{item.timeStatus == 0}}">未开始</text>
+              <text wx:if="{{item.timeStatus == 1}}">去抢购</text>
+              <text wx:if="{{item.timeStatus == 2}}">已结束</text>
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!--拓展模块-->
+  <block wx:for="{{marketingZone}}"  wx:key="id">
+    <view class="mall-extend-title" wx:if="{{extendData[item.id].length == 0?false:true}}">
+      <image class="mall-extend-title-img" src="/images/mall-title-left.png"></image>
+        <text class="mall-extend-text">{{item.name}}</text>
+      <image class="mall-extend-title-img" src="/images/mall-title-right.png"></image>
+      <text class="mall-title__more" 
+        data-url="../index_more/index_more?type={{item.id}}"
+        bindtap="navigateTo" 
+        wx:if="{{extendData[item.id].length > 8?true:false}}"
+        >更多 ></text>
+    </view>
+    <view class="mall-panel_list {{extendData[item.id].length == 1?'mall-panel_list__single':''}}">
+      <view class="mall-panel" wx:for="{{extendData[item.id]}}"  wx:key="id" wx:for-item="citem" bindtap="navigateTo" data-url="../detail/detail?id={{citem.goods_id}}">   
+        <view class="mall-panel__hd">
+          <view class="mall-media__lt__type type_{{citem.type}}">
+            <text wx:if="{{citem.type == 0}}"></text>
+            <text wx:if="{{citem.type == 1}}">拼团</text>
+            <text wx:if="{{citem.type == 2}}">限购</text>
+            <text wx:if="{{citem.type == 3}}">抢购</text>
+          </view>
+          <image mode="aspectFit" src="{{citem.image}}"></image>
+        </view>
+        <view class="mall-panel__bd">
+          <text class="mall-panel__title">{{citem.name}}</text>
+          <text class="mall-panel__sub-title">已售{{citem.sell_num}}</text>
+        </view>
+        <view class="mall-panel__ft">
+          <view class="mall-media__price-red" wx:if="{{citem.type == 1}}">￥<text>{{citem.tuan.groups_price}}</text></view>
+          <view class="mall-media__price-red" wx:if="{{citem.type != 1}}">￥<text>{{citem.now_price}}</text></view>
+          <view class="mall-media__price-orgin">￥{{citem.old_price}}</view>
+          <!-- <image src="/images/mall-index-buy.png"></image> -->
+        </view>
+      </view>
+    </view> 
+  </block>
+  
+  <!--悬浮图标-->  
+  <!-- <view class="float-view float-view__left">
+    <image
+      class="float-icon" 
+      src="/images/go-shopcar.png" 
+      bindtap="navigateTo" 
+      data-url="../shop_car/shop_car"
+      ></image>
+    <image class="float-icon" src="/images/mall-backtop.png" hidden="{{!showBackTop}}" bindtap="goTop"></image>
+  </view> -->
+</view>

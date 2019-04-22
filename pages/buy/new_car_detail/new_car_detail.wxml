@@ -1,0 +1,69 @@
+<view  hidden="{{!showPage}}">
+  <view class="image-stage" bindtap="showImgs">
+    <image src="{{imgs[0] || '/images/car.png'}}"></image>
+    <text wx:if="{{imgs[0]}}">{{imgs.length}}张图片>></text>
+  </view>
+  <view class="container">
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-cell__title">{{data.style}}</view>
+          <view class="weui-cell__desc">
+            本店价：<text class="text-danger">{{data.shop_price}}万</text>
+            指导价：<del>{{data.factory_price || '无'}}</del> <del wx:if="{{data.factory_price}}">万</del>
+          </view>
+          <view class="weui-cell__desc">
+            优惠：<text class="text-warning" wx:if="{{(data.shop_price > data.factory_price) && data.factory_price}}">{{shopPrice - factoryPrice}}万↑</text>
+                <text class="text-desc" wx:if="{{(data.shop_price == data.factory_price) && data.factory_price}}">0万</text>
+                <text class="text-success" wx:if="{{(data.shop_price < data.factory_price) && data.factory_price}}">{{data.calcPrice}}万↓</text>
+                <text class="text-desc" wx:if="{{!data.factory_price}}">0万</text>
+          </view>
+          <view class="text-desc">
+            颜色：
+            <view class="color-block" wx:if="{{data.color.length > 0}}">
+              <block  wx:for="{{data.color}}">
+                <view class="color-block-item" style="background-color: {{item}};"></view>
+              </block>
+            </view>
+            <text wx:else>暂无</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 参数配置 S -->
+    <view class="panel" style="width:100%">
+      <view class="panel__hd">
+        <text class="panel__title">配置参数</text>
+        <text class="panel__hd__more">● 标配  ○ 选配  - 无</text>
+      </view>
+    </view>
+    <block wx:for="{{data.params}}">
+      <block wx:for="{{item}}" wx:for-index="title" wx:for-item="list" wx:if="{{title != '车身颜色'}}">
+        <view class="weui-cells__title">{{title}}</view>
+        <view class="weui-cells">
+          <block wx:for="{{list}}" wx:for-index="key" wx:for-item="value">
+            <template is="parameter" data="{{key: key, value: value}}"></template>
+          </block>
+        </view>
+      </block>
+    </block>
+    <!-- 参数配置 E -->
+    
+    <view class="fixed-btn">
+      <button type="primary"
+        data-url="../test_drive_reservation_create/test_drive_reservation_create?car_id={{car_id}}" 
+        bindtap="navigateTo">预约试驾</button>
+      <button type="danger"
+        data-url="../price_inquiry_create/price_inquiry_create?car_id={{car_id}}" 
+        bindtap="navigateTo">咨询底价</button>
+    </view>
+  </view>
+</view>
+<!-- 参数配置 -->
+<template name="parameter">
+  <view class="weui-cell weui-cell_desc">
+    <view class="weui-cell__bd">{{key}}</view>
+    <view class="weui-cell__bd">{{value || '-'}}</view>
+  </view>
+</template>

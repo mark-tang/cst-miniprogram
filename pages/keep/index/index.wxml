@@ -1,0 +1,104 @@
+<!--index.wxml-->
+<view class="loading" wx:if="{{!showPage}}">
+  <view class="load-icon"></view>
+  <text>努力加载中...</text>
+</view>
+<view class="container" wx:if="{{showPage}}">
+  <!-- 4S店信息 -->
+  <view class="store-info">
+    <view class="store-logo">
+      <image src="{{company.logo || '/images/store-bac.png'}}"></image>
+    </view>
+    <view class="store-name" bindtap='openLoc'>
+      <view class="store-text__main">
+        <text>{{company.name}}</text>
+      </view>
+      <view class="store-text__sub">
+        <image mode='aspectFit' src='/images/icon-loc.png'></image>
+        <text>{{company.address}}</text> 
+      </view>
+    </view>
+    <view class="store-sa" data-phone="{{advisor.phone}}" bindtap="openAction">
+      <image src="/images/call-icon.png"></image>
+      <view><text wx:if="{{advisor.name}}">{{advisor.tip}}：</text>{{advisor.name || '联系门店'}}</view> 
+    </view>
+  </view>
+  <!--车辆信息-->
+  <view class="car-panel" wx:if="{{!isShowCarInfo}}"  data-url='../../user/edit_info/edit_info' bindtap='goAddCar'>
+    <view class="car-panel__hd">
+      <image src="{{carInfo.carImage}}"></image>
+    </view>
+    <view class="car-panel__bd">
+      <view class="car-text-mian text-overflow">{{carInfo.carSeriesName || carInfo.carImportName || '未知车系'}}</view>
+      <view class="car-text-sub text-overflow">{{carInfo.lpn}}</view>
+    </view>
+    <view class="car-panel__ft">
+      <image src="../../../images/arrow-right.png"></image>
+    </view>
+  </view>
+  <!--添加车辆-->
+  <view class="add-car car-top" wx:if="{{isShowCarInfo}}" data-url='../add_car/add_car?type=add' bindtap='goAddCar'>
+    <image src="../../../images/add-car-grey.png"></image>
+    <text class="text-mian">添加我的爱车</text> 
+    <text class="text-sub">养车·省钱省心</text>
+    <view class="arrow-right">
+      <image src="../../../images/arrow-right.png"></image>
+    </view>
+  </view>
+  <!--违章查询--> 
+  <view class="query">
+    <view data-url="../peccancy/peccancy" data-islink="false" bindtap="navigateTo">
+      <image wx:if="{{isPeccancy}}" src="../../../images/query-1.png"></image>
+      <text wx:else="{{isPeccancy}}" class="next-text next-care" style="{{peccancyDay ==0?'':'color:#f91540'}}">{{peccancyDay}}次</text>
+      <text class="word">{{peccancyWord}}</text>  
+    </view>
+    <view data-url="../next_keep/next_keep" data-islink="true" bindtap="navigateTo">
+      <view wx:if="{{isCare}}" class="tips">
+        <image src="../../../images/go-set.png"></image>
+      </view>
+      <image wx:if="{{isCare}}" src="../../../images/query-2.png"></image>
+      <view wx:else="{{isCare}}" class="next-text next-care">
+        <text class="{{baoyang<=10?'text-red':''}}">{{baoyang}}</text>天
+      </view>
+      <text class="word">下次保养</text>
+    </view>
+
+    <view data-url="../next_insurance/next_insurance" data-islink="true" bindtap="navigateTo">
+      <view wx:if="{{isInsurance}}" class="tips">
+        <image src="../../../images/go-set.png"></image>
+      </view>
+      <image wx:if="{{isInsurance}}" src="../../../images/query-3.png"></image>
+      <view wx:else="{{isInsurance}}" class="next-text next-care">
+        <text class="{{baoxian<=10?'text-red':''}}">{{baoxian}}</text>天
+      </view>
+      <text class="word">下次保险</text>  
+    </view>
+
+    <view data-url="../next_mot/next_mot" data-islink="true" bindtap="navigateTo">
+      <view wx:if="{{isYearCheck}}" class="tips">
+        <image src="../../../images/go-set.png"></image>
+      </view>
+      <image wx:if="{{isYearCheck}}" src="../../../images/query-4.png"></image>
+      <view wx:else="{{isYearCheck}}" class="next-text next-care">
+        <text class="{{nianjian<=10?'text-red':''}}">{{nianjian}}</text>天
+      </view>
+      <text class="word">下次年检</text>  
+    </view>
+  </view>
+  <!--功能模块-->
+  <view class="panel">
+    <view 
+      class="menu" 
+      wx:for="{{menuData}}" 
+      wx:key="name" 
+      data-url="{{item.url}}" 
+      data-islink="{{item.isNeedInfo}}" 
+      bindtap="navigateTo"
+      wx:if="{{ item.title !== '会员卡' || (item.title == '会员卡' && showMember == 1)}}"
+      >
+      <image src="{{item.icon}}"></image>      
+      <text class="tips">{{item.title}}</text>
+    </view>
+  </view>
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

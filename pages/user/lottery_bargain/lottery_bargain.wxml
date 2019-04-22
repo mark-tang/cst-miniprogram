@@ -1,0 +1,104 @@
+<view class="container" wx:if="{{showPage}}">
+  <view class="lt-bg__countdown">
+    活动倒计时：
+    <text wx:if="{{showDay}}" class="lt-bg__countdown_color">{{day}}</text>
+    <text wx:if="{{showDay}}"> 天 </text>
+    <text class="lt-bg__countdown_color">{{hour}}</text>
+    时
+    <text class="lt-bg__countdown_color">{{minute}}</text>
+    分
+    <text class="lt-bg__countdown_color">{{second}}</text>
+    秒
+  </view>
+  <view class="lt-bg__top">
+    <image class="lt-bg__top-car" src="../../../images/car.png"></image>
+    <text class="lt-bg__top-carname">奥迪Q5(进口)</text>
+    <image class="lt-bg__top-backimg" src="{{host}}/images/lottery-bargain-backtop.png"></image>
+  </view>
+  <view class="lt-bg__bottom">
+    <view class="lt-bg__main">
+      <view class="lt-bg__main__hd">
+        <image src="../../../images/bargain-axe.png"></image>
+        已砍<text>1250</text>元
+      </view>
+      <view class="lt-bg__main__tool">
+        <button class="lt-bg-blue" open-type="share">继续分享</button>
+        <button class="lt-bg-yellow" bindtap="runBargain">猛砍一刀</button>
+      </view>
+    </view>
+    <view class="lt-bg__list">
+      <view class="lt-bg__list__title">
+        <image src="../../../images/bargain-list-title.png"></image>
+        砍价排行榜
+      </view>
+      <view class="lt-bg__list__con">
+        <image src="../../../images/touxiang.png"></image>
+        <view class="lt-bg__list__mid">
+          <view class="lt-bg__list__mid-top">
+            小明砍了50000000元
+          </view>
+          <view class="lt-bg__list__mid-bottom">
+            找了 <text class="text-red">4</text> 位朋友帮忙
+          </view>
+        </view>
+        <view class="lt-bg__list__right">
+          共 <text class="text-red">10000</text>元
+        </view>
+      </view>
+      <view class="lt-bg__list__con">
+        <image src="../../../images/touxiang.png"></image>
+        <view class="lt-bg__list__mid">
+          <view class="lt-bg__list__mid-top">
+            小明砍了50000000元
+          </view>
+          <view class="lt-bg__list__mid-bottom">
+            找了 <text class="text-red">4</text> 位朋友帮忙
+          </view>
+        </view>
+        <view class="lt-bg__list__right">
+          共 <text class="text-red">10000</text>元
+        </view>
+      </view>
+      <view class="lt-bg__list__con">
+        <image src="../../../images/touxiang.png"></image>
+        <view class="lt-bg__list__mid">
+          <view class="lt-bg__list__mid-top">
+            小明砍了50000000元
+          </view>
+          <view class="lt-bg__list__mid-bottom">
+            找了 <text class="text-red">4</text> 位朋友帮忙
+          </view>
+        </view>
+        <view class="lt-bg__list__right">
+          共 <text class="text-red">10000</text>元
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--结果弹窗-->
+  <view class="lt-result-dialog" animation="{{barginAnimaData}}">
+    <image class="lt-result-dialog-bac" src="{{host}}/images/bargain-result.png" mode="scaleToFill"></image>
+    <view class="lt-result-dialog__money">{{money}}</view>
+    <view class="lt-result-dialog__ft">
+      <button class="lt-result-dialog__btn_cancel" bindtap="bargainCtrl">取消</button>
+      <button class="lt-result-dialog__btn_ok" open-type="share">确定</button>
+    </view>
+  </view>
+  <!--弹窗-->
+  <view class="lt-dialog" animation="{{dialogAnimaData}}">
+    <view class="lt-dialog__hd">
+      <text>{{dialogTitle}}</text>
+      <icon type="clear" color="#2b51d1"  bindtap="dialogCtrl"/>
+    </view>
+    <view class="lt-dialog__bd">
+      {{dialogCon}}
+    </view>
+    <view class="lt-dialog__ft">
+      <button class="lt-dialog__btn_cancel">取消</button>
+      <button class="lt-dialog__btn_ok"  bindtap="dialogCtrl">确定</button>
+    </view>
+  </view>
+  
+  <view class="mask" bindtap="dialogCtrl" wx:if="{{showMask}}"></view>
+  <view class="mask" bindtap="bargainCtrl" wx:if="{{showMask2}}"></view>
+</view>

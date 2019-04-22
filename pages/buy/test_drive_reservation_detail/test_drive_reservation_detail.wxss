@@ -1,0 +1,5 @@
+@import "../price_inquiry_detail/price_inquiry_detail.wxss";
+
+.weui-label {
+  width: 8em;
+}

@@ -1,0 +1,82 @@
+.eva-top{
+  display: flex;
+  background: #FFF;
+  padding: 0 5%;
+}
+.eva-handle{
+  width: 33.333%;
+  padding: 25rpx 0;
+  font-size: 32rpx;
+  text-align: center;
+  display: flex;
+}
+.eva-handle text{
+  height: 50rpx;
+  line-height: 50rpx;
+  display: block;
+  margin-left: 20rpx;
+}
+.eva-handle image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 40rpx;
+}
+.eva-handle image.hide{
+  display: none;
+}
+
+textarea{
+  background: #FFF;
+  width: 100%;
+  padding: 20rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  
+}
+.fast-eva{
+
+}
+.fast-eva-title{
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  display: block;
+  padding: 40rpx 0;
+}
+.fast-eva-title-image{
+  width: 79rpx;
+  height: 10rpx;
+  transform: translateY(-5rpx);
+  padding: 0 15rpx;
+}
+.fast-eva-list-wrap{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+  padding: 0 20rpx;
+}
+.fast-eva-list{
+  font-size: 26rpx;
+  margin: 0 10rpx;
+  color:#FFF;
+  white-space: nowrap;
+}
+
+.fast-eva-list text{
+  background: #fff;
+  border: 1rpx solid #ececec;
+  color: #3f69f7;
+  padding: 20rpx 35rpx;
+  border-radius:100rpx; 
+  line-height:80rpx;
+}
+.fast-eva-list:active text{
+  color: #FFF;
+  background-color: #3f69f7;
+  border: 1rpx solid #3f69f7;
+}
+.fast-eva-list text.active{
+  background: #3f69f7;
+  border: 1rpx solid #3f69f7;
+  color: #FFF;
+}

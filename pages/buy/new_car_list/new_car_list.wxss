@@ -1,0 +1,40 @@
+.list-title {
+  padding: 5px 15px;
+  font-size: 28rpx;
+  color: #999999;
+  font-weight: 900;
+}
+.list-title image {
+  width: 54rpx;
+  height: 38rpx;
+  vertical-align: -5rpx;
+}
+
+.avg-item__image {
+  margin-left: -10rpx;
+  width: 320rpx;
+  height: 240rpx;
+}
+.avg-item__title,
+.avg-item__price,
+.avg-item__desc {
+  margin: 5px auto;
+  display: block;
+}
+.avg-item__title {
+  font-size: 30rpx;
+  color: #333333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.avg-item__price {
+
+  font-size: 26rpx;
+  color: #f91540;
+}
+.avg-item__desc {
+
+  font-size: 24rpx;
+  color: #999999;
+}

@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{showPage}}">
+  <view class="refund-apply__top">
+    <view class="pay-method" style="margin-bottom:20rpx;">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{code}}" wx:key="name"  wx:for-index="index" wx:if="{{!item.use_status && item.pay_status == 1}}">
+          <text>消费码：{{item.code}}</text>
+          <checkbox value="{{item.order_goods_id}}" checked="{{item.checked}}" color="#f24b4b"/>       
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="refund-apply__cell">
+      <text>退款金额</text>
+      <text class="text-red">￥{{refundMoney}}</text>
+    </view>
+    <view class="refund-apply__cell">
+      <text>退款方式</text>
+      <text style="font-size:28rpx;color:#999">原路退回（3-5个工作日）</text>
+    </view>
+  </view>
+  <view style="font-size:28rpx;color:#666;padding:20rpx;">请选择退款原因</view>
+  <view class="pay-method">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{reasons}}" wx:key="value" wx:for-index="idx">
+        <text>{{item.name}}</text>
+        <radio value="{{idx}}" checked="{{item.checked}}" color="#f24b4b"/>
+      </label>
+    </radio-group>
+  </view>
+  <view class="eva-textarea">
+    <form bindsubmit="bindFormSubmit" report-submit="true">
+      <textarea wx:if="{{showTextArea}}" placeholder="有什么不满意的地方，请您写给我们吧，谢谢！" name="textarea" cursor-spacing="120"/>
+      <view class="normal-btn">
+        <button type="primary" form-type="submit" disabled="{{isSubmit}}">
+          {{isSubmit? '提交中...': '提交'}}
+        </button>
+      </view>  
+    </form>
+    <view style="height:300rpx;"></view>
+  </view>
+  
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

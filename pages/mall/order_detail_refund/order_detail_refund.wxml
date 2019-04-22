@@ -1,0 +1,81 @@
+<!--index.wxml-->
+<import src="/template/business_info/business_info.wxml" />
+<view class="container">
+  <!--等待倒计时-->
+  <view class="order-detail__status">
+    <text>等待付款</text>
+    <view>
+     请于 <view class="show-day" wx:if="{{showDay}}"><text>{{day}}</text>天</view><text>{{hour}}小时</text><text>{{minute}}分</text><text>{{second}}秒</text> 内付款，超时订单将自动关闭
+    </view>
+  </view>
+  <!--快递信息-->
+  <view class="chose-adress" bindtap="getAdressInfo">   
+    <image class="adress-image" src="/images/adress.png"></image>
+    <view class="chose-adress__text">
+      <view class="chose-adress__text_main">
+        <text>{{adressInfo.userName}}</text>
+        <text>{{adressInfo.telNumber}}</text>
+      </view>
+      <view  class="chose-adress__text_sub" wx:if="{{adressInfo.cityName?'true':''}}">
+       {{adressInfo.provinceName}}{{adressInfo.cityName}}{{adressInfo.countyName}}{{adressInfo.detailInfo}}
+      </view>
+    </view>
+  </view>
+  <!--订单列表-->
+  <!--<view class="">订单号：</view>-->
+  <view class="order-list" wx:for="{{orderList}}">  
+    <view class="order-list__bd">
+      <view class="order-list-media">
+        <view class="order-list-media__lt">
+          <image src="{{item.imgUrl}}"></image>
+        </view>
+        <view class="order-list-media__rt">
+            <view class="order-list-media__rt__hd">
+              {{item.title}}
+            </view>
+            <view class="order-list-media__rt__bd">
+              <view class="order-list-price">
+                <view class="order-list-price__now">￥ <text>{{item.price}}</text></view>
+                <view class="order-list-price__orgin">￥{{item.orginPrice}}</view>
+              </view>
+              <view class="order-list-count">
+                x {{item.saledCount}}
+              </view>
+            </view>
+        </view>
+      </view>
+      <view class="order-list__ft">
+        <view class="order-detail__ft">
+          <text>配送方式</text>
+          <text style="color:#999999">自提</text>
+        </view>
+        
+      </view>
+      <view class="order-list__ft">
+       <view class="order-detail__ft">
+          <text>小计</text>
+          <text style="color:#e54b44;font-size:32rpx;">￥480</text>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+  <!--商家信息-->
+  <template is="bussinessInfo" data="{{...serviceInfo}}"></template>
+
+  <!--底栏-->
+  <view class="order-detail__bar">
+    <view class="order-detail__bar-price">
+      合计： <text>￥{{totalMoney}}</text>
+    </view>
+    <view class="detail__bar__btn">
+      <picker bindchange="cancelOrder" value="{{index}}" range="{{cancelRenson}}" range-key="text">      
+        <view class="detail__btn detail__btn-cancel">取消订单</view>
+      </picker>
+    </view>
+    <view class="detail__bar__btn">
+      <view class="detail__btn" bindtap="conformOrder">确认付款</view>
+    </view>
+  </view>
+</view>

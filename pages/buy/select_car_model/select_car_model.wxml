@@ -1,0 +1,51 @@
+<view class="container" wx:if="{{showPage}}">
+  <block wx:for="{{carList}}" wx:key="id" wx:for-item="pitem">
+    <view class="band-list">
+      <view class="band-title" id="{{index}}" bindtap="showChild">
+        <image src="{{pitem.imgs || '/images/car.png'}}"></image>
+        <text class="car-band">{{pitem.manufacture}}</text>
+        <text class="car-band-tips">品牌</text>
+      </view>
+      <view class="type-list-wrap" wx:if="{{pitem.show}}">
+        <block wx:for="{{pitem.carModels}}" wx:for-index="typeIndex" wx:for-item="citem">
+          <view class="type-list" 
+            data-brand_id="{{pitem.brand_id}}"  
+            data-model_id="{{typeIndex}}"
+            bindtap="selectCarModel"
+          >
+            <image src="{{citem.img && citem.img['160'] || '/images/car.png'}}"></image>
+            <text class="car-name">{{citem.title}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class="mask" wx:if="{{showModel}}" bindtap="toggle"></view>
+<scroll-view scroll-y="true" class="offcanvas offcanvas_right" animation="{{animation}}" hidden="{{!showModel}}">
+  <view class="weui-cells__title">{{carStyle.model_info.model_name}}</view>
+  <view class="weui-cells">
+    <block wx:for="{{carStyle.car_list}}" wx:key="modelId">
+      <template is="tpl_car-style" 
+        data="{{...item, brand_name: carStyle.model_info.brand_name, model_name: carStyle.model_info.model_name, model_logo: carStyle.model_info.model_logo}}"></template>
+    </block>
+  </view>
+</scroll-view>
+
+<template name="tpl_car-style">
+  <view class="weui-cell weui-cell_access"
+    data-model_logo="{{model_logo}}"
+    data-brand_id="{{manufactureId}}" 
+    data-brand_name="{{brand_name}}"
+    data-model_id="{{seriesId}}"
+    data-model_name="{{model_name}}"
+    data-car_id="{{modelId}}"
+    data-car_name="{{modelName}}"
+    data-shop_price="{{shopPrice}}"
+    data-factory_price="{{factoryPrice}}"
+    bindtap="selectCarStyle">
+    <view class="weui-cell__bd">{{modelName}}</view>
+    <view class="weui-cell__ft"></view>
+  </view>
+</template>

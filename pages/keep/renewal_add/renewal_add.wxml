@@ -1,0 +1,90 @@
+<view class="container" wx:if="{{showPage}}">
+  <text class="form-title-tips">选择需要投保的险种</text>  
+  <view class="checkbox-list-wrap {{showMore?'active':''}}">   
+    <checkbox-group bindchange="checkboxChange">
+      <label class="checkbox" wx:for="{{items}}" wx:key="name">
+        <text>{{item.value}}</text>
+        <checkbox value="{{index}}" checked="{{item.checked}}" color="#228ade"/>       
+      </label>
+    </checkbox-group>
+  </view>
+  <view class="checkbox-more" bindtap="showMore">
+      <text>查看全部险种</text> 
+      <image class="{{showMore?'active':''}}" src="../../../images/arrow-down-color.png"></image>
+  </view>
+  <view class="form-cutline"></view>
+  <form class="form-body form-hasfixedBtn" bindsubmit="submitForm" report-submit="true">  
+    <view class="form-section">
+      <view class="form-label">车主姓名</view>
+      <input name="name" value="{{userName}}" placeholder="请输入车主姓名(必填)" placeholder-class ="gray-style" maxlength="11"/>
+    </view> 
+
+    <view class="form-section">
+      <view class="form-label">联系电话</view>
+      <input name="phone" value="{{userPhone}}" type="number" placeholder="请输入联系电话(必填)" placeholder-class ="gray-style" maxlength="11"/>
+    </view>
+    <view class="form-section">
+      <view class="form-label">询价车辆</view>
+     <!--  <input name="carNum" value="{{chepai}}" placeholder="请输入车牌号码(必填)" placeholder-class ="gray-style" maxlength="7"/> -->
+      <picker class="select-date"  value="{{carIndex}}" range="{{carList}}" bindchange="bindCarChange" range-key="carSeriesName">
+        <view class="input-select-view">
+          {{carList[carIndex].carSeriesName}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>
+    <view class="form-section" wx:if="{{curDate==''}}">
+      <view class="form-label">保险到期日期</view>
+      <!-- <picker class="select-date" mode="date" value="{{date}}" start="2000-01-01" end="{{nowDate}}" bindchange="bindDateChange">
+        <view class="input-select-view">
+          {{dateTips}}{{keepDate}}
+        </view>
+      </picker> -->
+       <picker class="select-date" mode="date" value="{{date}}" start="{{currentDate}}"  bindchange="bindDateChange">
+        <view class="input-select-view">
+          {{dateTips}}{{keepDate}}
+        </view>
+      </picker>
+      <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+    </view>    
+    <view class="form-section" wx:if="{{insuranceInputShow}}">
+      <view class="form-label" style="">责任险金额</view>
+      <picker class="select-date" range-key="name" value="3" range="{{insuranceValue}}" bindchange="bindInsurance">
+        <view class="input-select-view">
+          {{insuranceInputValue}}
+        </view>
+      </picker>
+      <text class="form-unit">万元</text>
+    </view>   
+    <view class="form-section" wx:if="{{chenyuanNumShow}}">
+      <view class="form-label" style="">责任险人数</view>
+      <!-- <input name="num"  placeholder="车上人员责任险人数" placeholder-class ="gray-style" maxlength="11"/> -->
+      <picker class="select-date" range-key="name" value="0" range="{{chenyuanNumValue}}" bindchange="bindChenyuanNum">
+        <view class="input-select-view">
+          {{chenyuanNumInputValue}}
+        </view>
+      </picker>
+      <text class="form-unit">人</text>
+    </view>
+     <view class="form-section">
+     <button type="primary" class="upload" form-type="button" bindtap='upload'>
+     {{isUpload?'更改行驶证照片':'行驶证照片上传'}}
+      </button>
+     
+      <!-- <image src='{{imgsrc}}' wx:if="{{imgsrc}}"></image> -->
+    </view>
+     <view class="form-section" wx:if="{{travel_img}}">
+       <image src='{{travel_img}}' mode='widthFix'></image> 
+    </view>
+    <view class="fixed-btn">
+      <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+       {{isSubmit? '提交中...': '提交询价'}}
+      </button>
+    </view>  
+  </form >
+  
+  <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>
+
+<view class="mask"  wx:if="{{showPicker}}" bindtap="timePicker"></view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

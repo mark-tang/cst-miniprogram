@@ -1,0 +1,40 @@
+.container {
+  padding-top: 0rpx;
+} 
+.checkbox-list-wrap{
+  height: 350rpx;
+  overflow: hidden;
+}
+.checkbox-list-wrap.active{
+  height: auto;
+  overflow: hidden;
+}
+.checkbox-more{
+  background: #FFF;
+  border-top: 1rpx solid #f8f8f8;
+  padding: 30rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #228ade;
+  display: flex;
+  justify-content: center;
+}
+.checkbox-more text{
+  height: 30rpx;
+  line-height: 30rpx;
+  padding: 0 10rpx;
+  display:block;
+}
+.checkbox-more image{
+  width: 30rpx;
+  height: 30rpx;
+  transform: rotate(0deg)
+}
+.checkbox-more image.active{
+  transform: rotate(180deg)
+}
+picker{
+  margin-left: -10rpx;
+}
+.upload{float:left;height:64rpx;line-height: 64rpx;font-size:28rpx;margin: 0}
+image{width:100%}

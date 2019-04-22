@@ -1,0 +1,29 @@
+<view class="container">
+    <form class="form-body" bindsubmit="submitForm">
+      <view class="form-section">
+        <view class="form-label">保养日期</view>
+        <picker class="select-date" mode="date" start="{{lastDate}}" end="{{nowDate}}" bindchange="bindDateChange">
+          <view class="input-select-view">
+            {{dateTips}}{{keepDate}}
+          </view>
+        </picker>
+        <image class="arrow-right" src="../../../images/arrow-right.png"></image>
+      </view>
+      <view class="form-section">
+        <view class="form-label">保养里程</view>
+        <input name="mileage" type="digit" placeholder="请输入上次保养里程(必填)" placeholder-class ="gray-style" maxlength="18"/>
+        <text class="form-unit">公里</text>
+      </view>
+      <view class="form-section">
+        <view class="form-label">保养金额</view>
+        <input name="money" type="digit" placeholder="请输入上次保养金额(必填)" placeholder-class ="gray-style" maxlength="18"/>
+        <text class="form-unit">元</text>
+      </view>
+      <view class="normal-btn">
+        <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isSubmit}}">
+        {{isSubmit? '提交中...': '提交'}}
+        </button>
+      </view>  
+    </form >
+    <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+</view>

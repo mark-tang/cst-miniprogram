@@ -1,0 +1,84 @@
+<!--index.wxml-->
+
+<import src="/template/business_info/business_info.wxml" />
+
+<view class="container">
+  <!--等待倒计时-->
+  <view class="order-detail__status" wx:if="{{pay_status == 0}}">
+    <text>{{isDead?'订单超时，已关闭':'等待付款'}}</text>
+    <view wx:if="{{!isDead}}">
+     请于 <view class="show-day" wx:if="{{showHour}}"><text>{{hour}}小时</text></view><text>{{minute}}分</text><text>{{second}}秒</text> 内付款，超时订单将自动关闭
+    </view>
+  </view>
+  <!--快递信息-->
+  <view class="chose-adress" bindtap="getAdressInfo">   
+    <image class="adress-image" src="/images/adress.png"></image>
+    <view class="chose-adress__text">
+      <view class="chose-adress__text_main">
+        <text>{{u_name}}</text>
+        <text>{{u_phone}}</text>
+      </view>
+      <view  class="chose-adress__text_sub" wx:if="{{hasSend}}">
+       {{u_addr}}
+      </view>
+    </view>
+  </view>
+  <!--订单列表-->
+  <view class="order-list-num">订单号：{{out_trade_no}}</view>
+  <view class="order-list" wx:for="{{sub_goods}}">  
+    <view class="order-list__bd">
+      <view class="order-list-media">
+        <view class="order-list-media__lt">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="order-list-media__rt">
+            <view class="order-list-media__rt__hd">
+              {{item.name}}
+            </view>
+            <view class="order-list-media__rt__bd">
+              <view class="order-list-price">
+                <view class="order-list-price__now">￥ <text>{{item.price}}</text></view>
+                <!-- <view class="order-list-price__orgin">￥{{item.orginPrice}}</view> -->
+              </view>
+              <view class="order-list-count">
+                x {{item.num}}
+              </view>
+            </view>
+        </view>
+      </view>
+      <view class="order-list__ft">
+        <view class="order-detail__ft">
+          <text>配送方式</text>
+          <text style="color:#999999">{{item.is_express == 0?'自提':'寄送'}}</text>
+        </view>
+      </view>
+      <view class="order-list__ft">
+       <view class="order-detail__ft">
+          <text>小计</text>
+          <text style="color:#e54b44;font-size:32rpx;">￥{{item.price * item.num}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--商家信息-->
+  <template is="bussinessInfo" data="{{...serviceInfo}}"></template>
+
+  <!--底栏-->
+  <view class="order-detail__bar" wx:if="{{pay_status == 0}}">
+    <view class="order-detail__bar-price">
+      合计： <text>￥{{totalMoney}}</text>
+    </view>
+    <view class="detail__bar__btn" wx:if="{{!isDead}}">
+      <picker data-orderid="{{out_trade_no}}" bindchange="cancelOrder" value="{{index}}" range="{{cancelRenson}}" range-key="text">      
+        <button class="detail__btn detail__btn-cancel">取消订单</button>
+      </picker>
+    </view>
+    <view class="detail__bar__btn" wx:if="{{!isDead}}">
+      <form bindsubmit="confirmOrder" report-submit="true">
+        <button class="detail__btn" formType="submit">确认付款</button>
+      </form>
+    </view>
+  </view>
+</view>
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

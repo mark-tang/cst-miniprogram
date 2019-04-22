@@ -1,0 +1,6 @@
+/**index.wxss**/
+
+.weui-cell.weui-cell_access .weui-cell__ft::after{
+  position: absolute
+}
+

@@ -1,0 +1,73 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="nav-area">
+      <view class="nav-wrap">
+        <view  class="nav-item {{couponStatus==3?'nav-active':''}}" data-coupon="3"  bindtap="onTap">可领取</view>
+        <view  class="nav-item {{couponStatus==0?'nav-active':''}}" data-coupon="0"  bindtap="onTap">未使用</view>
+        <view  class="nav-item {{couponStatus==1?'nav-active':''}}" data-coupon="1" bindtap="onTap">已过期</view> 
+        <view  class="nav-item {{couponStatus==2?'nav-active':''}}" data-coupon="2" bindtap="onTap">已使用</view>
+      </view>
+    </view>
+  <view class="coupon-list-wrap {{couponStatus==3?'has-padding':''}}">
+    
+    <view class="coupon-list {{item.useStatus}}" wx:for="{{listData}}" wx:key="{{item.code}}" wx:if="{{showPage && item.couponStatus==couponStatus}}" data-code='{{item.code}}' bindtap='showCode'>
+      <view class="coupon-list-left">
+        <!-- <view class="coupon-left-title">{{item.typeName}} <text style='font-size:28rpx;color:#999;'>({{item.activeName}})</text></view> -->
+        <view class="coupon-left-title">{{item.activeName}}</view>
+        <view class="coupon-left-cell">{{item.typeName}}</view>
+        <view class="coupon-left-cell" wx:if="{{item.useStatus == 'used'?'true':'false'}}">兑换码：{{item.code}}</view>
+        <view class="coupon-left-cell">{{item.deadLines == 0 ?'永久有效':item.timeDesc}}</view>
+        <view class="coupon-left-cell" wx:for="{{item.rules}}" wx:key="{{item}}">{{item}}</view>
+      </view>
+      <view class="coupon-list-right">
+        <view class="coupon-right-money" wx:if="{{item.cardType && (item.cardType == 'GENERAL_COUPON' || item.cardType == 'DISCOUNT' || item.cardType == 'GIFT' || item.cardType == 'GROUPON')}}">
+          {{item.valueTitle}}
+        </view>
+        <view class="coupon-right-money" wx:else>
+          <text>￥</text>{{item.value}}
+        </view>
+        <view class="coupon-right-status no-border" wx:if="{{item.useStatus == 'used'}}"></view>
+        <view class="coupon-right-status" wx:if="{{item.useStatus == 'overdue'}}">已过期</view>
+        <view class="coupon-right-status" wx:if="{{item.useStatus == 'noUse'}}">未使用</view>
+      </view>
+    </view>
+    <view class="coupon-list {{item.receive_style}}" wx:for="{{listDataCan}}" wx:key="{{item.wx_coupon_id}}" wx:if="{{couponStatus == 3 && showPage}}" data-code='{{item.wx_coupon_id}}'>
+      <view class="coupon-list-left">
+        <!-- <view class="coupon-left-title">{{item.typeName}} <text style='font-size:28rpx;color:#999;'>({{item.activeName}})</text></view> -->
+        <view class="coupon-left-title">{{item.title}}</view>
+        <!-- <view class="coupon-left-cell">{{item.card_type}}</view> -->
+        <view class="coupon-left-cell ellipsis-span">卡券价值：{{item.value_info}}</view>
+        <view class="coupon-left-cell">有效期：{{item.effect_date_desc}}</view>
+      </view>
+      <view class="coupon-list-right">
+        <view class="coupon-right-money">
+          {{item.right_desc}}
+        </view>
+        <view class="coupon-right-status" wx:if="{{item.receive_style == 'now'}}" bindtap='applySDKCard' data-code='{{item.wx_coupon_id}}'>可领取</view>
+        <view class="coupon-right-status" wx:if="{{item.receive_style == 'apply'}}" bindtap='applyCard' data-code='{{item.wx_coupon_id}}'>申请领取</view>
+      </view>
+    </view>
+  </view>
+  <view class='qrcode-wrap' wx:if="{{showCode}}" bindtap="hideCode">
+    <view class="qrcode">
+      <canvas canvas-id="qrcode" />
+      <text>- 兑换码 -</text>
+      <text>{{code}}</text>
+    </view>
+  </view>
+  
+  <view class="empty-list" wx:if="{{couponStatus!=3 && !couponStyle[couponStatus].status}}">
+    <image class="empty-list-icon" src="../../../images/icon-empty-list.png"></image>
+    <text>您还没有"{{couponStyle[couponStatus].title}}"优惠券!</text>
+  </view>
+  <view class="empty-list" wx:if="{{couponStatus == 3 && listDataCan.length <= 0}}">
+    <image class="empty-list-icon" src="../../../images/icon-empty-list.png"></image>
+    <text>您还没有"可领取"优惠券!</text>
+  </view>
+  <view class="fixed-btn fixed-card-btn" wx:if="{{couponStatus == 3 && commonApplyEnter === 1}}">
+    <button type="primary" class="card-list-btn confirm-btn"  data-url="../apply_card/apply_card?id=0" bindtap="navigateTo">
+      <text class="btn-tb">提交通用申请</text>
+      <text class="btn-tips">(申请通过后，店面选择卡券发送给您)</text>
+    </button>
+  </view>
+</view>

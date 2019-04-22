@@ -1,0 +1,50 @@
+<!--pages/buy/new_car_display/new_car_display.wxml-->
+<view class="container" hidden="{{!showPage}}">
+  <view class="car-panel">
+    <view class="car-panel__hd">
+      <image src="{{data.icon[160] || data.icon[260]}}"></image>
+    </view>
+    <view class="car-panel__bd">
+      <view class="car-text-mian">{{data.title}}</view>
+      <view class="car-text-sub">
+        门店价格：<text class="text-danger">{{data.price_range.minPrice || 0}}万─{{data.price_range.maxPrice || 0}}万</text>
+      </view>
+    </view>
+  </view>
+  <view class='car-list-wrap'>
+    <view class='car-list' wx:for="{{models}}" wx:key="model">
+      <view class='car-list__bd' data-url="../new_car_detail/new_car_detail?car_id={{item.car_id}}&model_id={{model_id}}"
+      bindtap="navigateTo">
+        <view class='car-list__title'>{{ item.car_name }}</view>
+        <view class='car-list__desc'>
+          本店价：<text class="text-danger">{{item.shopPrice}}万</text>
+          指导价：<del>{{item.factoryPrice || '无'}}</del><del wx:if="{{item.factoryPrice}}">万</del>
+        </view>
+        <view class='car-list__desc'>
+          优惠：<text class="text-success" wx:if="{{item.calcPrice > 0}}">{{item.calcPrice}}万↓</text>
+            <text class="text-desc" wx:if="{{item.calcPrice == 0}}">0万</text>
+            <text class="text-warning" wx:if="{{item.calcPrice <0}}">{{item.calcPrice}}万↑</text>
+        </view>
+      </view>
+      <view class='car-list__ft'>
+        <view class='list-btn' 
+          wx:if="{{btnType != 'priceInquiry'}}" 
+          data-url="../test_drive_reservation_create/test_drive_reservation_create?car_id={{item.car_id}}" 
+          bindtap="navigateTo">
+          <image src='../../../images/icon-yuyue.png'></image>
+          <text class='text-blue'>试驾预约</text>
+        </view>
+        <view class='list-btn' 
+          wx:if="{{btnType != 'testDrive'}}" 
+          data-url="../price_inquiry_create/price_inquiry_create?car_id={{item.car_id}}" 
+          bindtap="navigateTo">
+          <image src='../../../images/icon-xunjia.png'></image>
+          <text class='text-yellow'>询问底价</text>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+
+
+</view>

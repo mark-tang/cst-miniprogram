@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="history-list" wx:if="{{showPage}}">
+    <view class="list">
+      <view class="item" wx:for="{{historyData}}" wx:key="{{item.code}}"  >
+        <view class="item-amount">{{item.type}}{{item.amount}}元</view>
+        <view class="item-time">{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+ 
+  <view class="empty-list" wx:if="{{showEmpty}}">
+    <image class="empty-list-icon" src="../../../images/icon-empty-list.png"></image>
+    <text>暂无相关记录</text>
+  </view>
+</view>

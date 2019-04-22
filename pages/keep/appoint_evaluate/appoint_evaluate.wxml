@@ -1,0 +1,43 @@
+<view class="container">
+    <view class="eva-top">
+      <view class="eva-handle" id="0" bindtap="tapEvaluate">
+        <image class="{{selected1?'':'hide'}}" src="../../../images/radio-true.png"></image>
+        <image class="{{!selected1?'':'hide'}}" src="../../../images/radio-false.png"></image>
+        <text>好评</text>
+      </view>
+      <view class="eva-handle" id="1" bindtap="tapEvaluate">
+        <image class="{{selected2?'':'hide'}}" src="../../../images/radio-true.png"></image>
+        <image class="{{!selected2?'':'hide'}}" src="../../../images/radio-false.png"></image>
+        <text>中评</text>
+      </view>
+      <view class="eva-handle" id="2" bindtap="tapEvaluate">
+        <image class="{{selected3?'':'hide'}}" src="../../../images/radio-true.png"></image>
+        <image class="{{!selected3?'':'hide'}}" src="../../../images/radio-false.png"></image>
+        <text>差评</text>
+      </view>
+    </view>
+
+    <view class="form-cutline"></view>
+    
+    <textarea placeholder="请输入评价" maxlength="-1" value="{{evaCon}}"/>
+    <view class="fast-eva">
+      <view class="fast-eva-title">
+        <image class="fast-eva-title-image" src="../../../images/card-title-left.png"></image>
+        快速点评
+        <image class="fast-eva-title-image" src="../../../images/card-title-right.png"></image>
+      </view>
+      
+      <view class="fast-eva-list-wrap">
+        <view class="fast-eva-list" wx:for="{{fastEvaList}}" wx:key="content"> 
+          <text id="{{index}}" bindtap="fastEva">{{item.content}}</text>
+        </view>     
+      </view>
+
+      
+      
+    </view>
+    <view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>
+    <view class="fixed-btn">
+      <button type="primary" bindtap="submitData">提交点评</button> 
+    </view>
+</view>

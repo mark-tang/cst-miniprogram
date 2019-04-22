@@ -1,0 +1,7 @@
+
+button[type="primary"]{
+  background: #e54b44
+}
+button[type="primary"]::active{
+  background: #e54b44
+}

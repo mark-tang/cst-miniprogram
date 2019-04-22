@@ -1,0 +1,40 @@
+<view class="container" wx:if="{{showPage}}">
+  <view class="keep-card small-card">
+  <!--<image class="keep-card-bac keep-card-bac-left" src="../../../images/keep-bac-left.png"></image>-->
+    <view class="card-title">
+      <image class="card-titl-image" src="../../../images/card-title-left.png"></image>
+      我的保险记录
+      <image class="card-titl-image" src="../../../images/card-title-right.png"></image>
+    </view>
+    <view class="keep-list">
+      <view class="keep-list-item">
+        <view class="keep-list-cell">
+          <text class="keep-list-title">上次投保时间</text>
+          <text class="keep-list-con">{{itemData.preBaoxianTime}}</text>
+        </view>
+        <view class="keep-list-cell">
+          <text class="keep-list-title">保险到期时间</text>
+          <text class="keep-list-con">{{itemData.nextBaoxianTime}}</text>
+        </view>
+      </view>
+      <view class="keep-list-item">
+        
+        <view class="keep-list-cell keep-list-cell-full">
+          <text class="keep-list-title">距离下次续保</text>
+          <text class="keep-list-con keep-list-con-red">{{itemData.days}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="keep-tool keep-normal">
+      <button type="primary" bindtap="addRecord" data-type="{{record}}">{{record==1?'我已续保':'设置保险到期提醒'}}</button> 
+    </view>
+  </view>
+
+  <view class="tips">
+    <text>温馨提示：</text>您可根据实际情况，为爱车添加保险购买记录，我们会根据您的购买时间，及时提醒您续保。
+  </view>
+
+  <!--<view class="fixed-btn">
+    <button type="white" data-url="../renewal_add/renewal_add" bindtap="navigateTo">我要续保报价</button>
+  </view>-->
+</view>

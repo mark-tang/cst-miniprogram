@@ -1,0 +1,85 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{showPage}}">
+  <view class="shopcar-handle"  wx:if="{{!isEmpet}}">
+    <view class="shopcar-handle__select" bindtap="selectAll">
+       <mycheckbox class="select-check {{isAll?'active':''}}"></mycheckbox>
+       <text>{{isAll?'全选':'全选'}}</text>
+    </view>
+    <view class="shopcar-handle__edit" bindtap="edit">
+     {{isEdit?'完成':'编辑'}}
+    </view>
+  </view>
+  <view
+   class="shopcar-list"
+   wx:for="{{listData}}"
+   >
+    <view class="shopcar-list__lt" data-index="{{index}}" bindtap="selectGood">
+      <mycheckbox class="list-check {{item.isSelected?'active':''}}"></mycheckbox>
+    </view>
+    <view class="shopcar-list__mid" data-index="{{index}}" bindtap="selectGood">
+      <image mode="aspectFit" class="shopcar-list__img" src="{{item.image}}"></image>
+    </view>
+    <view class="shopcar-list__rt">
+      <view class="shopcar-list__rt__hd">
+        <text class="shopcar-list__title">{{item.name}}</text>
+      </view>
+      <view class="shopcar-list__rt__ft">
+        <view class="shopcar-list__price">
+          <view>￥ <text>{{item.now_price}}</text></view>
+          <text>库存：{{item.max_num}}</text>
+        </view>
+        <view class="shopcar-list__num {{isEdit?'shopcar-list__num-active':''}}" >
+          <button 
+           data-index="{{index}}" 
+           data-type="subtract" 
+           bindtap="changeQuentity" 
+           disabled="{{item.isMinDis}}"
+          >-</button>
+
+          <input value="{{item.num}}" disabled="false"/>
+
+          <button 
+           data-index="{{index}}" 
+           data-type="add" 
+           data-maxnum="{{item.max_num}}" 
+           data-oncenum="{{item.once_num}}" 
+           bindtap="changeQuentity" 
+           disabled="{{item.isMaxDis}}"
+           >+</button>
+        </view>
+        <view 
+          class="shopcar-list__del {{isEdit?'shopcar-list__del-active':''}}" 
+          data-index="{{index}}" 
+          data-id="{{item.shoping_cart_id}}"
+          bindtap="del" 
+        >
+          <image src="/images/shop-car-del.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="shop-empty" wx:if="{{isEmpet}}">
+    <image src="/images/shop-empty.png"></image>
+    <view>购物车啥都没有</view>
+    <navigator open-type="navigateBack">
+      <button>去逛逛</button>
+    </navigator>
+  </view>
+  <view class="shop-bar" wx:if="{{totalMoney}}">
+    <view class="shop-bar__text">
+        合计：<text class="shop-bar__text-price">￥{{totalMoney}}</text>     
+    </view>
+    <view class="shop-bar__handle">     
+      <button 
+        class="shop-bar__btn" 
+        disabled="{{selectedCount == 0}}" 
+        bindtap="toConfirm" 
+      >
+        立即结算<text class="shop-bar__btn-text">({{selectedCount}})</text>
+      </button>   
+    </view>
+  </view>
+  
+</view>
+
+<view class="toast" wx:if="{{toast.show}}">{{toast.msg}}</view>

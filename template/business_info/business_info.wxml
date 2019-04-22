@@ -1,0 +1,21 @@
+<!--
+  tamplateName:商家信息
+  useTo :mall
+-->
+
+<template name="bussinessInfo">
+  <view class="business-info">
+    <view class="business-info__hd">
+      <text>商家信息</text>
+    </view>
+    <view class="business-info__bd">
+      <view class="business-info__bd__lt" bindtap="openLoc">
+        <text class="business-info__text-main">{{fullName}}</text>
+        <text class="business-info__text-sub">{{address}}</text>
+      </view>
+      <view class="business-info__bd__rt" bindtap="callNum" data-num="{{customerServicePhone}}">
+        <image class="business-info__bd__rt__image" src="/images/mall-detail-call.png"></image>
+      </view>
+    </view>
+  </view>
+</template>

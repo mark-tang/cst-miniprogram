@@ -1,0 +1,84 @@
+<!--index.wxml-->
+<import src="/template/business_info/business_info.wxml" />
+<view class="container">
+
+  <!--快递信息-->
+  <view class="chose-adress" bindtap="getAdressInfo">   
+    <image class="adress-image" src="/images/adress.png"></image>
+    <view class="chose-adress__text">
+      <view class="chose-adress__text_main">
+        <text>{{adressInfo.userName}}</text>
+        <text>{{adressInfo.telNumber}}</text>
+      </view>
+      <view  class="chose-adress__text_sub" wx:if="{{adressInfo.cityName?'true':''}}">
+       {{adressInfo.provinceName}}{{adressInfo.cityName}}{{adressInfo.countyName}}{{adressInfo.detailInfo}}
+      </view>
+    </view>
+  </view>
+  <!--订单列表-->
+  <view class="order-list-num">订单号：</view>
+  <view class="order-list" wx:for="{{orderList}}">  
+    <view class="order-list__bd">
+      <view class="order-list-media">
+        <view class="order-list-media__lt">
+          <image src="{{item.imgUrl}}"></image>
+        </view>
+        <view class="order-list-media__rt">
+            <view class="order-list-media__rt__hd">
+              {{item.title}}
+            </view>
+            <view class="order-list-media__rt__bd">
+              <view class="order-list-price">
+                <view class="order-list-price__now">￥ <text>{{item.price}}</text></view>
+                <view class="order-list-price__orgin">￥{{item.orginPrice}}</view>
+              </view>
+              <view class="order-list-count">
+                x {{item.saledCount}}
+              </view>
+            </view>
+        </view>
+      </view>
+      <view class="order-list__ft">
+        <view class="order-detail__ft">
+          <text>配送方式</text>
+          <text style="color:#999999">自提</text>
+        </view>
+      </view>
+      <view class="order-list__ft">
+       <view class="order-detail__ft">
+          <text>已支付</text>
+          <text style="color:#e54b44;font-size:32rpx;">￥480</text>
+       </view>
+      </view>
+    </view>
+  </view>
+  <view class="com-bom">
+    <view class="com-bom__title" style="padding:0;"></view>
+    <view class="com-list">
+      <view class="com-list__lt">
+        <view class="com-list__lt-text">消费码：1346464584151</view>
+      </view>
+      <view class="com-list__rt">
+        <text class="gary-color">已消费</text>
+      </view>
+    </view>
+    <view class="com-list">
+      <view class="com-list__lt">
+        <view class="com-list__lt-text">消费码：1346464584151</view>
+
+      </view>
+      <view class="com-list__rt">
+        <text class="gary-color">已消费</text>
+      </view>
+    </view>
+  </view>
+  <view class="order-list__ft" style="background:#fff;">
+    <button class="order-list__btn" data-url="../evaluate/evaluate" bindtap="navigateTo">
+      去评价
+    </button>
+  </view>
+
+  <!--商家信息-->
+  <template is="bussinessInfo" data="{{...serviceInfo}}"></template>
+
+</view>

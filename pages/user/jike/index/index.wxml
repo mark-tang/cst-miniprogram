@@ -1,0 +1,96 @@
+<import src="../../../../utils/wxParse/wxParse.wxml" />
+<view class='container'>
+  <swiper indicator-dots="{{false}}" autoplay="{{false}}" vertical="{{true}}" bindchange='swiperChange' wx:if="{{showSwiper}}">
+    <swiper-item>
+      <view class='cover-box'>
+        <image class='jike-arrow' src="/images/jike-arrow.png"></image>
+        <image class='jike-cover' src="{{data.cover_url}}" class="slide-image" width="100%" bindload="imageLoad"/>
+      </view>
+    </swiper-item>
+    <swiper-item></swiper-item>
+  </swiper>
+
+  <view class='content-box' wx:if="{{!showSwiper}}">
+    <view class='qrcode-wrap' wx:if="{{showCode}}" bindtap='hideCode'>
+    <view class="qrcode">
+      <text>{{data.user_name}}</text>
+      <canvas canvas-id="qrcode" />
+      <text>- 到店向工作人员出示此二维码 -</text> 
+    </view>
+  </view>
+    <view class='jike-name' data-code="123456" bindtap='showCode'>
+      <image src='{{data.company_logo}}'></image>
+      <text>{{data.active_name}}</text>
+    </view>
+    <view class='jike-info'>
+      <view class='jike-info-cell'>
+        <text>经销商:</text> {{data.company_name}}
+      </view>
+      <view class='jike-info-cell'>
+        <text>时间:</text> {{data.dateline}}
+      </view>
+      <view class='jike-info-cell'>
+        <text>地址:</text> {{data.active_address}}
+      </view>
+      <view class='jike-info-tips'>
+        {{data.join_times}}人报名
+      </view>
+    </view>
+    <view class='jike-nav'>
+      <view class='jike-nav-cell' bindtap='navigateTo' data-url='../store_info/store_info'>
+        <image src='/images/icon-store.png'></image>
+        <text>经销商信息</text>
+      </view>
+      <view class='jike-nav-cell' data-lat='{{data.lat}}' data-long='{{data.long}}' data-name='{{data.active_name}}' data-address='{{data.active_address}}' bindtap='openLoc'>
+        <image src='/images/icon-loction.png'></image>
+        <text>地址导航</text>
+      </view>
+      <view class='jike-nav-cell' data-phone='{{data.phone}}' bindtap='call'>
+        <image src='/images/icon-telphone.png'></image>
+        <text>拨打电话</text>
+      </view>
+    </view>
+    <view class='summary-wrap' wx:if="{{data.summary.length >0}}">
+      <view class='summary-title'>- 活动亮点 -</view>
+      <view class='summary' wx:for="{{data.summary}}" wx:key="index">
+        <view class='summary__hd'><view>{{index+1}}</view></view>
+        <view class='summary__bd'>
+          <view>{{item.title}}</view>
+          <view class='summary-desc'>{{item.description}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='article-box'>
+      <template is="wxParse" data="{{wxParseData:detail.nodes}}" />
+    </view>
+    <view class='toll-bar-wrap'wx:if="{{!showSwiper}}">
+      <view class='tool-bar' wx:if="{{joinStatus == 0}}">
+        <view class='time-view' wx:if="{{!isEnd}}">
+          剩余时间：
+          <text>{{day}}</text> 天
+          <text>{{hour}}</text> 时
+          <text>{{minute}}</text> 分
+          <text>{{second}}</text> 秒
+        </view>
+        <button 
+          class="btn" 
+          bindtap="navigateTo" 
+          data-url="../sign_up/sign_up?id={{activeID}}&type={{data.active_type}}&need={{data.need_pay}}&reason={{data.pay_reason}}&amount={{data.pay_amount}}&sign={{sign}}&isSign={{isSign}}"
+          wx:if="{{!isEnd}}"
+          >我要报名
+        </button>
+        <button class="btn" wx:if="{{isEnd}}">已截止</button>
+      </view>
+      <view class='tool-bar' wx:elif="{{joinStatus == 1}}">
+        <view class='time-view'>您已报名，待支付</view>
+        <button class='btn' bindtap='goPay' disabled='{{isPaying}}'>去支付</button>
+      </view>
+      <view class='tool-bar' wx:elif="{{joinStatus == 2}}">
+        <view class='time-view'>您已报名，已完成支付</view>
+      </view>
+      <view class='tool-bar' wx:else>
+        <view class='time-view'>您已报名</view>
+      </view>
+    </view>
+  </view>
+</view>

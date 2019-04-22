@@ -1,0 +1,34 @@
+<form class="form-body" bindsubmit="submitForm" wx:if='{{showPage}}'>
+  <text class="form-title-tips">填写报名信息</text>
+  <view class="form-section">
+    <view class="form-label">姓名</view>
+    <input name="name" value="{{name}}" placeholder="请输入姓名" placeholder-class ="gray-style"/>
+  </view>
+  <view class="form-section">
+    <view class="form-label">手机号码</view>
+    <input type="number" name="phone" value="{{phone}}" placeholder="请输入手机号码" placeholder-class ="gray-style" maxlength="11"/>
+  </view>
+  <view class="form-section" wx:if="{{activeInfo.type == 1 || activeInfo.type == 2}}">
+    <view class="form-label">{{activeInfo.type == 1?'意向':''}}车型</view>
+    <view class="input-select-view" data-url="../select_car/select_car?type={{activeInfo.type}}" bindtap="navigateTo">{{love_car}}</view>
+    <image class="arrow-right" src="/images/arrow-right.png"></image>
+  </view>
+  <view class="form-section" wx:if="{{activeInfo.type == 2}}">
+    <view class="form-label">车牌号码</view>
+    <input type="text" name="chepai" value="{{carNumber}}" placeholder="请输入车牌号码" placeholder-class ="gray-style" maxlength="8"/>
+  </view>
+  <view class="form-section" bindtap="checkChange" wx:if="{{activeInfo.need != 0}}">
+    <view class="form-label">诚意金</view>
+    <input name="mileage" value="{{activeInfo.amount}}" type="digit" disabled/>
+    <radio checked="{{isChecked}}"/>
+  </view>
+  <view class="reason-wrap" wx:if="{{activeInfo.need != 0}}">
+    <view class="reason {{isChecked?'active':''}}">{{activeInfo.reason}}</view>
+  </view>
+
+  <view class="normal-btn">
+    <button type="primary" class="confirm-btn" form-type="submit" disabled="{{isPaying}}">      
+      {{isPaying? '提交中...': '提交'}}
+    </button>
+  </view> 
+</form >
