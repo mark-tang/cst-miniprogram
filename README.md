@@ -1,5 +1,5 @@
 # cst
-miniprogram for Purchasing and Maintenance of Cars
+A miniprogram for Purchasing and Maintenance of Cars
 
 ## 项目截图：
 ### 首页
@@ -17,6 +17,6 @@ miniprogram for Purchasing and Maintenance of Cars
 
 ![image](https://github.com/mark-tang/cst/blob/master/show/cardbag.png)
 
-### 情
+### 详情
 
 ![image](https://github.com/mark-tang/cst/blob/master/show/mode.png)
